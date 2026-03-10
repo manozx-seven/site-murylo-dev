@@ -702,7 +702,7 @@
             </a>
           </div>
           <p class="text-gray-500 text-sm">
-            murylo@email.com
+            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="28455d5a514447684d45494144064b4745">[email&#160;protected]</a>
           </p>
         </div>
       </div>
@@ -717,7 +717,7 @@
   </footer>
 
   <!-- ==================== SCRIPTS ==================== -->
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ===== CONFIGURAÇÕES =====
     const CONFIG = {
       whatsapp: '5592992866146', // Trocar pelo seu número
@@ -908,10 +908,18 @@
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // Ignora links externos ou apenas "#"
+        if (!href || href === '#') return;
+        
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        try {
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } catch (err) {
+          // Ignora erros de seletores inválidos (links externos)
         }
       });
     });
