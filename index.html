@@ -906,20 +906,20 @@
     }
 
     // ===== SMOOTH SCROLL =====
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^="#"]:not(#btnWhatsApp)').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        // Ignora links externos ou apenas "#"
-        if (!href || href === '#') return;
-        
-        e.preventDefault();
-        try {
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Só aplica se o href começar com "#" e não for apenas "#"
+        if (href && href.startsWith('#') && href.length > 1) {
+          e.preventDefault();
+          try {
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          } catch (err) {
+            // Ignora erros
           }
-        } catch (err) {
-          // Ignora erros de seletores inválidos (links externos)
         }
       });
     });
