@@ -427,7 +427,7 @@
     <div class="modal-content bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
       <div class="p-6 sm:p-8">
         <!-- Header -->
-        <div class="flex justify-between items-start mb-6">
+        <div class="flex justify-between items-start mb-4">
           <div>
             <div class="flex items-center gap-2 text-brand-600 text-sm font-medium mb-1">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -444,8 +444,11 @@
           </button>
         </div>
         
-        <!-- Aviso -->
-        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-8 flex items-start gap-3">
+        <!-- Descrição do Serviço -->
+        <p id="modalDescricao" class="text-gray-600 mb-6 leading-relaxed"></p>
+        
+        <!-- Aviso Orçamento -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-6 flex items-start gap-3">
           <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
             <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
@@ -455,6 +458,21 @@
             <p class="font-semibold text-emerald-800">Apenas para orçamento</p>
             <p class="text-emerald-700 text-sm mt-0.5">
               Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Aviso sobre valores -->
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-8 flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="font-semibold text-amber-800">Sobre os valores</p>
+            <p class="text-amber-700 text-sm mt-0.5">
+              Os valores abaixo são referentes ao <strong>plano de hospedagem e entrega</strong>. O serviço de desenvolvimento/codificação é orçado separadamente conforme a complexidade do projeto.
             </p>
           </div>
         </div>
@@ -528,42 +546,92 @@
           <div class="grid sm:grid-cols-3 gap-4 mb-8">
             
             <!-- Essencial -->
-            <div onclick="selecionarPlano('temp')" class="plan-card cursor-pointer p-5 rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all" data-plano="temp">
-              <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              <h6 class="font-semibold text-gray-900">Essencial</h6>
-              <p class="text-sm text-gray-500 mt-1">Site funcional com link durante o período.</p>
-              <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
-                <span class="text-xl font-bold text-gray-900">R$ 150<span class="text-sm font-normal text-gray-500">+</span></span>
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">6 meses</span>
+            <div class="plan-card rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all overflow-hidden" data-plano="temp">
+              <div onclick="selecionarPlano('temp')" class="cursor-pointer p-5">
+                <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <h6 class="font-semibold text-gray-900">Essencial</h6>
+                <p class="text-sm text-gray-500 mt-1">Site funcional com link durante o período.</p>
+                <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-xl font-bold text-gray-900">R$ 150<span class="text-sm font-normal text-gray-500">+</span></span>
+                  <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">6 meses</span>
+                </div>
+              </div>
+              <button onclick="event.stopPropagation(); toggleDetalhes('temp')" class="w-full py-2 text-xs text-brand-600 hover:bg-brand-50 border-t border-gray-100 flex items-center justify-center gap-1 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="detalhes-texto" data-plano="temp">Ver detalhes</span>
+              </button>
+              <div id="detalhes-temp" class="hidden bg-gray-50 p-4 border-t border-gray-100">
+                <ul class="text-xs text-gray-600 space-y-1.5">
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Site fica no ar por 6 meses</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Link funcional para compartilhar</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Sem alterações inclusas</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Após 6 meses: renovar ou sai do ar</li>
+                </ul>
               </div>
             </div>
             
             <!-- Profissional -->
-            <div onclick="selecionarPlano('suporte')" class="plan-card cursor-pointer p-5 rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all relative" data-plano="suporte">
-              <span class="absolute -top-3 right-4 bg-brand-600 text-white text-xs px-3 py-1 rounded-full font-medium">Recomendado</span>
-              <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-              </svg>
-              <h6 class="font-semibold text-gray-900">Profissional</h6>
-              <p class="text-sm text-gray-500 mt-1">Inclui suporte e até 3 atualizações mensais.</p>
-              <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
-                <span class="text-xl font-bold text-gray-900">R$ 250<span class="text-sm font-normal text-gray-500">+</span></span>
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">6 meses</span>
+            <div class="plan-card rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all relative overflow-hidden" data-plano="suporte">
+              <span class="absolute -top-0 right-4 bg-brand-600 text-white text-xs px-3 py-1 rounded-b-lg font-medium">Recomendado</span>
+              <div onclick="selecionarPlano('suporte')" class="cursor-pointer p-5">
+                <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+                <h6 class="font-semibold text-gray-900">Profissional</h6>
+                <p class="text-sm text-gray-500 mt-1">Inclui suporte e até 3 atualizações mensais.</p>
+                <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-xl font-bold text-gray-900">R$ 250<span class="text-sm font-normal text-gray-500">+</span></span>
+                  <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">6 meses</span>
+                </div>
+              </div>
+              <button onclick="event.stopPropagation(); toggleDetalhes('suporte')" class="w-full py-2 text-xs text-brand-600 hover:bg-brand-50 border-t border-gray-100 flex items-center justify-center gap-1 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="detalhes-texto" data-plano="suporte">Ver detalhes</span>
+              </button>
+              <div id="detalhes-suporte" class="hidden bg-gray-50 p-4 border-t border-gray-100">
+                <ul class="text-xs text-gray-600 space-y-1.5">
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Site fica no ar por 6 meses</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Até 3 alterações por mês inclusas</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Suporte via WhatsApp</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Prioridade em ajustes</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Após 6 meses: renovar ou migrar</li>
+                </ul>
               </div>
             </div>
             
             <!-- Permanente -->
-            <div onclick="selecionarPlano('vitalicio')" class="plan-card cursor-pointer p-5 rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all" data-plano="vitalicio">
-              <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-              </svg>
-              <h6 class="font-semibold text-gray-900">Permanente</h6>
-              <p class="text-sm text-gray-500 mt-1">Você recebe o código e hospeda por conta própria.</p>
-              <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
-                <span class="text-xl font-bold text-gray-900">R$ 350<span class="text-sm font-normal text-gray-500">+</span></span>
-                <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">Vitalício</span>
+            <div class="plan-card rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all overflow-hidden" data-plano="vitalicio">
+              <div onclick="selecionarPlano('vitalicio')" class="cursor-pointer p-5">
+                <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                </svg>
+                <h6 class="font-semibold text-gray-900">Permanente</h6>
+                <p class="text-sm text-gray-500 mt-1">Você recebe o código e hospeda por conta própria.</p>
+                <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
+                  <span class="text-xl font-bold text-gray-900">R$ 350<span class="text-sm font-normal text-gray-500">+</span></span>
+                  <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">Vitalício</span>
+                </div>
+              </div>
+              <button onclick="event.stopPropagation(); toggleDetalhes('vitalicio')" class="w-full py-2 text-xs text-brand-600 hover:bg-brand-50 border-t border-gray-100 flex items-center justify-center gap-1 transition">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="detalhes-texto" data-plano="vitalicio">Ver detalhes</span>
+              </button>
+              <div id="detalhes-vitalicio" class="hidden bg-gray-50 p-4 border-t border-gray-100">
+                <ul class="text-xs text-gray-600 space-y-1.5">
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Você recebe o código-fonte completo</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Transferência para sua própria conta</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Fica no ar para sempre (seu controle)</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Orientação de como gerenciar</li>
+                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Suporte futuro: sob orçamento</li>
+                </ul>
               </div>
             </div>
             
@@ -722,17 +790,46 @@
     const CONFIG = {
       whatsapp: '5592992866146', // Número do Murylo
       servicos: {
-        1: { nome: 'Bio Link Instagram', temModelos: true },
-        2: { nome: 'Portfólio Digital', temModelos: false },
-        3: { nome: 'Site Institucional', temModelos: false },
-        4: { nome: 'Formulários Inteligentes', temModelos: false },
-        5: { nome: 'Sistemas de Gestão', temModelos: false },
-        6: { nome: 'Projeto Personalizado', temModelos: false },
+        1: { nome: 'Bio Link Instagram', temModelos: true, desc: 'Uma página única com todos os seus links importantes (WhatsApp, loja, redes sociais, etc). Perfeito para colocar na bio do Instagram e facilitar o acesso dos seus seguidores.' },
+        2: { nome: 'Portfólio Digital', temModelos: false, desc: 'Site para apresentar seus trabalhos, projetos e habilidades de forma profissional. Ideal para fotógrafos, designers, artistas e freelancers.' },
+        3: { nome: 'Site Institucional', temModelos: false, desc: 'Presença digital completa para sua empresa ou negócio. Inclui páginas como Sobre, Serviços, Contato e o que mais precisar.' },
+        4: { nome: 'Formulários Inteligentes', temModelos: false, desc: 'Formulários personalizados que salvam as respostas direto em planilhas do Google. Ótimo para cadastros, pesquisas, pedidos e inscrições.' },
+        5: { nome: 'Sistemas de Gestão', temModelos: false, desc: 'Dashboards e sistemas sob medida para controlar seu negócio: vendas, estoque, atendimentos, tarefas e muito mais.' },
+        6: { nome: 'Projeto Personalizado', temModelos: false, desc: 'Tem uma ideia diferente? Conte-me sobre ela e vamos encontrar a melhor solução juntos.' },
       },
       planos: {
-        temp: { nome: 'Essencial', duracao: '6 meses' },
-        suporte: { nome: 'Profissional', duracao: '6 meses' },
-        vitalicio: { nome: 'Permanente', duracao: 'Vitalício' },
+        temp: { 
+          nome: 'Essencial', 
+          duracao: '6 meses',
+          detalhes: [
+            'Site fica no ar por 6 meses',
+            'Link funcional para compartilhar',
+            'Sem alterações inclusas',
+            'Após 6 meses: renovar ou sai do ar'
+          ]
+        },
+        suporte: { 
+          nome: 'Profissional', 
+          duracao: '6 meses',
+          detalhes: [
+            'Site fica no ar por 6 meses',
+            'Até 3 alterações por mês inclusas',
+            'Suporte via WhatsApp',
+            'Prioridade em ajustes',
+            'Após 6 meses: renovar ou migrar'
+          ]
+        },
+        vitalicio: { 
+          nome: 'Permanente', 
+          duracao: 'Vitalício',
+          detalhes: [
+            'Você recebe o código-fonte completo',
+            'Transferência para sua própria conta',
+            'Fica no ar para sempre (seu controle)',
+            'Orientação de como gerenciar',
+            'Suporte futuro: sob orçamento'
+          ]
+        },
       },
       modelos: {
         1: { nome: 'Clean', preco: 97 },
@@ -758,6 +855,7 @@
     const mobileLinks = document.querySelectorAll('.mobile-link');
     const modal = document.getElementById('modalOrcamento');
     const modalTitulo = document.getElementById('modalTitulo');
+    const modalDescricao = document.getElementById('modalDescricao');
     const secaoModelos = document.getElementById('secaoModelos');
     const numeroPasso = document.getElementById('numeroPasso');
     const btnWhatsApp = document.getElementById('btnWhatsApp');
@@ -797,6 +895,7 @@
       
       const servico = CONFIG.servicos[servicoId];
       modalTitulo.textContent = servico.nome;
+      modalDescricao.textContent = servico.desc;
       
       // Mostrar/ocultar seção de modelos
       if (servico.temModelos) {
@@ -810,6 +909,10 @@
       // Limpar seleções
       document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
       document.querySelectorAll('.bio-card').forEach(c => c.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2'));
+      
+      // Fechar detalhes dos planos
+      document.querySelectorAll('[id^="detalhes-"]').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.detalhes-texto').forEach(el => el.textContent = 'Ver detalhes');
       
       atualizarBotaoWhatsApp();
       
@@ -832,32 +935,60 @@
       if (e.key === 'Escape') fecharModal();
     });
 
-    // ===== SELEÇÃO DE PLANO =====
+    // ===== SELEÇÃO DE PLANO (toggle) =====
     function selecionarPlano(planoId) {
-      planoAtual = planoId;
-      
-      document.querySelectorAll('.plan-card').forEach(card => {
-        if (card.dataset.plano === planoId) {
-          card.classList.add('selected');
-        } else {
+      // Toggle: se já está selecionado, desseleciona
+      if (planoAtual === planoId) {
+        planoAtual = null;
+        document.querySelectorAll('.plan-card').forEach(card => {
           card.classList.remove('selected');
-        }
-      });
+        });
+      } else {
+        planoAtual = planoId;
+        document.querySelectorAll('.plan-card').forEach(card => {
+          if (card.dataset.plano === planoId) {
+            card.classList.add('selected');
+          } else {
+            card.classList.remove('selected');
+          }
+        });
+      }
       
       atualizarBotaoWhatsApp();
     }
 
-    // ===== SELEÇÃO DE MODELO =====
+    // ===== SELEÇÃO DE MODELO (toggle) =====
     function selecionarModelo(modeloId) {
-      modeloAtual = modeloId;
-      
-      document.querySelectorAll('.bio-card').forEach(card => {
-        if (card.dataset.modelo == modeloId) {
-          card.classList.add('ring-2', 'ring-brand-500', 'ring-offset-2');
-        } else {
+      // Toggle: se já está selecionado, desseleciona
+      if (modeloAtual == modeloId) {
+        modeloAtual = null;
+        document.querySelectorAll('.bio-card').forEach(card => {
           card.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2');
-        }
-      });
+        });
+      } else {
+        modeloAtual = modeloId;
+        document.querySelectorAll('.bio-card').forEach(card => {
+          if (card.dataset.modelo == modeloId) {
+            card.classList.add('ring-2', 'ring-brand-500', 'ring-offset-2');
+          } else {
+            card.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2');
+          }
+        });
+      }
+    }
+    
+    // ===== TOGGLE DETALHES DO PLANO =====
+    function toggleDetalhes(planoId) {
+      const detalhesEl = document.getElementById('detalhes-' + planoId);
+      const textoEl = document.querySelector('.detalhes-texto[data-plano="' + planoId + '"]');
+      
+      if (detalhesEl.classList.contains('hidden')) {
+        detalhesEl.classList.remove('hidden');
+        textoEl.textContent = 'Ocultar detalhes';
+      } else {
+        detalhesEl.classList.add('hidden');
+        textoEl.textContent = 'Ver detalhes';
+      }
     }
 
     // ===== ATUALIZAR BOTÃO WHATSAPP =====
@@ -904,6 +1035,16 @@
         `;
       }
     }
+
+    // ===== REFRESH APÓS CLICAR NO WHATSAPP =====
+    btnWhatsApp.addEventListener('click', function(e) {
+      // Se tem um plano selecionado (link válido), faz refresh após 1 segundo
+      if (planoAtual && this.href && !this.href.endsWith('#')) {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }
+    });
 
     // ===== SMOOTH SCROLL =====
     document.querySelectorAll('a[href^="#"]:not(#btnWhatsApp)').forEach(anchor => {
