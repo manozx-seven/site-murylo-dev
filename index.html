@@ -1,1088 +1,1223 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Murylo Dev | Desenvolvimento Web & Soluções Digitais</title>
-  <meta name="description" content="Desenvolvimento de sites, portfólios, bio links e sistemas personalizados. Soluções digitais de qualidade em Manaus.">
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['DM Sans', 'sans-serif'],
-            serif: ['Instrument Serif', 'serif'],
-          },
-          colors: {
-            brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              200: '#bfdbfe',
-              300: '#93c5fd',
-              400: '#60a5fa',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e40af',
-              900: '#1e3a5f',
-              950: '#0f172a',
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murylo Dev | Soluções Digitais</title>
+    <meta name="description" content="Desenvolvedor web focado em resultados. Crio sites, portfólios, bio links e sistemas sob medida.">
+    
+    <!-- Pré-conexão de fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'sans-serif'],
+                        serif: ['"Instrument Serif"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
             }
-          }
         }
-      }
-    }
-  </script>
-  
-  <style>
-    html { scroll-behavior: smooth; }
-    
-    /* Animações */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-    
-    @keyframes pulse-slow {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-    
-    .animate-fade-in-up {
-      animation: fadeInUp 0.6s ease-out forwards;
-    }
-    
-    .animate-fade-in {
-      animation: fadeIn 0.4s ease-out forwards;
-    }
-    
-    .animate-slide-in {
-      animation: slideIn 0.5s ease-out forwards;
-    }
-    
-    .animate-pulse-slow {
-      animation: pulse-slow 2s ease-in-out infinite;
-    }
-    
-    .delay-100 { animation-delay: 0.1s; }
-    .delay-200 { animation-delay: 0.2s; }
-    .delay-300 { animation-delay: 0.3s; }
-    .delay-400 { animation-delay: 0.4s; }
-    
-    /* Gradientes e efeitos */
-    .gradient-text {
-      background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #1e3a5f 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .glass {
-      background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-    }
-    
-    .card-hover {
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
-    }
-    
-    /* Decoração */
-    .dot-pattern {
-      background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
-      background-size: 24px 24px;
-    }
-    
-    /* Mobile menu */
-    .mobile-menu {
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-    }
-    
-    .mobile-menu.open {
-      transform: translateX(0);
-    }
-    
-    /* Modal */
-    .modal-overlay {
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-    }
-    
-    .modal-overlay.open {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .modal-content {
-      transform: scale(0.95) translateY(20px);
-      transition: all 0.3s ease;
-    }
-    
-    .modal-overlay.open .modal-content {
-      transform: scale(1) translateY(0);
-    }
-    
-    /* Seleção */
-    .plan-card.selected {
-      border-color: #2563eb;
-      background-color: #eff6ff;
-    }
-    
-    .bio-card.selected {
-      ring: 2px solid #2563eb;
-      ring-offset: 2px;
-    }
-  </style>
+    </script>
+    <style>
+        /* Estilos adicionais personalizados */
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 8px 10px -6px rgba(37, 99, 235, 0.1);
+        }
+        /* Oculta scrollbar no modal mas permite scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .fade-in-element {
+            opacity: 0;
+        }
+    </style>
 </head>
+<body class="bg-slate-50 text-gray-900 font-sans antialiased relative selection:bg-brand-200 selection:text-brand-900 overflow-x-hidden">
 
-<body class="font-sans text-gray-900 antialiased">
-  
-  <!-- ==================== HEADER ==================== -->
-  <header id="header" class="fixed top-0 w-full z-50 transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
-      <div class="flex justify-between items-center">
-        <!-- Logo -->
-        <a href="#inicio" class="flex items-center gap-3 group">
-          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-brand-500/25 group-hover:shadow-brand-500/40 transition-shadow">
-            M
-          </div>
-          <div class="hidden sm:block">
-            <h1 class="font-semibold text-gray-900 leading-tight">Murylo Dev</h1>
-            <p class="text-xs text-gray-500">Soluções Digitais</p>
-          </div>
-        </a>
+    <!-- Canvas Background (Partículas Aesthetic) -->
+    <canvas id="neural-canvas" class="fixed inset-0 w-full h-full -z-10 pointer-events-none opacity-80"></canvas>
+
+    <!-- Header (Fixo) -->
+    <header id="header" class="fixed w-full top-0 z-40 transition-all duration-300 border-b border-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/30 group-hover:bg-brand-700 transition-colors">
+                        M
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-bold text-gray-900 leading-tight">Murylo Dev</span>
+                        <span class="text-xs text-brand-600 font-medium tracking-wide uppercase">Soluções Digitais</span>
+                    </div>
+                </a>
+
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#inicio" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Início</a>
+                    <a href="#servicos" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Serviços</a>
+                    <a href="#portfolio" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Portfólio</a>
+                    <a href="#servicos" class="text-sm font-semibold bg-brand-600 text-white px-5 py-2.5 rounded-xl hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30 transition-all">Solicitar Orçamento</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-brand-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Dropdown) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xl absolute w-full left-0 origin-top animate-[fadeInUp_0.2s_ease-out]">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#inicio" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-brand-50 hover:text-brand-600">Início</a>
+                <a href="#servicos" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-brand-50 hover:text-brand-600">Serviços</a>
+                <a href="#portfolio" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-brand-50 hover:text-brand-600">Portfólio</a>
+                <div class="pt-2">
+                    <a href="#servicos" class="mobile-link w-full text-center block text-base font-semibold bg-brand-600 text-white px-5 py-3 rounded-xl hover:bg-brand-700">Solicitar Orçamento</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="inicio" class="pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-hidden">
+            <!-- Background decors -->
+            <div class="absolute top-20 right-0 w-96 h-96 bg-brand-100 rounded-full blur-3xl opacity-40 pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-50 rounded-full blur-3xl opacity-50 pointer-events-none" style="animation-delay: 1s;"></div>
+
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
+                <!-- Text Content -->
+                <div class="text-center lg:text-left fade-in-element">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
+                        Disponível para novos projetos
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6 fade-in-element" style="animation-delay: 0.1s">
+                        Desenvolvimento web<br>focado em 
+                        <span class="font-serif italic font-normal text-brand-600 text-5xl sm:text-6xl lg:text-7xl">resultados</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 fade-in-element" style="animation-delay: 0.2s">
+                        Crio sites, portfólios, bio links e sistemas sob medida. 
+                        Soluções práticas que funcionam e cabem no seu bolso.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start fade-in-element" style="animation-delay: 0.3s">
+                        <a href="#servicos" class="inline-flex justify-center items-center gap-2 px-8 py-4 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all">
+                            Conhecer Serviços
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                        <a href="#portfolio" class="inline-flex justify-center items-center gap-2 px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-all">
+                            Ver Portfólio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Visual Decorative Card -->
+                <div class="hidden lg:block fade-in-element" style="animation-delay: 0.2s">
+                    <div class="relative">
+                        <!-- Card decorativo atrás -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-400 to-brand-600 rounded-3xl transform rotate-3 opacity-90 blur-sm"></div>
+                        
+                        <!-- Card principal -->
+                        <div class="relative bg-white/90 backdrop-blur-xl border border-white rounded-3xl shadow-2xl p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <!-- Preview de Bio Link -->
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center shadow-inner">
+                                        <span class="text-white text-2xl">👤</span>
+                                    </div>
+                                    <div>
+                                        <div class="h-4 w-28 bg-gray-200 rounded mb-2"></div>
+                                        <div class="h-3 w-20 bg-gray-100 rounded"></div>
+                                    </div>
+                                </div>
+                                <div class="h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium">
+                                    🔗 Link 1
+                                </div>
+                                <div class="h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium">
+                                    🔗 Link 2
+                                </div>
+                                <div class="h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium">
+                                    🔗 Link 3
+                                </div>
+                                <div class="h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 text-sm font-bold">
+                                    📱 WhatsApp
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços Section -->
+        <section id="servicos" class="py-16 sm:py-24 relative px-4 sm:px-6 lg:px-8">
+            <!-- Bloco Sólido Central -->
+            <div class="max-w-7xl mx-auto bg-white/95 backdrop-blur-xl rounded-[2.5rem] shadow-xl border border-white p-6 sm:p-12 lg:p-16 relative z-10">
+                <div class="text-center max-w-2xl mx-auto mb-16 fade-in-element">
+                    <span class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2 block">Serviços</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Como posso ajudar?</h2>
+                    <p class="text-gray-600 text-lg">Selecione um serviço para ver as opções de planos e solicitar um orçamento sem compromisso.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+                    <!-- Gerado via JS para facilitar dados do modal -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfólio Section -->
+        <section id="portfolio" class="py-16 sm:py-24 relative px-4 sm:px-6 lg:px-8">
+            <!-- Bloco Sólido Central -->
+            <div class="max-w-7xl mx-auto bg-white/95 backdrop-blur-xl rounded-[2.5rem] shadow-xl border border-white p-6 sm:p-12 lg:p-16 relative z-10">
+                <div class="text-center max-w-2xl mx-auto mb-16 fade-in-element">
+                    <span class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2 block">Portfólio</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Projetos realizados</h2>
+                    <p class="text-gray-600 text-lg">Alguns dos trabalhos que desenvolvi para clientes reais.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Projeto 1 -->
+                    <div class="group cursor-pointer fade-in-element">
+                        <div class="aspect-video bg-gradient-to-br from-blue-100 to-brand-100 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center border border-gray-100">
+                            <svg class="w-16 h-16 text-brand-300 transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md mb-2">Sistema de Gestão</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">EJUD Flow</h3>
+                            <p class="text-gray-600 text-sm">Sistema Kanban para gestão de demandas internas do TJAM.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Projeto 2 -->
+                    <div class="group cursor-pointer fade-in-element" style="animation-delay: 0.1s;">
+                        <div class="aspect-video bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center border border-gray-100">
+                            <svg class="w-16 h-16 text-indigo-300 transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md mb-2">Site Institucional</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Sâmela Matozinho</h3>
+                            <p class="text-gray-600 text-sm">Site profissional para consultoria acadêmica.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 3 -->
+                    <div class="group cursor-pointer fade-in-element" style="animation-delay: 0.2s;">
+                        <div class="aspect-video bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center border border-gray-100">
+                            <svg class="w-16 h-16 text-amber-300 transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md mb-2">Bio Link</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Bio Link Premium</h3>
+                            <p class="text-gray-600 text-sm">Página de links personalizada com design moderno.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-20 pb-8 mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- CTA -->
+            <div class="bg-brand-600 rounded-3xl p-8 sm:p-12 mb-16 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
+                <div class="relative z-10 text-center md:text-left">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+                        Pronto para <span class="font-serif italic text-brand-200">começar</span>?
+                    </h3>
+                    <p class="text-blue-100 text-lg max-w-xl">Transforme sua ideia em realidade. Entre em contato e vamos conversar sobre o seu projeto. Orçamento sem compromisso.</p>
+                </div>
+                <a href="https://wa.me/5592992866146?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer" class="relative z-10 shrink-0 inline-flex items-center gap-3 bg-green-500 hover:bg-green-600 px-8 py-4 text-white font-bold rounded-xl shadow-lg shadow-green-900/30 hover:shadow-green-900/50 hover:-translate-y-0.5 transition-all">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    Chamar no WhatsApp
+                </a>
+            </div>
+
+            <!-- Grid Footer -->
+            <div class="grid md:grid-cols-3 gap-12 mb-12 border-b border-gray-800 pb-12">
+                <div class="col-span-1">
+                    <a href="#" class="flex items-center gap-3 mb-4 group">
+                        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold shadow-lg">M</div>
+                        <span class="font-bold text-white text-xl">Murylo Dev</span>
+                    </a>
+                    <p class="text-gray-400 text-sm mb-4 leading-relaxed max-w-xs">Desenvolvedor web freelancer especializado em criar soluções digitais que geram resultados para o seu negócio.</p>
+                    <div class="flex items-center gap-2 text-gray-400 text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                        Manaus, AM - Brasil
+                    </div>
+                </div>
+                
+                <div class="col-span-1 md:pl-8">
+                    <h3 class="text-white font-semibold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#inicio" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Início</a></li>
+                        <li><a href="#servicos" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Serviços</a></li>
+                        <li><a href="#portfolio" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Portfólio</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-span-1">
+                    <h3 class="text-white font-semibold mb-4">Contato</h3>
+                    <ul class="space-y-3">
+                        <li><a href="mailto:murylo.neves@gmail.com" class="text-gray-400 hover:text-brand-400 transition-colors text-sm flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> murylo.neves@gmail.com</a></li>
+                        <li class="flex items-center gap-4 mt-4">
+                            <a href="https://www.instagram.com/murylo02_" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/murylo-neves-77053a269" target="_blank" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center text-gray-500 text-sm">
+                <p>&copy; 2026 Murylo Dev. Manaus, AM. Desenvolvido por Murylo Neves. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Orçamento -->
+    <div id="orcamento-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm modal-close cursor-pointer"></div>
         
-        <!-- Nav Desktop -->
-        <nav class="hidden md:flex items-center gap-1">
-          <a href="#inicio" class="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition">Início</a>
-          <a href="#servicos" class="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition">Serviços</a>
-          <a href="#portfolio" class="px-4 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition">Portfólio</a>
-          <a href="#contato" class="ml-2 px-5 py-2.5 bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 transition-all">
-            Solicitar Orçamento
-          </a>
-        </nav>
-        
-        <!-- Menu Mobile Button -->
-        <button id="menuBtn" class="md:hidden p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition">
-          <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-          <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-      </div>
+        <!-- Modal Content -->
+        <div class="bg-white rounded-3xl w-full max-w-3xl max-h-[90vh] flex flex-col relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="modal-container">
+            
+            <!-- Header -->
+            <div class="p-6 sm:p-8 border-b border-gray-100 flex justify-between items-start sticky top-0 bg-white rounded-t-3xl z-20">
+                <div>
+                    <span class="inline-block px-2.5 py-1 bg-brand-50 text-brand-700 text-xs font-semibold rounded-md mb-3" id="modal-badge">Serviço selecionado</span>
+                    <h2 class="text-2xl font-bold text-gray-900" id="modal-title">Nome do Serviço</h2>
+                    <p class="text-gray-500 text-sm mt-1" id="modal-desc">Descrição do serviço aparece aqui.</p>
+                </div>
+                <button class="modal-close p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Body Scrollable -->
+            <div class="p-6 sm:p-8 overflow-y-auto no-scrollbar flex-1 space-y-8 bg-slate-50">
+                
+                <!-- Avisos -->
+                <div class="space-y-3">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3">
+                        <svg class="w-5 h-5 text-green-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <p class="text-sm text-green-800"><strong>Apenas para orçamento</strong> - Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.</p>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3">
+                        <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        <p class="text-sm text-amber-800"><strong>Sobre os valores</strong> - Os valores abaixo são referentes ao plano de hospedagem e entrega. O serviço de desenvolvimento é orçado separadamente conforme a complexidade.</p>
+                    </div>
+                </div>
+
+                <!-- Passo 1: Modelos (Apenas Bio Link) -->
+                <div id="step-models" class="hidden mb-4">
+                    <h5 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
+                        <span class="w-6 h-6 bg-brand-600 text-white rounded-full text-sm flex items-center justify-center">1</span>
+                        Escolha um modelo de Bio Link:
+                    </h5>
+                    <p class="text-sm text-brand-600 mb-4 flex items-center gap-1 font-medium">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                        </svg>
+                        Este é o único serviço com modelos prontos e valor fixo!
+                    </p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <!-- Clean -->
+                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all" data-id="clean" data-name="Clean" data-price="97">
+                            <div class="aspect-[3/4] bg-gradient-to-b from-gray-50 to-white p-4 flex flex-col items-center justify-center">
+                                <div class="w-10 h-10 rounded-full bg-gray-800 mb-3"></div>
+                                <div class="w-14 h-1.5 bg-gray-300 rounded mb-1.5"></div>
+                                <div class="w-10 h-1.5 bg-gray-200 rounded"></div>
+                            </div>
+                            <div class="p-3 bg-white border-t">
+                                <p class="font-semibold text-gray-900 text-sm">Clean</p>
+                                <p class="text-brand-600 font-bold">R$ 97</p>
+                                <button onclick="event.stopPropagation(); openTester('clean')" class="mt-2 w-full py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                    Testar modelo
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Gradient -->
+                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all relative" data-id="gradient" data-name="Gradient" data-price="147">
+                            <span class="absolute top-2 right-2 bg-brand-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Popular</span>
+                            <div class="aspect-[3/4] bg-gradient-to-br from-indigo-500 to-purple-600 p-4 flex flex-col items-center justify-center">
+                                <div class="w-10 h-10 rounded-full bg-white/30 mb-3"></div>
+                                <div class="w-14 h-1.5 bg-white/50 rounded mb-1.5"></div>
+                                <div class="w-10 h-1.5 bg-white/30 rounded"></div>
+                            </div>
+                            <div class="p-3 bg-white border-t">
+                                <p class="font-semibold text-gray-900 text-sm">Gradient</p>
+                                <p class="text-brand-600 font-bold">R$ 147</p>
+                                <button onclick="event.stopPropagation(); openTester('gradient')" class="mt-2 w-full py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                    Testar modelo
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Glass -->
+                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all" data-id="glass" data-name="Glass" data-price="197">
+                            <div class="aspect-[3/4] bg-gradient-to-br from-slate-800 to-slate-900 p-4 flex flex-col items-center justify-center">
+                                <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur mb-3"></div>
+                                <div class="w-14 h-1.5 bg-white/30 rounded mb-1.5"></div>
+                                <div class="w-10 h-1.5 bg-white/20 rounded"></div>
+                            </div>
+                            <div class="p-3 bg-white border-t">
+                                <p class="font-semibold text-gray-900 text-sm">Glass</p>
+                                <p class="text-brand-600 font-bold">R$ 197</p>
+                                <button onclick="event.stopPropagation(); openTester('glass')" class="mt-2 w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                    Testar modelo
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Personalizado -->
+                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-dashed border-gray-300 hover:border-brand-400 transition-all flex flex-col items-center justify-center bg-gray-50" data-id="personalizado" data-name="Personalizado" data-price="Sob consulta">
+                            <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                            </svg>
+                            <p class="font-semibold text-gray-700 text-sm">Personalizado</p>
+                            <p class="text-gray-500 text-xs mt-1">Sob consulta</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Passo 2: Planos de Entrega -->
+                <div>
+                    <h5 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <span id="numero-passo" class="w-6 h-6 bg-brand-600 text-white rounded-full text-sm flex items-center justify-center">1</span>
+                        <span id="step-plan-title">Escolha o tipo de entrega:</span>
+                    </h5>
+                    
+                    <div class="space-y-4">
+                        <!-- Essencial -->
+                        <div class="plan-card cursor-pointer border-2 border-transparent bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all" data-id="essencial" data-name="Essencial" data-duration="6 meses">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-lg text-gray-900">Essencial</h4>
+                                <span class="text-brand-600 font-bold">R$ 150+ <span class="text-xs text-gray-500 font-normal">/ 6 meses</span></span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Ideal para validar ideias de forma rápida e acessível.</p>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Site no ar por 6 meses</li>
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Link funcional para compartilhar</li>
+                                <li class="flex items-center gap-2 text-gray-400"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Sem alterações inclusas</li>
+                            </ul>
+                        </div>
+
+                        <!-- Profissional -->
+                        <div class="plan-card cursor-pointer border-2 border-brand-500 bg-brand-50/30 rounded-xl p-5 shadow-md relative" data-id="profissional" data-name="Profissional" data-duration="6 meses">
+                            <div class="absolute -top-3 right-4 bg-brand-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide shadow-sm">Recomendado</div>
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-lg text-brand-900">Profissional</h4>
+                                <span class="text-brand-600 font-bold">R$ 250+ <span class="text-xs text-gray-500 font-normal">/ 6 meses</span></span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Acompanhamento e atualizações para manter tudo em dia.</p>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Tudo do plano Essencial</li>
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Suporte via WhatsApp</li>
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Até 3 atualizações simples/mês</li>
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Prioridade em correções</li>
+                            </ul>
+                        </div>
+
+                        <!-- Permanente -->
+                        <div class="plan-card cursor-pointer border-2 border-transparent bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all" data-id="permanente" data-name="Permanente" data-duration="Vitalício">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="font-bold text-lg text-gray-900">Permanente</h4>
+                                <span class="text-brand-600 font-bold">R$ 350+ <span class="text-xs text-gray-500 font-normal">Vitalício</span></span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">Controle total. O código e o site são 100% seus.</p>
+                            <ul class="space-y-2 text-sm text-gray-600">
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Recebe o código-fonte completo</li>
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Transferência para sua hospedagem</li>
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Fica no ar para sempre</li>
+                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Orientação de gerenciamento</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Modal CTA -->
+            <div class="p-6 border-t border-gray-100 bg-white rounded-b-3xl">
+                <button id="btn-whatsapp" disabled class="w-full py-4 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 bg-gray-300 cursor-not-allowed">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    <span id="btn-whatsapp-text">Selecione um plano para continuar</span>
+                </button>
+            </div>
+        </div>
     </div>
-    
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-white shadow-2xl md:hidden z-50">
-      <div class="p-6">
-        <button id="closeMobileMenu" class="absolute top-4 right-4 p-2 text-gray-500 hover:text-gray-700">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
-        
-        <div class="mt-12 flex flex-col gap-2">
-          <a href="#inicio" class="mobile-link px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-xl transition font-medium">Início</a>
-          <a href="#servicos" class="mobile-link px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-xl transition font-medium">Serviços</a>
-          <a href="#portfolio" class="mobile-link px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-xl transition font-medium">Portfólio</a>
-          <a href="#contato" class="mobile-link mt-4 px-4 py-3 bg-brand-600 text-white rounded-xl text-center font-medium hover:bg-brand-700 transition">
-            Solicitar Orçamento
-          </a>
+
+    <!-- Modal do Testador (Bio Link Builder) -->
+    <div id="tester-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-gray-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-300 p-4 sm:p-6">
+        <div class="bg-white rounded-[2rem] w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="tester-container">
+            
+            <!-- Header do Testador -->
+            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white z-10">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center text-brand-600">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900">Painel Interativo</h3>
+                        <p class="text-xs text-gray-500">Teste as opções de personalização</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button onclick="closeTester(true)" class="hidden sm:block px-5 py-2 bg-brand-600 text-white text-sm font-semibold rounded-xl hover:bg-brand-700 transition-colors">
+                        Usar este modelo
+                    </button>
+                    <button onclick="closeTester(false)" class="p-2 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Corpo do Testador -->
+            <div class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-slate-50 relative">
+                
+                <!-- Painel de Controles (Esquerda) -->
+                <div class="w-full lg:w-1/2 p-6 overflow-y-auto no-scrollbar border-r border-gray-100 bg-white">
+                    <div class="max-w-md mx-auto space-y-8">
+                        
+                        <!-- Tema e Layout -->
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-gray-900 flex items-center gap-2"><span class="text-brand-500">🎨</span> Aparência</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">Modelo base</label>
+                                    <select id="builder-theme" onchange="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none">
+                                        <option value="clean">Clean</option>
+                                        <option value="gradient">Gradient</option>
+                                        <option value="glass">Glass</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">Formato dos Links</label>
+                                    <select id="builder-layout" onchange="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none">
+                                        <option value="list">Lista (Vertical)</option>
+                                        <option value="grid">Grid (Lado a lado)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Perfil -->
+                        <div class="space-y-4">
+                            <h4 class="font-bold text-gray-900 flex items-center gap-2"><span class="text-brand-500">👤</span> Perfil</h4>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-500 mb-1.5">NOME / @USUÁRIO</label>
+                                <input type="text" id="builder-name" value="@seunome" oninput="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-500 mb-1.5">BIO / DESCRIÇÃO</label>
+                                <textarea id="builder-bio" rows="2" oninput="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none resize-none">Empreendedor Digital 🚀&#10;Transformando ideias em negócios.</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Links -->
+                        <div class="space-y-4 pb-8 lg:pb-0">
+                            <div class="flex justify-between items-center">
+                                <h4 class="font-bold text-gray-900 flex items-center gap-2"><span class="text-brand-500">🔗</span> Seus Links</h4>
+                                <button onclick="builderAddLink()" class="text-xs bg-brand-50 text-brand-600 font-semibold px-3 py-1.5 rounded-lg hover:bg-brand-100 transition-colors">
+                                    + Adicionar
+                                </button>
+                            </div>
+                            
+                            <div id="builder-links-container" class="space-y-3">
+                                <!-- Gerado via JS -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Preview Mobile (Direita) -->
+                <div class="w-full lg:w-1/2 p-6 flex flex-col items-center justify-center bg-slate-100/50 relative overflow-hidden hidden sm:flex">
+                    <!-- Decorativos no fundo -->
+                    <div class="absolute w-full h-full inset-0 pointer-events-none opacity-20" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
+                    
+                    <span class="bg-gray-200 text-gray-500 text-xs font-bold px-3 py-1 rounded-full mb-4 z-10">Preview em tempo real</span>
+                    
+                    <!-- Mockup Celular -->
+                    <div class="relative w-[300px] h-[600px] border-[14px] border-gray-900 rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500" id="phone-screen">
+                        <!-- Notch -->
+                        <div class="absolute top-0 inset-x-0 h-6 bg-gray-900 rounded-b-3xl w-32 mx-auto z-30"></div>
+                        
+                        <!-- Tela Interna -->
+                        <div id="phone-content" class="w-full h-full overflow-y-auto no-scrollbar flex flex-col items-center pt-12 pb-8 px-5 transition-all duration-500">
+                            
+                            <img id="phone-avatar" src="https://ui-avatars.com/api/?name=SN&background=random&color=fff" class="w-24 h-24 rounded-full mb-4 shadow-lg object-cover border-4 border-white/20 transition-all" alt="Avatar">
+                            
+                            <h2 id="phone-name-display" class="font-bold text-xl text-center mb-2 tracking-tight transition-colors">@seunome</h2>
+                            <p id="phone-bio-display" class="text-sm text-center mb-8 opacity-90 leading-relaxed whitespace-pre-line transition-colors">Sua bio aparece aqui</p>
+                            
+                            <div id="phone-links-display" class="w-full flex flex-col gap-3">
+                                <!-- Links renderizados aqui -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botão Usar Modelo (Apenas visível no Mobile) -->
+                <div class="sm:hidden absolute bottom-0 w-full p-4 bg-white border-t border-gray-100 z-20">
+                     <button onclick="closeTester(true)" class="w-full py-3 bg-brand-600 text-white font-bold rounded-xl shadow-lg">
+                        Usar este modelo
+                    </button>
+                </div>
+
+            </div>
         </div>
-      </div>
     </div>
-    <div id="mobileOverlay" class="fixed inset-0 bg-black/20 hidden md:hidden z-40"></div>
-  </header>
 
-  <!-- ==================== HERO ==================== -->
-  <section id="inicio" class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden">
-    <!-- Background decorations -->
-    <div class="absolute inset-0 dot-pattern opacity-50"></div>
-    <div class="absolute top-20 right-0 w-96 h-96 bg-brand-100 rounded-full blur-3xl opacity-60"></div>
-    <div class="absolute bottom-0 left-0 w-72 h-72 bg-blue-50 rounded-full blur-3xl opacity-80"></div>
-    
-    <div class="relative max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-        <!-- Content -->
-        <div class="text-center lg:text-left">
-          <div class="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-up">
-            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse-slow"></span>
-            Disponível para novos projetos
-          </div>
-          
-          <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 animate-fade-in-up delay-100">
-            Desenvolvimento web<br>focado em 
-            <span class="font-serif italic text-brand-600">resultados</span>
-          </h2>
-          
-          <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 animate-fade-in-up delay-200">
-            Crio sites, portfólios, bio links e sistemas sob medida. 
-            Soluções práticas que funcionam e cabem no seu bolso.
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-300">
-            <a href="#servicos" class="inline-flex items-center justify-center gap-2 bg-brand-600 text-white px-7 py-4 rounded-xl font-semibold hover:bg-brand-700 shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 hover:-translate-y-0.5 transition-all">
-              Conhecer Serviços
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-              </svg>
-            </a>
-            <a href="#portfolio" class="inline-flex items-center justify-center gap-2 border-2 border-gray-300 text-gray-700 px-7 py-4 rounded-xl font-semibold hover:border-gray-400 hover:bg-gray-50 transition-all">
-              Ver Portfólio
-            </a>
-          </div>
-        </div>
-        
-        <!-- Visual -->
-        <div class="hidden lg:block animate-fade-in delay-200">
-          <div class="relative">
-            <!-- Card decorativo atrás -->
-            <div class="absolute inset-0 bg-gradient-to-br from-brand-400 to-brand-600 rounded-3xl transform rotate-3 opacity-90"></div>
-            
-            <!-- Card principal -->
-            <div class="relative bg-white rounded-3xl shadow-2xl p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
-              <!-- Preview de Bio Link -->
-              <div class="space-y-4">
-                <div class="flex items-center gap-4">
-                  <div class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center">
-                    <span class="text-white text-2xl">👤</span>
-                  </div>
-                  <div>
-                    <div class="h-4 w-28 bg-gray-200 rounded mb-2"></div>
-                    <div class="h-3 w-20 bg-gray-100 rounded"></div>
-                  </div>
-                </div>
-                <div class="h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">
-                  🔗 Link 1
-                </div>
-                <div class="h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">
-                  🔗 Link 2
-                </div>
-                <div class="h-12 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">
-                  🔗 Link 3
-                </div>
-                <div class="h-12 bg-brand-100 rounded-xl flex items-center justify-center text-brand-600 text-sm font-medium">
-                  📱 WhatsApp
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== SERVIÇOS ==================== -->
-  <section id="servicos" class="py-20 lg:py-28 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <!-- Header -->
-      <div class="text-center mb-16">
-        <span class="text-brand-600 text-sm font-semibold tracking-wider uppercase">Serviços</span>
-        <h3 class="text-3xl sm:text-4xl font-bold mt-3 text-gray-900">Como posso ajudar?</h3>
-        <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
-          Selecione um serviço para ver as opções de planos e solicitar um orçamento sem compromisso.
-        </p>
-      </div>
-
-      <!-- Grid de Serviços -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Bio Link -->
-        <div onclick="abrirModal(1)" class="servico-card relative bg-white p-6 rounded-2xl border-2 border-gray-100 cursor-pointer card-hover hover:border-brand-200 group">
-          <span class="absolute -top-3 right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-xs px-3 py-1 rounded-full font-medium shadow">
-            ✨ Modelos prontos
-          </span>
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-100 to-rose-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-lg mb-2 text-gray-900">Bio Link Instagram</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Centralize todos os seus links em uma página profissional e atrativa.</p>
-          <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-            Selecionar
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </div>
-        
-        <!-- Portfólio -->
-        <div onclick="abrirModal(2)" class="servico-card relative bg-white p-6 rounded-2xl border-2 border-gray-100 cursor-pointer card-hover hover:border-brand-200 group">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-100 to-purple-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-lg mb-2 text-gray-900">Portfólio Digital</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Apresente seus trabalhos de forma elegante e impressione clientes.</p>
-          <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-            Selecionar
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </div>
-        
-        <!-- Site Institucional -->
-        <div onclick="abrirModal(3)" class="servico-card relative bg-white p-6 rounded-2xl border-2 border-gray-100 cursor-pointer card-hover hover:border-brand-200 group">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-lg mb-2 text-gray-900">Site Institucional</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Estabeleça presença digital sólida para sua empresa ou marca.</p>
-          <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-            Selecionar
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </div>
-        
-        <!-- Formulários -->
-        <div onclick="abrirModal(4)" class="servico-card relative bg-white p-6 rounded-2xl border-2 border-gray-100 cursor-pointer card-hover hover:border-brand-200 group">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-100 to-green-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-lg mb-2 text-gray-900">Formulários Inteligentes</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Capture leads e dados com formulários integrados a planilhas.</p>
-          <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-            Selecionar
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </div>
-        
-        <!-- Dashboards -->
-        <div onclick="abrirModal(5)" class="servico-card relative bg-white p-6 rounded-2xl border-2 border-gray-100 cursor-pointer card-hover hover:border-brand-200 group">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-100 to-amber-100 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-            <svg class="w-7 h-7 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-lg mb-2 text-gray-900">Sistemas de Gestão</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Dashboards e controles personalizados para seu negócio.</p>
-          <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-            Selecionar
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </div>
-        
-        <!-- Personalizado -->
-        <div onclick="abrirModal(6)" class="servico-card relative bg-white p-6 rounded-2xl border-2 border-dashed border-gray-300 cursor-pointer card-hover hover:border-brand-400 hover:bg-brand-50/50 group">
-          <div class="w-14 h-14 rounded-2xl bg-gray-100 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-brand-100 transition-all">
-            <svg class="w-7 h-7 text-gray-400 group-hover:text-brand-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
-            </svg>
-          </div>
-          <h4 class="font-semibold text-lg mb-2 text-gray-900">Projeto Personalizado</h4>
-          <p class="text-gray-500 text-sm leading-relaxed">Tem uma ideia diferente? Vamos conversar sobre ela.</p>
-          <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-            Conversar
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== MODAL DE ORÇAMENTO ==================== -->
-  <div id="modalOrcamento" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-    <div class="modal-content bg-white rounded-3xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto">
-      <div class="p-6 sm:p-8">
-        <!-- Header -->
-        <div class="flex justify-between items-start mb-4">
-          <div>
-            <div class="flex items-center gap-2 text-brand-600 text-sm font-medium mb-1">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              Serviço selecionado
-            </div>
-            <h4 id="modalTitulo" class="text-2xl font-bold text-gray-900">Nome do Serviço</h4>
-          </div>
-          <button onclick="fecharModal()" class="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-xl transition">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
-          </button>
-        </div>
-        
-        <!-- Descrição do Serviço -->
-        <p id="modalDescricao" class="text-gray-600 mb-6 leading-relaxed"></p>
-        
-        <!-- Aviso Orçamento -->
-        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 mb-6 flex items-start gap-3">
-          <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-semibold text-emerald-800">Apenas para orçamento</p>
-            <p class="text-emerald-700 text-sm mt-0.5">
-              Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Aviso sobre valores -->
-        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-8 flex items-start gap-3">
-          <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
-            <svg class="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-semibold text-amber-800">Sobre os valores</p>
-            <p class="text-amber-700 text-sm mt-0.5">
-              Os valores abaixo são referentes ao <strong>plano de hospedagem e entrega</strong>. O serviço de desenvolvimento/codificação é orçado separadamente conforme a complexidade do projeto.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Modelos Bio Link (só aparece para serviço 1) -->
-        <div id="secaoModelos" class="mb-10 hidden">
-          <h5 class="font-semibold text-gray-900 mb-2 flex items-center gap-2">
-            <span class="w-6 h-6 bg-brand-600 text-white rounded-full text-sm flex items-center justify-center">1</span>
-            Escolha um modelo de Bio Link:
-          </h5>
-          <p class="text-sm text-purple-600 mb-4 flex items-center gap-1">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-            </svg>
-            Este é o único serviço com modelos prontos e valor fixo!
-          </p>
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            
-            <!-- Modelo Clean -->
-            <div onclick="selecionarModelo(1)" class="bio-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all" data-modelo="1">
-              <div class="aspect-[3/4] bg-gradient-to-b from-gray-50 to-white p-4 flex flex-col items-center justify-center">
-                <div class="w-10 h-10 rounded-full bg-gray-800 mb-3"></div>
-                <div class="w-14 h-1.5 bg-gray-300 rounded mb-1.5"></div>
-                <div class="w-10 h-1.5 bg-gray-200 rounded"></div>
-              </div>
-              <div class="p-3 bg-white border-t">
-                <p class="font-semibold text-gray-900 text-sm">Clean</p>
-                <p class="text-brand-600 font-bold">R$ 97</p>
-              </div>
-            </div>
-            
-            <!-- Modelo Gradient -->
-            <div onclick="selecionarModelo(2)" class="bio-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all relative" data-modelo="2">
-              <span class="absolute top-2 right-2 bg-brand-600 text-white text-xs px-2 py-0.5 rounded-full z-10">Popular</span>
-              <div class="aspect-[3/4] bg-gradient-to-br from-indigo-500 to-purple-600 p-4 flex flex-col items-center justify-center">
-                <div class="w-10 h-10 rounded-full bg-white/30 mb-3"></div>
-                <div class="w-14 h-1.5 bg-white/50 rounded mb-1.5"></div>
-                <div class="w-10 h-1.5 bg-white/30 rounded"></div>
-              </div>
-              <div class="p-3 bg-white border-t">
-                <p class="font-semibold text-gray-900 text-sm">Gradient</p>
-                <p class="text-brand-600 font-bold">R$ 147</p>
-              </div>
-            </div>
-            
-            <!-- Modelo Glass -->
-            <div onclick="selecionarModelo(3)" class="bio-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all" data-modelo="3">
-              <div class="aspect-[3/4] bg-gradient-to-br from-slate-800 to-slate-900 p-4 flex flex-col items-center justify-center">
-                <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur mb-3"></div>
-                <div class="w-14 h-1.5 bg-white/30 rounded mb-1.5"></div>
-                <div class="w-10 h-1.5 bg-white/20 rounded"></div>
-              </div>
-              <div class="p-3 bg-white border-t">
-                <p class="font-semibold text-gray-900 text-sm">Glass</p>
-                <p class="text-brand-600 font-bold">R$ 197</p>
-              </div>
-            </div>
-            
-            <!-- Personalizado -->
-            <div onclick="selecionarModelo('custom')" class="bio-card cursor-pointer rounded-2xl overflow-hidden border-2 border-dashed border-gray-300 hover:border-brand-400 transition-all flex flex-col items-center justify-center bg-gray-50" data-modelo="custom">
-              <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-              </svg>
-              <p class="font-semibold text-gray-700 text-sm">Personalizado</p>
-              <p class="text-gray-500 text-xs">Sob consulta</p>
-            </div>
-            
-          </div>
-        </div>
-        
-        <!-- Planos -->
-        <div id="secaoPlanos">
-          <h5 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
-            <span id="numeroPasso" class="w-6 h-6 bg-brand-600 text-white rounded-full text-sm flex items-center justify-center">1</span>
-            Escolha o tipo de entrega:
-          </h5>
-          <div class="grid sm:grid-cols-3 gap-4 mb-8">
-            
-            <!-- Essencial -->
-            <div class="plan-card rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all overflow-hidden" data-plano="temp">
-              <div onclick="selecionarPlano('temp')" class="cursor-pointer p-5">
-                <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <h6 class="font-semibold text-gray-900">Essencial</h6>
-                <p class="text-sm text-gray-500 mt-1">Site funcional com link durante o período.</p>
-                <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
-                  <span class="text-xl font-bold text-gray-900">R$ 150<span class="text-sm font-normal text-gray-500">+</span></span>
-                  <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">6 meses</span>
-                </div>
-              </div>
-              <button onclick="event.stopPropagation(); toggleDetalhes('temp')" class="w-full py-2 text-xs text-brand-600 hover:bg-brand-50 border-t border-gray-100 flex items-center justify-center gap-1 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span class="detalhes-texto" data-plano="temp">Ver detalhes</span>
-              </button>
-              <div id="detalhes-temp" class="hidden bg-gray-50 p-4 border-t border-gray-100">
-                <ul class="text-xs text-gray-600 space-y-1.5">
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Site fica no ar por 6 meses</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Link funcional para compartilhar</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Sem alterações inclusas</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Após 6 meses: renovar ou sai do ar</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Profissional -->
-            <div class="plan-card rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all relative overflow-hidden" data-plano="suporte">
-              <span class="absolute -top-0 right-4 bg-brand-600 text-white text-xs px-3 py-1 rounded-b-lg font-medium">Recomendado</span>
-              <div onclick="selecionarPlano('suporte')" class="cursor-pointer p-5">
-                <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-                </svg>
-                <h6 class="font-semibold text-gray-900">Profissional</h6>
-                <p class="text-sm text-gray-500 mt-1">Suporte, manutenção e até 3 atualizações mensais.</p>
-                <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
-                  <span class="text-xl font-bold text-gray-900">R$ 250<span class="text-sm font-normal text-gray-500">+</span></span>
-                  <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">6 meses</span>
-                </div>
-              </div>
-              <button onclick="event.stopPropagation(); toggleDetalhes('suporte')" class="w-full py-2 text-xs text-brand-600 hover:bg-brand-50 border-t border-gray-100 flex items-center justify-center gap-1 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span class="detalhes-texto" data-plano="suporte">Ver detalhes</span>
-              </button>
-              <div id="detalhes-suporte" class="hidden bg-gray-50 p-4 border-t border-gray-100">
-                <ul class="text-xs text-gray-600 space-y-1.5">
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Site fica no ar por 6 meses</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Suporte, manutenção e até 3 atualizações/mês</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Atendimento via WhatsApp</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Prioridade em ajustes e correções</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Após 6 meses: renovar ou migrar</li>
-                </ul>
-              </div>
-            </div>
-            
-            <!-- Permanente -->
-            <div class="plan-card rounded-2xl border-2 border-gray-200 hover:border-brand-300 transition-all overflow-hidden" data-plano="vitalicio">
-              <div onclick="selecionarPlano('vitalicio')" class="cursor-pointer p-5">
-                <svg class="w-8 h-8 text-gray-400 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                </svg>
-                <h6 class="font-semibold text-gray-900">Permanente</h6>
-                <p class="text-sm text-gray-500 mt-1">Você recebe o código e hospeda por conta própria.</p>
-                <div class="flex justify-between items-end mt-4 pt-4 border-t border-gray-100">
-                  <span class="text-xl font-bold text-gray-900">R$ 350<span class="text-sm font-normal text-gray-500">+</span></span>
-                  <span class="text-xs bg-gray-100 px-2 py-1 rounded text-gray-600">Vitalício</span>
-                </div>
-              </div>
-              <button onclick="event.stopPropagation(); toggleDetalhes('vitalicio')" class="w-full py-2 text-xs text-brand-600 hover:bg-brand-50 border-t border-gray-100 flex items-center justify-center gap-1 transition">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <span class="detalhes-texto" data-plano="vitalicio">Ver detalhes</span>
-              </button>
-              <div id="detalhes-vitalicio" class="hidden bg-gray-50 p-4 border-t border-gray-100">
-                <ul class="text-xs text-gray-600 space-y-1.5">
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Você recebe o código-fonte completo</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Transferência para sua própria conta</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Fica no ar para sempre (seu controle)</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Orientação de como gerenciar</li>
-                  <li class="flex items-start gap-2"><span class="text-brand-500">•</span> Suporte futuro: sob orçamento</li>
-                </ul>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        
-        <!-- Botão WhatsApp -->
-        <a id="btnWhatsApp" href="#" target="_blank" class="w-full flex items-center justify-center gap-3 py-4 rounded-2xl font-semibold text-lg transition-all bg-gray-100 text-gray-400 cursor-not-allowed">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Selecione um plano para continuar
-        </a>
-        
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== PORTFÓLIO ==================== -->
-  <section id="portfolio" class="py-20 lg:py-28 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <!-- Header -->
-      <div class="text-center mb-16">
-        <span class="text-brand-600 text-sm font-semibold tracking-wider uppercase">Portfólio</span>
-        <h3 class="text-3xl sm:text-4xl font-bold mt-3 text-gray-900">Projetos realizados</h3>
-        <p class="text-gray-500 mt-4 max-w-xl mx-auto">
-          Alguns dos trabalhos que desenvolvi para clientes.
-        </p>
-      </div>
-
-      <!-- Grid -->
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        
-        <!-- Projeto 1 -->
-        <article class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover group">
-          <div class="aspect-video bg-gradient-to-br from-blue-100 to-indigo-100 flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-brand-500/10 to-indigo-500/10 group-hover:opacity-0 transition-opacity"></div>
-            <svg class="w-16 h-16 text-brand-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"/>
-            </svg>
-          </div>
-          <div class="p-6">
-            <span class="text-xs text-brand-600 font-semibold uppercase tracking-wider">Sistema de Gestão</span>
-            <h4 class="font-bold text-xl text-gray-900 mt-2">EJUD Flow</h4>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Sistema Kanban para controle de demandas do Tribunal de Justiça do Amazonas.</p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Apps Script</span>
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Google Sheets</span>
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">HTML/CSS</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Projeto 2 -->
-        <article class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover group">
-          <div class="aspect-video bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 group-hover:opacity-0 transition-opacity"></div>
-            <svg class="w-16 h-16 text-emerald-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
-            </svg>
-          </div>
-          <div class="p-6">
-            <span class="text-xs text-emerald-600 font-semibold uppercase tracking-wider">Site Institucional</span>
-            <h4 class="font-bold text-xl text-gray-900 mt-2">Sâmela Matozinho</h4>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Landing page profissional para consultoria acadêmica e orientação de trabalhos.</p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">HTML</span>
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">CSS</span>
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Netlify</span>
-            </div>
-          </div>
-        </article>
-        
-        <!-- Projeto 3 -->
-        <article class="bg-white rounded-2xl overflow-hidden shadow-sm card-hover group">
-          <div class="aspect-video bg-gradient-to-br from-rose-100 to-pink-100 flex items-center justify-center relative overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-br from-rose-500/10 to-pink-500/10 group-hover:opacity-0 transition-opacity"></div>
-            <svg class="w-16 h-16 text-rose-300 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/>
-            </svg>
-          </div>
-          <div class="p-6">
-            <span class="text-xs text-rose-600 font-semibold uppercase tracking-wider">Bio Link</span>
-            <h4 class="font-bold text-xl text-gray-900 mt-2">Bio Link Premium</h4>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Página de links com design impactante e animações suaves.</p>
-            <div class="flex flex-wrap gap-2 mt-4">
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">React</span>
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Tailwind</span>
-              <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">Vercel</span>
-            </div>
-          </div>
-        </article>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== FOOTER ==================== -->
-  <footer id="contato" class="bg-gray-900 text-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 lg:py-20">
-      <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- CTA -->
-        <div>
-          <h3 class="text-3xl sm:text-4xl font-bold mb-4">
-            Pronto para <span class="font-serif italic text-brand-400">começar</span>?
-          </h3>
-          <p class="text-gray-400 text-lg mb-8 max-w-md">
-            Entre em contato e vamos conversar sobre o seu projeto. 
-            Orçamento sem compromisso.
-          </p>
-          <a href="https://wa.me/5592992866146?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="inline-flex items-center gap-3 bg-green-600 hover:bg-green-700 px-8 py-4 rounded-xl font-semibold shadow-lg shadow-green-900/30 hover:shadow-green-900/50 hover:-translate-y-0.5 transition-all">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-            </svg>
-            Chamar no WhatsApp
-          </a>
-        </div>
-        
-      <!-- Social -->
-      <div class="flex flex-col items-center lg:items-end gap-6">
-        <div class="flex gap-4">
-          <a href="https://www.instagram.com/murylo02_" target="_blank" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition group">
-            <svg class="w-5 h-5 text-white/70 group-hover:text-white transition" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </a>
-          <a href="https://www.linkedin.com/in/murylo-neves-77053a269" target="_blank" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition group">
-            <svg class="w-5 h-5 text-white/70 group-hover:text-white transition" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-        </div>
-        <p class="text-gray-500 text-sm">
-          murylo.neves@gmail.com
-        </p>
-      </div>
-      
-      <!-- Bottom -->
-      <div class="border-t border-white/10 mt-12 pt-8 text-center">
-        <p class="text-gray-500 text-sm">
-          © 2026 Murylo Dev — Manaus, AM. Desenvolvido por Murylo Neves. Todos os direitos reservados.
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ==================== SCRIPTS ==================== -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // ===== CONFIGURAÇÕES =====
-    const CONFIG = {
-      whatsapp: '5592992866146', // Número do Murylo
-      servicos: {
-        1: { nome: 'Bio Link Instagram', temModelos: true, desc: 'Uma página única com todos os seus links importantes (WhatsApp, loja, redes sociais, etc). Perfeito para colocar na bio do Instagram e facilitar o acesso dos seus seguidores.' },
-        2: { nome: 'Portfólio Digital', temModelos: false, desc: 'Site para apresentar seus trabalhos, projetos e habilidades de forma profissional. Ideal para fotógrafos, designers, artistas e freelancers.' },
-        3: { nome: 'Site Institucional', temModelos: false, desc: 'Presença digital completa para sua empresa ou negócio. Inclui páginas como Sobre, Serviços, Contato e o que mais precisar.' },
-        4: { nome: 'Formulários Inteligentes', temModelos: false, desc: 'Formulários personalizados que salvam as respostas direto em planilhas do Google. Ótimo para cadastros, pesquisas, pedidos e inscrições.' },
-        5: { nome: 'Sistemas de Gestão', temModelos: false, desc: 'Dashboards e sistemas sob medida para controlar seu negócio: vendas, estoque, atendimentos, tarefas e muito mais.' },
-        6: { nome: 'Projeto Personalizado', temModelos: false, desc: 'Tem uma ideia diferente? Conte-me sobre ela e vamos encontrar a melhor solução juntos.' },
-      },
-      planos: {
-        temp: { 
-          nome: 'Essencial', 
-          duracao: '6 meses',
-          detalhes: [
-            'Site fica no ar por 6 meses',
-            'Link funcional para compartilhar',
-            'Sem alterações inclusas',
-            'Após 6 meses: renovar ou sai do ar'
-          ]
-        },
-        suporte: { 
-          nome: 'Profissional', 
-          duracao: '6 meses',
-          detalhes: [
-            'Site fica no ar por 6 meses',
-            'Até 3 alterações por mês inclusas',
-            'Suporte via WhatsApp',
-            'Prioridade em ajustes',
-            'Após 6 meses: renovar ou migrar'
-          ]
-        },
-        vitalicio: { 
-          nome: 'Permanente', 
-          duracao: 'Vitalício',
-          detalhes: [
-            'Você recebe o código-fonte completo',
-            'Transferência para sua própria conta',
-            'Fica no ar para sempre (seu controle)',
-            'Orientação de como gerenciar',
-            'Suporte futuro: sob orçamento'
-          ]
-        },
-      },
-      modelos: {
-        1: { nome: 'Clean', preco: 97 },
-        2: { nome: 'Gradient', preco: 147 },
-        3: { nome: 'Glass', preco: 197 },
-        custom: { nome: 'Personalizado', preco: null },
-      }
-    };
-
-    // ===== ESTADO =====
-    let servicoAtual = null;
-    let planoAtual = null;
-    let modeloAtual = null;
-
-    // ===== ELEMENTOS =====
-    const header = document.getElementById('header');
-    const menuBtn = document.getElementById('menuBtn');
-    const menuIcon = document.getElementById('menuIcon');
-    const closeIcon = document.getElementById('closeIcon');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileOverlay = document.getElementById('mobileOverlay');
-    const closeMobileMenu = document.getElementById('closeMobileMenu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-    const modal = document.getElementById('modalOrcamento');
-    const modalTitulo = document.getElementById('modalTitulo');
-    const modalDescricao = document.getElementById('modalDescricao');
-    const secaoModelos = document.getElementById('secaoModelos');
-    const numeroPasso = document.getElementById('numeroPasso');
-    const btnWhatsApp = document.getElementById('btnWhatsApp');
-
-    // ===== HEADER SCROLL =====
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        header.classList.add('bg-white/95', 'shadow-sm', 'backdrop-blur-md');
-      } else {
-        header.classList.remove('bg-white/95', 'shadow-sm', 'backdrop-blur-md');
-      }
-    });
-
-    // ===== MOBILE MENU =====
-    function abrirMenuMobile() {
-      mobileMenu.classList.add('open');
-      mobileOverlay.classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function fecharMenuMobile() {
-      mobileMenu.classList.remove('open');
-      mobileOverlay.classList.add('hidden');
-      document.body.style.overflow = '';
-    }
-
-    menuBtn.addEventListener('click', abrirMenuMobile);
-    closeMobileMenu.addEventListener('click', fecharMenuMobile);
-    mobileOverlay.addEventListener('click', fecharMenuMobile);
-    mobileLinks.forEach(link => link.addEventListener('click', fecharMenuMobile));
-
-    // ===== MODAL =====
-    function abrirModal(servicoId) {
-      servicoAtual = servicoId;
-      planoAtual = null;
-      modeloAtual = null;
-      
-      const servico = CONFIG.servicos[servicoId];
-      modalTitulo.textContent = servico.nome;
-      modalDescricao.textContent = servico.desc;
-      
-      // Mostrar/ocultar seção de modelos
-      if (servico.temModelos) {
-        secaoModelos.classList.remove('hidden');
-        numeroPasso.textContent = '2';
-      } else {
-        secaoModelos.classList.add('hidden');
-        numeroPasso.textContent = '1';
-      }
-      
-      // Limpar seleções
-      document.querySelectorAll('.plan-card').forEach(c => c.classList.remove('selected'));
-      document.querySelectorAll('.bio-card').forEach(c => c.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2'));
-      
-      // Fechar detalhes dos planos
-      document.querySelectorAll('[id^="detalhes-"]').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.detalhes-texto').forEach(el => el.textContent = 'Ver detalhes');
-      
-      atualizarBotaoWhatsApp();
-      
-      modal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function fecharModal() {
-      modal.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    // Fechar modal clicando fora
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) fecharModal();
-    });
-
-    // Fechar modal com ESC
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') fecharModal();
-    });
-
-    // ===== SELEÇÃO DE PLANO (toggle) =====
-    function selecionarPlano(planoId) {
-      // Toggle: se já está selecionado, desseleciona
-      if (planoAtual === planoId) {
-        planoAtual = null;
-        document.querySelectorAll('.plan-card').forEach(card => {
-          card.classList.remove('selected');
-        });
-      } else {
-        planoAtual = planoId;
-        document.querySelectorAll('.plan-card').forEach(card => {
-          if (card.dataset.plano === planoId) {
-            card.classList.add('selected');
-          } else {
-            card.classList.remove('selected');
-          }
-        });
-      }
-      
-      atualizarBotaoWhatsApp();
-    }
-
-    // ===== SELEÇÃO DE MODELO (toggle) =====
-    function selecionarModelo(modeloId) {
-      // Toggle: se já está selecionado, desseleciona
-      if (modeloAtual == modeloId) {
-        modeloAtual = null;
-        document.querySelectorAll('.bio-card').forEach(card => {
-          card.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2');
-        });
-      } else {
-        modeloAtual = modeloId;
-        document.querySelectorAll('.bio-card').forEach(card => {
-          if (card.dataset.modelo == modeloId) {
-            card.classList.add('ring-2', 'ring-brand-500', 'ring-offset-2');
-          } else {
-            card.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2');
-          }
-        });
-      }
-      
-      atualizarBotaoWhatsApp();
-    }
-    
-    // ===== TOGGLE DETALHES DO PLANO =====
-    function toggleDetalhes(planoId) {
-      const detalhesEl = document.getElementById('detalhes-' + planoId);
-      const textoEl = document.querySelector('.detalhes-texto[data-plano="' + planoId + '"]');
-      
-      if (detalhesEl.classList.contains('hidden')) {
-        detalhesEl.classList.remove('hidden');
-        textoEl.textContent = 'Ocultar detalhes';
-      } else {
-        detalhesEl.classList.add('hidden');
-        textoEl.textContent = 'Ver detalhes';
-      }
-    }
-
-    // ===== ATUALIZAR BOTÃO WHATSAPP =====
-    function atualizarBotaoWhatsApp() {
-      const servico = CONFIG.servicos[servicoAtual];
-      
-      // Verifica se pode ativar o botão:
-      // - Sempre precisa de plano selecionado
-      // - Se o serviço tem modelos, também precisa de modelo selecionado
-      const precisaModelo = servico && servico.temModelos;
-      const podeAtivar = planoAtual && (!precisaModelo || modeloAtual);
-      
-      if (podeAtivar) {
-        const plano = CONFIG.planos[planoAtual];
-        
-        let mensagem = `Olá! Tenho interesse em solicitar um orçamento.\n\n`;
-        mensagem += `▸ Serviço: ${servico.nome}\n`;
-        
-        if (servico.temModelos && modeloAtual) {
-          const modelo = CONFIG.modelos[modeloAtual];
-          if (modelo.preco) {
-            mensagem += `▸ Modelo: ${modelo.nome} (R$ ${modelo.preco})\n`;
-          } else {
-            mensagem += `▸ Modelo: ${modelo.nome} (sob consulta)\n`;
-          }
-        }
-        
-        mensagem += `▸ Plano: ${plano.nome} — ${plano.duracao}\n\n`;
-        mensagem += `Aguardo seu retorno. Obrigado!`;
-        
-        const url = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(mensagem)}`;
-        
-        btnWhatsApp.href = url;
-        btnWhatsApp.classList.remove('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
-        btnWhatsApp.classList.add('bg-green-600', 'hover:bg-green-700', 'text-white', 'shadow-lg', 'shadow-green-200');
-        btnWhatsApp.innerHTML = `
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          Conversar no WhatsApp
-        `;
-      } else {
-        btnWhatsApp.href = '#';
-        btnWhatsApp.classList.add('bg-gray-100', 'text-gray-400', 'cursor-not-allowed');
-        btnWhatsApp.classList.remove('bg-green-600', 'hover:bg-green-700', 'text-white', 'shadow-lg', 'shadow-green-200');
-        
-        // Mensagem dinâmica dependendo do que falta
-        let msgFalta = 'Selecione um plano para continuar';
-        if (precisaModelo && !modeloAtual && !planoAtual) {
-          msgFalta = 'Selecione um modelo e um plano';
-        } else if (precisaModelo && !modeloAtual) {
-          msgFalta = 'Selecione um modelo acima';
-        }
-        
-        btnWhatsApp.innerHTML = `
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-          </svg>
-          ${msgFalta}
-        `;
-      }
-    }
-
-    // ===== REFRESH APÓS CLICAR NO WHATSAPP =====
-    btnWhatsApp.addEventListener('click', function(e) {
-      // Se tem um plano selecionado (link válido), faz refresh após 1 segundo
-      if (planoAtual && this.href && !this.href.endsWith('#')) {
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
-      }
-    });
-
-    // ===== SMOOTH SCROLL =====
-    document.querySelectorAll('a[href^="#"]:not(#btnWhatsApp)').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        // Só aplica se o href começar com "#" e não for apenas "#"
-        if (href && href.startsWith('#') && href.length > 1) {
-          e.preventDefault();
-          try {
-            const target = document.querySelector(href);
-            if (target) {
-              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    <!-- JavaScript Vanilla -->
+    <script>
+        // === 1. DADOS DOS SERVIÇOS ===
+        const servicesData = [
+            {
+                id: 'biolink',
+                title: 'Bio Link Instagram',
+                badge: '✨ Modelos prontos',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>',
+                shortDesc: 'Centralize todos os seus links em uma página profissional e atrativa.',
+                fullDesc: 'Uma página única com todos os seus links importantes (WhatsApp, loja, redes sociais, etc). Perfeito para colocar na bio do Instagram e facilitar o acesso dos seus seguidores.',
+                hasModels: true,
+                iconBg: 'from-pink-100 to-rose-100',
+                iconColor: 'text-rose-600'
+            },
+            {
+                id: 'portfolio',
+                title: 'Portfólio Digital',
+                badge: null,
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>',
+                shortDesc: 'Apresente seus trabalhos de forma elegante e impressione clientes.',
+                fullDesc: 'Site para apresentar seus trabalhos, projetos e habilidades de forma profissional. Ideal para fotógrafos, designers, artistas e freelancers.',
+                hasModels: false,
+                iconBg: 'from-violet-100 to-purple-100',
+                iconColor: 'text-violet-600'
+            },
+            {
+                id: 'institucional',
+                title: 'Site Institucional',
+                badge: null,
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>',
+                shortDesc: 'Estabeleça presença digital sólida para sua empresa ou marca.',
+                fullDesc: 'Presença digital completa para sua empresa ou negócio. Inclui páginas como Sobre, Serviços, Contato e o que mais precisar.',
+                hasModels: false,
+                iconBg: 'from-blue-100 to-indigo-100',
+                iconColor: 'text-blue-600'
+            },
+            {
+                id: 'forms',
+                title: 'Formulários Inteligentes',
+                badge: null,
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
+                shortDesc: 'Capture leads e dados com formulários integrados a planilhas.',
+                fullDesc: 'Formulários personalizados que salvam as respostas direto em planilhas do Google. Ótimo para cadastros, pesquisas, pedidos e inscrições.',
+                hasModels: false,
+                iconBg: 'from-emerald-100 to-green-100',
+                iconColor: 'text-emerald-600'
+            },
+            {
+                id: 'sistemas',
+                title: 'Sistemas de Gestão',
+                badge: null,
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
+                shortDesc: 'Dashboards e controles personalizados para seu negócio.',
+                fullDesc: 'Dashboards e sistemas sob medida para controlar seu negócio: vendas, estoque, atendimentos, tarefas e muito mais.',
+                hasModels: false,
+                iconBg: 'from-orange-100 to-amber-100',
+                iconColor: 'text-orange-600'
+            },
+            {
+                id: 'custom',
+                title: 'Projeto Personalizado',
+                badge: null,
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>',
+                shortDesc: 'Tem uma ideia diferente? Vamos conversar sobre ela.',
+                fullDesc: 'Tem uma ideia diferente? Conte-me sobre ela e vamos encontrar a melhor solução juntos.',
+                hasModels: false,
+                isDashed: true
             }
-          } catch (err) {
-            // Ignora erros
-          }
-        }
-      });
-    });
-  </script>
+        ];
 
+        // RENDERIZAR SERVIÇOS NA TELA
+        const servicesGrid = document.getElementById('services-grid');
+        servicesData.forEach((s, index) => {
+            const isCustom = s.isDashed;
+            const cardClasses = isCustom ? 'border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-white hover:border-brand-400' : 'bg-white border-2 border-gray-100 hover:border-brand-200 shadow-sm';
+            
+            const badgeHtml = s.badge ? `<span class="absolute -top-3 right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${s.badge}</span>` : '';
+            
+            const iconBgClass = isCustom ? 'bg-gray-100 group-hover:bg-brand-100' : `bg-gradient-to-br ${s.iconBg}`;
+            const iconColorClass = isCustom ? 'text-gray-400 group-hover:text-brand-600' : s.iconColor;
+
+            servicesGrid.innerHTML += `
+                <div class="card-hover ${cardClasses} rounded-2xl p-6 relative cursor-pointer fade-in-element group" style="animation-delay: ${index * 0.1}s" onclick="openModal('${s.id}')">
+                    ${badgeHtml}
+                    <div class="w-14 h-14 rounded-2xl ${iconBgClass} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                        <svg class="w-7 h-7 ${iconColorClass} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">${s.icon}</svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">${s.title}</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-4">${s.shortDesc}</p>
+                    <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Selecionar <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </div>
+                </div>
+            `;
+        });
+
+        // === 2. LÓGICA DO MODAL DE ORÇAMENTO ===
+        const modal = document.getElementById('orcamento-modal');
+        const modalContainer = document.getElementById('modal-container');
+        const btnWa = document.getElementById('btn-whatsapp');
+        const btnWaText = document.getElementById('btn-whatsapp-text');
+        
+        let currentState = {
+            service: null,
+            model: null,
+            plan: null
+        };
+
+        function openModal(serviceId) {
+            const service = servicesData.find(s => s.id === serviceId);
+            currentState.service = service;
+            currentState.model = null;
+            currentState.plan = null;
+
+            // Preencher header
+            document.getElementById('modal-title').textContent = service.title;
+            document.getElementById('modal-desc').textContent = service.fullDesc;
+
+            // Mostrar/Esconder Passo 1
+            const stepModels = document.getElementById('step-models');
+            if(service.hasModels) {
+                stepModels.classList.remove('hidden');
+                document.getElementById('numero-passo').textContent = '2';
+            } else {
+                stepModels.classList.add('hidden');
+                document.getElementById('numero-passo').textContent = '1';
+            }
+
+            // Resetar seleções visuais
+            document.querySelectorAll('.model-card').forEach(c => c.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300'));
+            document.querySelectorAll('.plan-card').forEach(c => {
+                c.classList.remove('ring-2', 'ring-brand-600');
+                if(c.dataset.id === 'profissional') {
+                    c.classList.add('border-brand-500'); // manter borda default do recomendado
+                } else {
+                    c.classList.add('border-transparent');
+                }
+            });
+
+            updateBtnWa();
+
+            // Animação de entrada
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContainer.classList.remove('scale-95');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContainer.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        document.querySelectorAll('.modal-close').forEach(btn => btn.addEventListener('click', closeModal));
+
+        // Seleção de Modelos
+        document.querySelectorAll('.model-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const id = this.dataset.id;
+                if(currentState.model === id) {
+                    currentState.model = null; // deselecionar
+                    this.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300');
+                } else {
+                    currentState.model = id;
+                    document.querySelectorAll('.model-card').forEach(c => c.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300'));
+                    this.classList.add('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300');
+                    // Correção visual borda dashed
+                    if(this.classList.contains('border-dashed')) this.classList.remove('border-gray-300');
+                }
+                updateBtnWa();
+            });
+        });
+
+        // Seleção de Planos
+        document.querySelectorAll('.plan-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const id = this.dataset.id;
+                if(currentState.plan === id) {
+                    currentState.plan = null;
+                    this.classList.remove('ring-2', 'ring-brand-600');
+                    if(id !== 'profissional') this.classList.add('border-transparent');
+                } else {
+                    currentState.plan = id;
+                    document.querySelectorAll('.plan-card').forEach(c => {
+                        c.classList.remove('ring-2', 'ring-brand-600');
+                        if(c.dataset.id !== 'profissional') c.classList.add('border-transparent');
+                    });
+                    this.classList.remove('border-transparent');
+                    this.classList.add('ring-2', 'ring-brand-600');
+                }
+                updateBtnWa();
+            });
+        });
+
+        function updateBtnWa() {
+            const s = currentState.service;
+            let ready = false;
+
+            if(s.hasModels) {
+                if(!currentState.model && !currentState.plan) btnWaText.textContent = "Selecione um modelo e um plano";
+                else if(!currentState.model) btnWaText.textContent = "Selecione um modelo acima";
+                else if(!currentState.plan) btnWaText.textContent = "Selecione um plano de entrega";
+                else ready = true;
+            } else {
+                if(!currentState.plan) btnWaText.textContent = "Selecione um plano para continuar";
+                else ready = true;
+            }
+
+            if(ready) {
+                btnWa.disabled = false;
+                btnWa.classList.remove('bg-gray-300', 'cursor-not-allowed');
+                btnWa.classList.add('bg-green-500', 'hover:bg-green-600', 'shadow-lg', 'shadow-green-500/30');
+                btnWaText.textContent = "Solicitar Orçamento via WhatsApp";
+            } else {
+                btnWa.disabled = true;
+                btnWa.classList.add('bg-gray-300', 'cursor-not-allowed');
+                btnWa.classList.remove('bg-green-500', 'hover:bg-green-600', 'shadow-lg', 'shadow-green-500/30');
+            }
+        }
+
+        btnWa.addEventListener('click', () => {
+            if(btnWa.disabled) return;
+            
+            const serviceName = currentState.service.title;
+            const planCard = document.querySelector(`.plan-card[data-id="${currentState.plan}"]`);
+            const planName = planCard.dataset.name;
+            const planDuration = planCard.dataset.duration;
+            
+            let msg = `Olá! Tenho interesse em solicitar um orçamento.\n\n`;
+            msg += `▸ Serviço: ${serviceName}\n`;
+            
+            if(currentState.service.hasModels) {
+                const modelEl = document.querySelector(`.model-card[data-id="${currentState.model}"]`);
+                const modelName = modelEl.dataset.name;
+                const modelPrice = modelEl.dataset.price;
+                if (modelPrice === "Sob consulta") {
+                    msg += `▸ Modelo: ${modelName} (sob consulta)\n`;
+                } else {
+                    msg += `▸ Modelo: ${modelName} (R$ ${modelPrice})\n`;
+                }
+            }
+            
+            msg += `▸ Plano: ${planName} — ${planDuration}\n\n`;
+            msg += `Aguardo seu retorno. Obrigado!`;
+
+            const encodedMsg = encodeURIComponent(msg);
+            const waUrl = `https://wa.me/5592992866146?text=${encodedMsg}`;
+            
+            window.open(waUrl, '_blank');
+            
+            // Refresh na página atual para limpar o form após o clique
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+        });
+
+        // === 3. HEADER SCROLL & MOBILE MENU ===
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                header.classList.add('glass-header', 'shadow-sm');
+                header.classList.remove('border-transparent');
+            } else {
+                header.classList.remove('glass-header', 'shadow-sm');
+                header.classList.add('border-transparent');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconPath = document.getElementById('menu-icon-path');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if(isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // === 4. ANIMAÇÕES DE SCROLL FADE-IN ===
+        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.animation = `fadeInUp 0.8s ease-out forwards ${entry.target.style.animationDelay || '0s'}`;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+
+
+        // === 5. PARTICULAS DE DADOS AESTHETIC (GLOW BOKEH) ===
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let particlesArray = [];
+        let animationFrameId;
+        let isTabVisible = true;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles(); // Recria para distribuir bem na nova resolução
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                
+                // Simula profundidade 3D (Z-index)
+                this.z = Math.random() * 2 + 0.5;
+                // Raio base ajustado pela profundidade
+                this.baseRadius = (Math.random() * 2 + 1) * this.z;
+                
+                // Movimento muito suave e orgânico
+                this.vx = (Math.random() - 0.5) * 0.2;
+                this.vy = (Math.random() - 0.5) * 0.2 - 0.1; // Leve tendência para flutuar para cima
+                
+                // Transparência e pulsação baseados na profundidade
+                this.baseAlpha = (Math.random() * 0.3 + 0.1) / this.z; 
+                this.pulseSpeed = Math.random() * 0.02 + 0.005;
+                this.pulseTime = Math.random() * Math.PI * 2;
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.pulseTime += this.pulseSpeed;
+
+                // Loop infinito suave pelas bordas
+                if(this.x < -20) this.x = canvas.width + 20;
+                if(this.x > canvas.width + 20) this.x = -20;
+                if(this.y < -20) this.y = canvas.height + 20;
+                if(this.y > canvas.height + 20) this.y = -20;
+            }
+            
+            draw() {
+                // Calcula o brilho atual com base na onda senoidal (efeito pulsante)
+                const currentAlpha = Math.max(0.02, this.baseAlpha + Math.sin(this.pulseTime) * 0.15);
+                const glowRadius = this.baseRadius * 4; // Tamanho do brilho ao redor da partícula
+                
+                // Cria um gradiente radial para simular um "Glow" super suave
+                const gradient = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, glowRadius);
+                gradient.addColorStop(0, `rgba(59, 130, 246, ${currentAlpha})`);         // brand-500
+                gradient.addColorStop(0.3, `rgba(37, 99, 235, ${currentAlpha * 0.6})`);  // brand-600
+                gradient.addColorStop(1, `rgba(37, 99, 235, 0)`);                        // Fade out invisível
+                
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, glowRadius, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particlesArray = [];
+            let numberOfParticles = Math.floor((canvas.width * canvas.height) / 8000); 
+            
+            // Limites de segurança
+            if(numberOfParticles > 120) numberOfParticles = 120; 
+            if(numberOfParticles < 40) numberOfParticles = 40;
+
+            for(let i = 0; i < numberOfParticles; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+
+        function animateCanvas() {
+            if(!isTabVisible) return;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for(let i=0; i < particlesArray.length; i++) {
+                particlesArray[i].update();
+                particlesArray[i].draw();
+            }
+
+            animationFrameId = requestAnimationFrame(animateCanvas);
+        }
+
+        initParticles();
+        animateCanvas();
+
+        // Pausar animação quando a aba não estiver visível (Performance)
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                isTabVisible = true;
+                animateCanvas();
+            } else {
+                isTabVisible = false;
+                cancelAnimationFrame(animationFrameId);
+            }
+        });
+
+        // === 6. LÓGICA DO TESTADOR DE MODELOS (BIO LINK BUILDER) ===
+        const testerModal = document.getElementById('tester-modal');
+        const testerContainer = document.getElementById('tester-container');
+        
+        let builderData = {
+            theme: 'clean',
+            layout: 'list',
+            name: '@seunome',
+            bio: 'Empreendedor Digital 🚀\nTransformando ideias em negócios.',
+            links: [
+                { id: 1, title: 'Meu Site Oficial' },
+                { id: 2, title: 'Contato via WhatsApp' },
+                { id: 3, title: 'Catálogo de Produtos' }
+            ]
+        };
+
+        const themeStyles = {
+            clean: {
+                screen: 'bg-white',
+                textName: 'text-gray-900',
+                textBio: 'text-gray-600',
+                linkList: 'bg-white border border-gray-200 text-gray-800 shadow-sm hover:shadow-md font-medium',
+                linkGrid: 'bg-white border border-gray-200 text-gray-800 shadow-sm hover:shadow-md font-medium flex-col justify-center text-center'
+            },
+            gradient: {
+                screen: 'bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500',
+                textName: 'text-white drop-shadow-sm',
+                textBio: 'text-white/90 drop-shadow-sm',
+                linkList: 'bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30 font-semibold',
+                linkGrid: 'bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30 font-semibold flex-col justify-center text-center'
+            },
+            glass: {
+                screen: 'bg-slate-900',
+                textName: 'text-white drop-shadow-md',
+                textBio: 'text-gray-300',
+                linkList: 'bg-white/10 backdrop-blur-xl border border-white/10 text-white shadow-xl hover:bg-white/20 font-medium',
+                linkGrid: 'bg-white/10 backdrop-blur-xl border border-white/10 text-white shadow-xl hover:bg-white/20 font-medium flex-col justify-center text-center'
+            }
+        };
+
+        function openTester(themeId) {
+            builderData.theme = themeId;
+            document.getElementById('builder-theme').value = themeId;
+            
+            builderUpdateState(); // Prepara os dados
+            renderBuilderLinks(); // Renderiza os inputs da esquerda
+            
+            // Animação de entrada
+            testerModal.classList.remove('hidden');
+            setTimeout(() => {
+                testerModal.classList.remove('opacity-0');
+                testerContainer.classList.remove('scale-95');
+            }, 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeTester(selectModel = false) {
+            testerModal.classList.add('opacity-0');
+            testerContainer.classList.add('scale-95');
+            
+            if (selectModel) {
+                // Se clicou em "Usar este modelo", seleciona ele no modal principal
+                const modelCard = document.querySelector(`.model-card[data-id="${builderData.theme}"]`);
+                if(modelCard) modelCard.click(); 
+            }
+
+            setTimeout(() => {
+                testerModal.classList.add('hidden');
+                // Se o modal de orçamento estiver aberto, mantemos o overflow hidden do body
+                if(modal.classList.contains('hidden')) {
+                    document.body.style.overflow = 'auto';
+                }
+            }, 300);
+        }
+
+        // Atualiza o estado lendo os inputs da esquerda
+        function builderUpdateState() {
+            builderData.theme = document.getElementById('builder-theme').value;
+            builderData.layout = document.getElementById('builder-layout').value;
+            builderData.name = document.getElementById('builder-name').value || '@seunome';
+            builderData.bio = document.getElementById('builder-bio').value || 'Sua bio aparece aqui';
+
+            // Atualizar os títulos dos links
+            builderData.links.forEach(link => {
+                const input = document.getElementById(`link-input-${link.id}`);
+                if (input) link.title = input.value || 'Link';
+            });
+
+            renderPhonePreview();
+        }
+
+        // Renderiza os inputs de edição de link no painel esquerdo
+        function renderBuilderLinks() {
+            const container = document.getElementById('builder-links-container');
+            container.innerHTML = '';
+            
+            builderData.links.forEach((link, index) => {
+                container.innerHTML += `
+                    <div class="flex items-center gap-2 bg-white p-2 rounded-xl border border-gray-200 shadow-sm group">
+                        <div class="text-gray-300 cursor-move px-1">⋮⋮</div>
+                        <input type="text" id="link-input-${link.id}" value="${link.title}" oninput="builderUpdateState()" placeholder="Título do Botão" class="flex-1 text-sm outline-none bg-transparent font-medium text-gray-700">
+                        <button onclick="builderRemoveLink(${link.id})" class="text-red-400 hover:text-red-600 p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        function builderAddLink() {
+            const newId = builderData.links.length > 0 ? Math.max(...builderData.links.map(l => l.id)) + 1 : 1;
+            builderData.links.push({ id: newId, title: 'Novo Link' });
+            renderBuilderLinks();
+            renderPhonePreview();
+        }
+
+        function builderRemoveLink(id) {
+            builderData.links = builderData.links.filter(l => l.id !== id);
+            renderBuilderLinks();
+            renderPhonePreview();
+        }
+
+        // Aplica o estado ao visual do Celular (Direita)
+        function renderPhonePreview() {
+            const screen = document.getElementById('phone-screen');
+            const nameDisplay = document.getElementById('phone-name-display');
+            const bioDisplay = document.getElementById('phone-bio-display');
+            const avatar = document.getElementById('phone-avatar');
+            const linksContainer = document.getElementById('phone-links-display');
+
+            const style = themeStyles[builderData.theme];
+
+            // Atualizar Textos
+            nameDisplay.textContent = builderData.name;
+            bioDisplay.textContent = builderData.bio;
+            
+            // Gerar avatar (Pega as duas primeiras letras para o avatar placeholder)
+            const initials = builderData.name.replace('@', '').substring(0,2).toUpperCase() || 'SN';
+            avatar.src = `https://ui-avatars.com/api/?name=${initials}&background=random&color=fff&size=150`;
+
+            // Resetar e aplicar classes de tema
+            screen.className = `relative w-[300px] h-[600px] border-[14px] border-gray-900 rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500 ${style.screen}`;
+            nameDisplay.className = `font-bold text-xl text-center mb-1 tracking-tight transition-colors ${style.textName}`;
+            bioDisplay.className = `text-sm text-center mb-8 opacity-90 leading-relaxed whitespace-pre-line transition-colors ${style.textBio}`;
+
+            // Configurar Layout dos links
+            if (builderData.layout === 'grid') {
+                linksContainer.className = "w-full grid grid-cols-2 gap-3";
+            } else {
+                linksContainer.className = "w-full flex flex-col gap-3";
+            }
+
+            // Renderizar botões no celular
+            linksContainer.innerHTML = '';
+            builderData.links.forEach(link => {
+                const isGrid = builderData.layout === 'grid';
+                const layoutClasses = isGrid ? `aspect-square p-4 ${style.linkGrid}` : `w-full py-4 px-6 flex items-center justify-center ${style.linkList}`;
+                
+                linksContainer.innerHTML += `
+                    <div class="rounded-xl transition-all duration-300 transform hover:-translate-y-1 flex cursor-pointer ${layoutClasses}">
+                        ${isGrid ? '<div class="w-8 h-8 rounded-full bg-white/20 mb-3 mx-auto"></div>' : ''}
+                        <span class="text-sm tracking-wide text-center">${link.title}</span>
+                    </div>
+                `;
+            });
+        }
+
+    </script>
 </body>
 </html>
