@@ -516,7 +516,7 @@
         <div class="bg-white rounded-[2rem] w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="tester-container">
             
             <!-- Header do Testador -->
-            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white z-10">
+            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white z-10 shrink-0">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full bg-brand-100 flex items-center justify-center text-brand-600">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
@@ -527,7 +527,7 @@
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
-                    <button onclick="closeTester(true)" class="hidden sm:block px-5 py-2 bg-brand-600 text-white text-sm font-semibold rounded-xl hover:bg-brand-700 transition-colors">
+                    <button onclick="closeTester(true)" class="hidden lg:block px-5 py-2 bg-brand-600 text-white text-sm font-semibold rounded-xl hover:bg-brand-700 transition-colors">
                         Usar este modelo
                     </button>
                     <button onclick="closeTester(false)" class="p-2 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors">
@@ -537,10 +537,10 @@
             </div>
 
             <!-- Corpo do Testador -->
-            <div class="flex-1 flex flex-col lg:flex-row overflow-hidden bg-slate-50 relative">
+            <div class="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden bg-slate-50 relative">
                 
                 <!-- Painel de Controles (Esquerda) -->
-                <div class="w-full lg:w-1/2 p-6 overflow-y-auto no-scrollbar border-r border-gray-100 bg-white">
+                <div class="w-full lg:w-1/2 p-6 lg:overflow-y-auto no-scrollbar border-b lg:border-b-0 lg:border-r border-gray-100 bg-white shrink-0">
                     <div class="max-w-md mx-auto space-y-8">
                         
                         <!-- Tema e Layout -->
@@ -579,7 +579,7 @@
                         </div>
 
                         <!-- Links -->
-                        <div class="space-y-4 pb-8 lg:pb-0">
+                        <div class="space-y-4">
                             <div class="flex justify-between items-center">
                                 <h4 class="font-bold text-gray-900 flex items-center gap-2"><span class="text-brand-500">🔗</span> Seus Links</h4>
                                 <button onclick="builderAddLink()" class="text-xs bg-brand-50 text-brand-600 font-semibold px-3 py-1.5 rounded-lg hover:bg-brand-100 transition-colors">
@@ -596,7 +596,7 @@
                 </div>
 
                 <!-- Preview Mobile (Direita) -->
-                <div class="w-full lg:w-1/2 p-6 flex flex-col items-center justify-center bg-slate-100/50 relative overflow-hidden hidden sm:flex">
+                <div class="w-full lg:w-1/2 py-12 px-6 flex flex-col items-center justify-center bg-slate-100/50 relative lg:overflow-hidden shrink-0">
                     <!-- Decorativos no fundo -->
                     <div class="absolute w-full h-full inset-0 pointer-events-none opacity-20" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
                     
@@ -623,14 +623,15 @@
                     </div>
                 </div>
                 
-                <!-- Botão Usar Modelo (Apenas visível no Mobile) -->
-                <div class="sm:hidden absolute bottom-0 w-full p-4 bg-white border-t border-gray-100 z-20">
-                     <button onclick="closeTester(true)" class="w-full py-3 bg-brand-600 text-white font-bold rounded-xl shadow-lg">
-                        Usar este modelo
-                    </button>
-                </div>
-
             </div>
+            
+            <!-- Botão Usar Modelo (Apenas visível no Mobile) -->
+            <div class="lg:hidden p-4 bg-white border-t border-gray-100 z-20 shrink-0">
+                 <button onclick="closeTester(true)" class="w-full py-3 bg-brand-600 text-white font-bold rounded-xl shadow-lg">
+                    Usar este modelo
+                </button>
+            </div>
+
         </div>
     </div>
 
