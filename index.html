@@ -549,7 +549,7 @@
 
     <!-- Modal do Testador (Bio Link Builder) -->
     <div id="tester-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center bg-gray-900/80 backdrop-blur-sm opacity-0 transition-opacity duration-300 p-4 sm:p-6">
-        <div class="bg-white rounded-[2rem] w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="tester-container">
+        <div class="bg-white rounded-[2rem] w-full max-w-5xl h-[90vh] flex flex-col overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative" id="tester-container">
             
             <!-- Header do Testador -->
             <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-white z-10 shrink-0">
@@ -573,11 +573,11 @@
             </div>
 
             <!-- Corpo do Testador -->
-            <div class="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden bg-slate-50 relative">
+            <div id="tester-scroll-area" class="flex-1 flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden bg-slate-50 relative" onscroll="handleTesterScroll()">
                 
                 <!-- Painel de Controles (Esquerda) -->
                 <div class="w-full lg:w-1/2 p-6 lg:overflow-y-auto no-scrollbar border-b lg:border-b-0 lg:border-r border-gray-100 bg-white shrink-0">
-                    <div class="max-w-md mx-auto space-y-8">
+                    <div class="max-w-md mx-auto space-y-8 pb-10">
                         
                         <!-- Tema e Layout -->
                         <div class="space-y-4">
@@ -628,16 +628,6 @@
                             </div>
                         </div>
 
-                        <!-- Indicador de Scroll para Mobile -->
-                        <div class="lg:hidden flex flex-col items-center justify-center pt-4">
-                            <button type="button" onclick="document.getElementById('phone-screen').scrollIntoView({behavior: 'smooth', block: 'center'})" class="flex flex-col items-center text-brand-500 opacity-90 hover:opacity-100 transition-opacity group focus:outline-none">
-                                <span class="text-[10px] font-bold uppercase tracking-widest mb-3 text-gray-500 group-hover:text-brand-600 transition-colors">Preview ao vivo abaixo</span>
-                                <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center shadow-sm border border-brand-100 animate-bounce">
-                                    <svg class="w-5 h-5 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                                </div>
-                            </button>
-                        </div>
-
                     </div>
                 </div>
 
@@ -671,6 +661,14 @@
                 
             </div>
             
+            <!-- Indicador de Scroll Flutuante Mobile -->
+            <div id="mobile-scroll-indicator" class="lg:hidden absolute bottom-24 left-0 right-0 flex flex-col items-center justify-center z-30 transition-opacity duration-300 opacity-100 pointer-events-none">
+                <div class="bg-gray-900/80 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-2 shadow-lg">Ver Preview</div>
+                <button type="button" onclick="document.getElementById('phone-screen').scrollIntoView({behavior: 'smooth', block: 'center'})" class="w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center shadow-lg shadow-brand-500/40 animate-bounce pointer-events-auto hover:bg-brand-700 transition-colors focus:outline-none ring-4 ring-white/60" aria-label="Rolar para o preview">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </button>
+            </div>
+
             <!-- Botão Usar Modelo (Apenas visível no Mobile) -->
             <div class="lg:hidden p-4 bg-white border-t border-gray-100 z-20 shrink-0">
                  <button onclick="closeTester(true)" class="w-full py-3 bg-brand-600 text-white font-bold rounded-xl shadow-lg">
@@ -773,29 +771,31 @@
 
         // RENDERIZAR SERVIÇOS NA TELA
         const servicesGrid = document.getElementById('services-grid');
-        servicesData.forEach((s, index) => {
-            const isCustom = s.isDashed;
-            const cardClasses = isCustom ? 'border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-white hover:border-brand-400' : 'bg-white border border-gray-100 hover:border-brand-200 shadow-[0_8px_30px_rgb(0,0,0,0.08)]';
-            
-            const badgeHtml = s.badge ? `<span class="absolute -top-3 right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${s.badge}</span>` : '';
-            
-            const iconBgClass = isCustom ? 'bg-gray-100 group-hover:bg-brand-100' : `bg-gradient-to-br ${s.iconBg}`;
-            const iconColorClass = isCustom ? 'text-gray-400 group-hover:text-brand-600' : s.iconColor;
+        if (servicesGrid) {
+            servicesData.forEach((s, index) => {
+                const isCustom = s.isDashed;
+                const cardClasses = isCustom ? 'border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-white hover:border-brand-400' : 'bg-white border border-gray-100 hover:border-brand-200 shadow-[0_8px_30px_rgb(0,0,0,0.08)]';
+                
+                const badgeHtml = s.badge ? `<span class="absolute -top-3 right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${s.badge}</span>` : '';
+                
+                const iconBgClass = isCustom ? 'bg-gray-100 group-hover:bg-brand-100' : `bg-gradient-to-br ${s.iconBg}`;
+                const iconColorClass = isCustom ? 'text-gray-400 group-hover:text-brand-600' : s.iconColor;
 
-            servicesGrid.innerHTML += `
-                <div class="card-hover ${cardClasses} rounded-2xl p-6 relative cursor-pointer fade-in-element group" style="animation-delay: ${index * 0.1}s" onclick="openModal('${s.id}')">
-                    ${badgeHtml}
-                    <div class="w-14 h-14 rounded-2xl ${iconBgClass} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                        <svg class="w-7 h-7 ${iconColorClass} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">${s.icon}</svg>
+                servicesGrid.innerHTML += `
+                    <div class="card-hover ${cardClasses} rounded-2xl p-6 relative cursor-pointer fade-in-element group" style="animation-delay: ${index * 0.1}s" onclick="openModal('${s.id}')">
+                        ${badgeHtml}
+                        <div class="w-14 h-14 rounded-2xl ${iconBgClass} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                            <svg class="w-7 h-7 ${iconColorClass} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">${s.icon}</svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">${s.title}</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed mb-4">${s.shortDesc}</p>
+                        <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                            Selecionar <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                        </div>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-900 mb-2">${s.title}</h3>
-                    <p class="text-gray-500 text-sm leading-relaxed mb-4">${s.shortDesc}</p>
-                    <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                        Selecionar <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </div>
-                </div>
-            `;
-        });
+                `;
+            });
+        }
 
         // === 3. LÓGICA DO MODAL DE ORÇAMENTO ===
         const modal = document.getElementById('orcamento-modal');
@@ -843,22 +843,25 @@
             updateBtnWa();
 
             // Retorna o scroll do modal para o topo
-            document.getElementById('modal-scroll-area').scrollTop = 0;
+            const scrollArea = document.getElementById('modal-scroll-area');
+            if (scrollArea) scrollArea.scrollTop = 0;
 
             // Animação de entrada
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContainer.classList.remove('scale-95');
-            }, 10);
+            if (modal) {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    if (modalContainer) modalContainer.classList.remove('scale-95');
+                }, 10);
+            }
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
-            modal.classList.add('opacity-0');
-            modalContainer.classList.add('scale-95');
+            if (modal) modal.classList.add('opacity-0');
+            if (modalContainer) modalContainer.classList.add('scale-95');
             setTimeout(() => {
-                modal.classList.add('hidden');
+                if (modal) modal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
             }, 300);
         }
@@ -905,10 +908,12 @@
         });
 
         function updateBtnWa() {
+            if (!btnWa || !btnWaText) return;
+            
             const s = currentState.service;
             let ready = false;
 
-            if(s.hasModels) {
+            if(s && s.hasModels) {
                 if(!currentState.model && !currentState.plan) btnWaText.textContent = "Selecione um modelo e um plano";
                 else if(!currentState.model) btnWaText.textContent = "Selecione um modelo acima";
                 else if(!currentState.plan) btnWaText.textContent = "Selecione um plano de entrega";
@@ -930,46 +935,49 @@
             }
         }
 
-        btnWa.addEventListener('click', () => {
-            if(btnWa.disabled) return;
-            
-            const serviceName = currentState.service.title;
-            const planCard = document.querySelector(`.plan-card[data-id="${currentState.plan}"]`);
-            const planName = planCard.dataset.name;
-            const planDuration = planCard.dataset.duration;
-            
-            let msg = `Olá! Tenho interesse em solicitar um orçamento.\n\n`;
-            msg += `▸ Serviço: ${serviceName}\n`;
-            
-            if(currentState.service.hasModels) {
-                const modelEl = document.querySelector(`.model-card[data-id="${currentState.model}"]`);
-                const modelName = modelEl.dataset.name;
-                const modelPrice = modelEl.dataset.price;
-                if (modelPrice === "Sob consulta") {
-                    msg += `▸ Modelo: ${modelName} (sob consulta)\n`;
-                } else {
-                    msg += `▸ Modelo: ${modelName} (R$ ${modelPrice})\n`;
+        if (btnWa) {
+            btnWa.addEventListener('click', () => {
+                if(btnWa.disabled) return;
+                
+                const serviceName = currentState.service.title;
+                const planCard = document.querySelector(`.plan-card[data-id="${currentState.plan}"]`);
+                const planName = planCard.dataset.name;
+                const planDuration = planCard.dataset.duration;
+                
+                let msg = `Olá! Tenho interesse em solicitar um orçamento.\n\n`;
+                msg += `▸ Serviço: ${serviceName}\n`;
+                
+                if(currentState.service.hasModels) {
+                    const modelEl = document.querySelector(`.model-card[data-id="${currentState.model}"]`);
+                    const modelName = modelEl.dataset.name;
+                    const modelPrice = modelEl.dataset.price;
+                    if (modelPrice === "Sob consulta") {
+                        msg += `▸ Modelo: ${modelName} (sob consulta)\n`;
+                    } else {
+                        msg += `▸ Modelo: ${modelName} (R$ ${modelPrice})\n`;
+                    }
                 }
-            }
-            
-            msg += `▸ Plano: ${planName} — ${planDuration}\n\n`;
-            msg += `Aguardo seu retorno. Obrigado!`;
+                
+                msg += `▸ Plano: ${planName} — ${planDuration}\n\n`;
+                msg += `Aguardo seu retorno. Obrigado!`;
 
-            const encodedMsg = encodeURIComponent(msg);
-            const waUrl = `https://wa.me/5592992866146?text=${encodedMsg}`;
-            
-            window.open(waUrl, '_blank');
-            
-            // Refresh na página atual e força a voltar pro topo para limpar a interface
-            setTimeout(() => {
-                window.scrollTo(0, 0);
-                window.location.href = window.location.pathname;
-            }, 1000);
-        });
+                const encodedMsg = encodeURIComponent(msg);
+                const waUrl = `https://wa.me/5592992866146?text=${encodedMsg}`;
+                
+                window.open(waUrl, '_blank');
+                
+                // Refresh na página atual e força a voltar pro topo para limpar a interface
+                setTimeout(() => {
+                    window.scrollTo(0, 0);
+                    window.location.href = window.location.pathname;
+                }, 1000);
+            });
+        }
 
         // === 4. HEADER SCROLL & MOBILE MENU ===
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
+            if (!header) return;
             if (window.scrollY > 20) {
                 header.classList.add('glass-header', 'shadow-sm');
                 header.classList.remove('border-transparent');
@@ -985,6 +993,7 @@
         let isMenuOpen = false;
 
         function toggleMenu() {
+            if (!mobileMenu || !menuIconPath) return;
             isMenuOpen = !isMenuOpen;
             if(isMenuOpen) {
                 mobileMenu.classList.remove('hidden');
@@ -995,7 +1004,10 @@
             }
         }
 
-        mobileMenuBtn.addEventListener('click', toggleMenu);
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+        }
+        
         document.querySelectorAll('.mobile-link').forEach(link => {
             link.addEventListener('click', toggleMenu);
         });
@@ -1056,23 +1068,35 @@
 
         function openTester(themeId) {
             builderData.theme = themeId;
-            document.getElementById('builder-theme').value = themeId;
+            const themeSelect = document.getElementById('builder-theme');
+            if (themeSelect) themeSelect.value = themeId;
             
             builderUpdateState(); // Prepara os dados
             renderBuilderLinks(); // Renderiza os inputs da esquerda
             
+            // Retorna o scroll ao topo e exibe a seta se for mobile
+            const scrollArea = document.getElementById('tester-scroll-area');
+            if (scrollArea) scrollArea.scrollTop = 0;
+            const indicator = document.getElementById('mobile-scroll-indicator');
+            if (indicator) {
+                indicator.classList.remove('opacity-0', 'pointer-events-none');
+                indicator.classList.add('opacity-100');
+            }
+
             // Animação de entrada
-            testerModal.classList.remove('hidden');
-            setTimeout(() => {
-                testerModal.classList.remove('opacity-0');
-                testerContainer.classList.remove('scale-95');
-            }, 10);
+            if (testerModal) {
+                testerModal.classList.remove('hidden');
+                setTimeout(() => {
+                    testerModal.classList.remove('opacity-0');
+                    if (testerContainer) testerContainer.classList.remove('scale-95');
+                }, 10);
+            }
             document.body.style.overflow = 'hidden';
         }
 
         function closeTester(selectModel = false) {
-            testerModal.classList.add('opacity-0');
-            testerContainer.classList.add('scale-95');
+            if (testerModal) testerModal.classList.add('opacity-0');
+            if (testerContainer) testerContainer.classList.add('scale-95');
             
             if (selectModel) {
                 // Verifica se o modelo atual já está selecionado para não desmarcar sem querer (efeito toggle)
@@ -1083,20 +1107,41 @@
             }
 
             setTimeout(() => {
-                testerModal.classList.add('hidden');
+                if (testerModal) testerModal.classList.add('hidden');
                 // Se o modal de orçamento estiver aberto, mantemos o overflow hidden do body
-                if(modal.classList.contains('hidden')) {
+                if(modal && modal.classList.contains('hidden')) {
                     document.body.style.overflow = 'auto';
                 }
             }, 300);
         }
 
+        // Lógica para esconder a seta flutuante no scroll
+        function handleTesterScroll() {
+            const scrollArea = document.getElementById('tester-scroll-area');
+            const indicator = document.getElementById('mobile-scroll-indicator');
+            if (!indicator || !scrollArea) return;
+
+            // Se o scroll passar de 50px, esconde a seta
+            if (scrollArea.scrollTop > 50) {
+                indicator.classList.remove('opacity-100');
+                indicator.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                indicator.classList.remove('opacity-0', 'pointer-events-none');
+                indicator.classList.add('opacity-100');
+            }
+        }
+
         // Atualiza o estado lendo os inputs da esquerda
         function builderUpdateState() {
-            builderData.theme = document.getElementById('builder-theme').value;
-            builderData.layout = document.getElementById('builder-layout').value;
-            builderData.name = document.getElementById('builder-name').value || '@seunome';
-            builderData.bio = document.getElementById('builder-bio').value || 'Sua bio aparece aqui';
+            const themeEl = document.getElementById('builder-theme');
+            const layoutEl = document.getElementById('builder-layout');
+            const nameEl = document.getElementById('builder-name');
+            const bioEl = document.getElementById('builder-bio');
+
+            if (themeEl) builderData.theme = themeEl.value;
+            if (layoutEl) builderData.layout = layoutEl.value;
+            if (nameEl) builderData.name = nameEl.value || '@seunome';
+            if (bioEl) builderData.bio = bioEl.value || 'Sua bio aparece aqui';
 
             // Atualizar os títulos dos links
             builderData.links.forEach(link => {
@@ -1110,6 +1155,8 @@
         // Renderiza os inputs de edição de link no painel esquerdo
         function renderBuilderLinks() {
             const container = document.getElementById('builder-links-container');
+            if (!container) return;
+
             container.innerHTML = '';
             
             builderData.links.forEach((link, index) => {
@@ -1145,6 +1192,8 @@
             const bioDisplay = document.getElementById('phone-bio-display');
             const avatar = document.getElementById('phone-avatar');
             const linksContainer = document.getElementById('phone-links-display');
+
+            if (!screen || !nameDisplay || !bioDisplay || !avatar || !linksContainer) return;
 
             const style = themeStyles[builderData.theme];
 
