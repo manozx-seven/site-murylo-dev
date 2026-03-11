@@ -95,6 +95,15 @@
             50% { opacity: 0.35; transform: translateY(-30px) scale(1.3); }
             85% { opacity: 0.5; }
         }
+        
+        /* Animação suave para a tag details (detalhes do plano) */
+        details[open] summary ~ * {
+            animation: detailsFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes detailsFadeIn {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-[#f4f7fc] text-gray-900 font-sans antialiased relative selection:bg-brand-200 selection:text-brand-900 overflow-x-hidden">
@@ -399,7 +408,7 @@
                     </div>
                     <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3">
                         <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                        <p class="text-sm text-amber-800"><strong>Sobre os valores</strong> - Os valores abaixo são referentes ao plano de hospedagem e entrega. O serviço de desenvolvimento é orçado separadamente conforme a complexidade.</p>
+                        <p id="modal-warning-text" class="text-sm text-amber-800"><strong>Sobre os valores</strong> - Os valores abaixo são referentes ao plano de hospedagem e entrega. O serviço de desenvolvimento é orçado separadamente conforme a complexidade.</p>
                     </div>
                 </div>
 
@@ -475,7 +484,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
                             </svg>
                             <p class="font-semibold text-gray-700 text-sm">Personalizado</p>
-                            <p class="text-gray-500 text-xs mt-1">Sob consulta</p>
+                            <p class="text-gray-500 text-xs mt-1 text-center px-2">Valor sob consulta</p>
                         </div>
                     </div>
                 </div>
@@ -500,6 +509,17 @@
                                 <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Link funcional para compartilhar</li>
                                 <li class="flex items-center gap-2 text-gray-400"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Sem alterações inclusas</li>
                             </ul>
+
+                            <!-- Expandir Detalhes Essencial -->
+                            <details class="mt-4 group/details" onclick="event.stopPropagation()">
+                                <summary class="text-xs font-semibold text-brand-600 cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center gap-1 hover:text-brand-700 transition-colors w-max select-none">
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    <span>Ver detalhes do plano</span>
+                                </summary>
+                                <div class="pt-3 mt-2 border-t border-gray-100 text-xs text-gray-500 leading-relaxed text-justify">
+                                    Este plano é ideal para quem busca uma solução rápida e acessível. O seu projeto será entregue totalmente funcional através de um link e ficará hospedado de forma segura pelo período de <strong>6 meses</strong>. Ao final deste prazo, você terá a opção de renovar a hospedagem por mais 6 meses para manter o site online. Caso opte por não renovar, o projeto será retirado do ar. Ressaltamos que este plano garante a entrega inicial impecável, porém <strong>não inclui manutenções ou alterações</strong> após a aprovação. Qualquer mudança futura será orçada e cobrada separadamente, de acordo com a complexidade do pedido.
+                                </div>
+                            </details>
                         </div>
 
                         <!-- Profissional -->
@@ -516,6 +536,17 @@
                                 <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Até 3 atualizações simples/mês</li>
                                 <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Prioridade em correções</li>
                             </ul>
+
+                            <!-- Expandir Detalhes Profissional -->
+                            <details class="mt-4 group/details" onclick="event.stopPropagation()">
+                                <summary class="text-xs font-semibold text-brand-700 cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center gap-1 hover:text-brand-800 transition-colors w-max select-none">
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    <span>Ver detalhes do plano</span>
+                                </summary>
+                                <div class="pt-3 mt-2 border-t border-brand-200/50 text-xs text-gray-600 leading-relaxed text-justify">
+                                    Desenvolvido para oferecer tranquilidade e acompanhamento contínuo. O seu site ficará no ar por 6 meses com total <strong>suporte, manutenção e monitoramento</strong>. Você terá acesso prioritário via WhatsApp para tirar dúvidas e o direito a solicitar até <strong>3 pequenas alterações por mês</strong> (como atualizar textos, fotos ou links). Caso deseje renovar após os 6 meses, você garante um desconto exclusivo. Se decidir não renovar, o seu site não sairá do ar imediatamente: oferecemos <strong>1 mês extra de carência</strong> para continuar funcionando através do link, perdendo apenas o direito ao suporte e às atualizações mensais. Modificações que excedam a franquia do plano estarão sujeitas a cobrança adicional.
+                                </div>
+                            </details>
                         </div>
 
                         <!-- Permanente -->
@@ -531,6 +562,17 @@
                                 <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Fica no ar para sempre</li>
                                 <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Orientação de gerenciamento</li>
                             </ul>
+
+                            <!-- Expandir Detalhes Permanente -->
+                            <details class="mt-4 group/details" onclick="event.stopPropagation()">
+                                <summary class="text-xs font-semibold text-brand-600 cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center gap-1 hover:text-brand-700 transition-colors w-max select-none">
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    <span>Ver detalhes do plano</span>
+                                </summary>
+                                <div class="pt-3 mt-2 border-t border-gray-100 text-xs text-gray-500 leading-relaxed text-justify">
+                                    A solução definitiva para quem deseja total independência e <strong>nenhum vínculo com mensalidades</strong>. Neste formato, realizamos a entrega completa de todos os arquivos e código-fonte originais. Iremos auxiliá-lo na configuração e transferência do site para a sua própria infraestrutura de hospedagem (como Hostinger, Vercel, etc.). A partir desse momento, você assume <strong>100% do controle do projeto</strong>. Por ser um plano vitalício e autogerenciado, não há suporte contínuo incluso. Qualquer necessidade futura de manutenção técnica, atualização estrutural ou correção será tratada de forma avulsa, mediante consulta e orçamento prévio, baseando-se no escopo do trabalho solicitado.
+                                </div>
+                            </details>
                         </div>
                     </div>
                 </div>
@@ -819,14 +861,22 @@
             document.getElementById('modal-title').textContent = service.title;
             document.getElementById('modal-desc').textContent = service.fullDesc;
 
-            // Mostrar/Esconder Passo 1
+            // Mostrar/Esconder Passo 1 e ajustar aviso de valores
             const stepModels = document.getElementById('step-models');
+            const warningText = document.getElementById('modal-warning-text');
+
             if(service.hasModels) {
                 stepModels.classList.remove('hidden');
                 document.getElementById('numero-passo').textContent = '2';
+                if(warningText) {
+                    warningText.innerHTML = '<strong>Sobre os valores</strong> - Os modelos de Bio Link possuem valor fixo. O investimento total será a soma do modelo escolhido com o plano de entrega selecionado abaixo.';
+                }
             } else {
                 stepModels.classList.add('hidden');
                 document.getElementById('numero-passo').textContent = '1';
+                if(warningText) {
+                    warningText.innerHTML = '<strong>Sobre os valores</strong> - Os valores abaixo são referentes ao plano de hospedagem e entrega. O serviço de desenvolvimento é orçado separadamente conforme a complexidade do projeto.';
+                }
             }
 
             // Resetar seleções visuais
