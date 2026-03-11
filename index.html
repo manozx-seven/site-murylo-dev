@@ -1061,9 +1061,11 @@
             testerContainer.classList.add('scale-95');
             
             if (selectModel) {
-                // Se clicou em "Usar este modelo", seleciona ele no modal principal
-                const modelCard = document.querySelector(`.model-card[data-id="${builderData.theme}"]`);
-                if(modelCard) modelCard.click(); 
+                // Verifica se o modelo atual já está selecionado para não desmarcar sem querer (efeito toggle)
+                if (currentState.model !== builderData.theme) {
+                    const modelCard = document.querySelector(`.model-card[data-id="${builderData.theme}"]`);
+                    if(modelCard) modelCard.click(); 
+                }
             }
 
             setTimeout(() => {
