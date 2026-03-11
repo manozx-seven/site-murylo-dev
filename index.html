@@ -353,7 +353,7 @@
             </div>
 
             <!-- Body Scrollable -->
-            <div class="p-6 sm:p-8 overflow-y-auto no-scrollbar flex-1 space-y-8 bg-slate-50">
+            <div id="modal-scroll-area" class="p-6 sm:p-8 overflow-y-auto no-scrollbar flex-1 space-y-8 bg-slate-50">
                 
                 <!-- Avisos -->
                 <div class="space-y-3">
@@ -636,6 +636,12 @@
 
     <!-- JavaScript Vanilla -->
     <script>
+        // === 0. FIX DE SCROLL (Sempre carregar no topo) ===
+        if ('scrollRestoration' in history) {
+            history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, 0);
+
         // === 1. DADOS DOS SERVIÇOS ===
         const servicesData = [
             {
@@ -776,6 +782,9 @@
 
             updateBtnWa();
 
+            // Retorna o scroll do modal para o topo
+            document.getElementById('modal-scroll-area').scrollTop = 0;
+
             // Animação de entrada
             modal.classList.remove('hidden');
             setTimeout(() => {
@@ -891,9 +900,10 @@
             
             window.open(waUrl, '_blank');
             
-            // Refresh na página atual para limpar o form após o clique
+            // Refresh na página atual e força a voltar pro topo para limpar a interface
             setTimeout(() => {
-                window.location.reload();
+                window.scrollTo(0, 0);
+                window.location.href = window.location.pathname;
             }, 1000);
         });
 
