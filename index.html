@@ -5,18 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Murylo Dev | Soluções Digitais</title>
     <meta name="description" content="Desenvolvedor web focado em resultados. Crio sites, portfólios, bio links e sistemas sob medida.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect rx='20' width='100' height='100' fill='%230077e6'/><text x='50' y='72' font-size='60' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>M</text></svg>">
+    <meta name="theme-color" content="#0077e6">
     
     <!-- Open Graph / SEO -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seusite.com.br/">
+    <meta property="og:url" content="https://murylodev.com.br/">
     <meta property="og:title" content="Murylo Dev | Soluções Digitais">
     <meta property="og:description" content="Desenvolvedor web focado em resultados. Crio sites, portfólios, bio links e sistemas sob medida.">
-    <meta property="og:image" content="https://seusite.com.br/assets/og-image.jpg">
+    <meta property="og:image" content="https://murylodev.com.br/assets/og-image.jpg">
     
     <!-- Pré-conexão de fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" fetchpriority="high">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -36,7 +38,7 @@
                             300: '#93c5fd',
                             400: '#60a5fa',
                             500: '#1a8cff',
-                            600: '#0077e6', // Ajustado para o tom de azul perfeito do seu modelo
+                            600: '#0077e6', 
                             700: '#005ebd',
                             800: '#1e40af',
                             900: '#0f172a',
@@ -45,66 +47,28 @@
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'iaShapeFloat': 'iaShapeFloat 18s ease-in-out infinite',
                     },
                     keyframes: {
                         fadeInUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        iaShapeFloat: {
+                            '0%, 100%': { transform: 'translateY(0) scale(1)', opacity: '0.4' },
+                            '50%': { transform: 'translateY(-30px) scale(1.15)', opacity: '0.7' },
                         }
+                    },
+                    transitionTimingFunction: {
+                        'ios': 'cubic-bezier(0.23, 1, 0.32, 1)',
                     }
                 }
             }
         }
     </script>
-    <style>
-        /* Estilos adicionais personalizados */
-        .glass-header {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 119, 230, 0.1), 0 8px 10px -6px rgba(0, 119, 230, 0.1);
-        }
-        /* Oculta scrollbar no modal mas permite scroll */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        .fade-in-element {
-            opacity: 0;
-        }
 
-        /* Animação das formas flutuantes do Fundo IA */
-        .ia-shape {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0;
-            animation: iaShapeFloat 18s ease-in-out infinite;
-        }
-        @keyframes iaShapeFloat {
-            0%, 100% { opacity: 0; transform: translateY(0) scale(1); }
-            15% { opacity: 0.5; }
-            50% { opacity: 0.35; transform: translateY(-30px) scale(1.3); }
-            85% { opacity: 0.5; }
-        }
-        
-        /* Animação suave para a tag details (detalhes do plano) */
-        details[open] summary ~ * {
-            animation: detailsFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        @keyframes detailsFadeIn {
-            0% { opacity: 0; transform: translateY(-10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+<link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body class="bg-[#f4f7fc] text-gray-900 font-sans antialiased relative selection:bg-brand-200 selection:text-brand-900 overflow-x-hidden">
 
@@ -150,7 +114,8 @@
                     <a href="#inicio" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Início</a>
                     <a href="#servicos" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Serviços</a>
                     <a href="#portfolio" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Portfólio</a>
-                    <a href="#servicos" class="text-sm font-semibold bg-brand-600 text-white px-5 py-2.5 rounded-xl hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30 transition-all">Solicitar Orçamento</a>
+                    <a href="#sobre" class="text-sm font-medium text-gray-600 hover:text-brand-600 transition-colors">Sobre</a>
+                    <a href="#servicos" class="text-sm font-semibold bg-brand-600 text-white px-5 py-2.5 rounded-xl hover:bg-brand-700 hover:shadow-lg hover:shadow-brand-600/30 transition-all" onclick="event.preventDefault(); document.getElementById('servicos').scrollIntoView({behavior:'smooth'}); setTimeout(()=>openModal('custom'),600);">Solicitar Orçamento</a>
                 </nav>
 
                 <!-- Mobile Menu Button -->
@@ -168,8 +133,9 @@
                 <a href="#inicio" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-brand-50 hover:text-brand-600">Início</a>
                 <a href="#servicos" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-brand-50 hover:text-brand-600">Serviços</a>
                 <a href="#portfolio" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-brand-50 hover:text-brand-600">Portfólio</a>
+                <a href="#sobre" class="mobile-link block px-3 py-3 rounded-lg text-base font-medium text-gray-800 hover:bg-brand-50 hover:text-brand-600">Sobre</a>
                 <div class="pt-2">
-                    <a href="#servicos" class="mobile-link w-full text-center block text-base font-semibold bg-brand-600 text-white px-5 py-3 rounded-xl hover:bg-brand-700">Solicitar Orçamento</a>
+                    <a href="#servicos" class="mobile-link w-full text-center block text-base font-semibold bg-brand-600 text-white px-5 py-3 rounded-xl hover:bg-brand-700" onclick="event.preventDefault(); toggleMenu(); document.getElementById('servicos').scrollIntoView({behavior:'smooth'}); setTimeout(()=>openModal('custom'),600);">Solicitar Orçamento</a>
                 </div>
             </div>
         </div>
@@ -193,7 +159,7 @@
                     
                     <p class="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0 fade-in-element" style="animation-delay: 0.2s">
                         Crio sites, portfólios, bio links e sistemas sob medida. 
-                        Soluções práticas que funcionam e cabem no seu bolso.
+                        Soluções práticas que funcionam e geram retorno real.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start fade-in-element" style="animation-delay: 0.3s">
@@ -209,41 +175,94 @@
                     </div>
                 </div>
 
-                <!-- Visual Decorative Card -->
-                <div class="hidden lg:block fade-in-element" style="animation-delay: 0.2s">
-                    <div class="relative">
-                        <!-- Card decorativo atrás -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-brand-400 to-[#00c2cb] rounded-3xl transform rotate-3 opacity-80 blur-[2px]"></div>
-                        
-                        <!-- Card principal -->
-                        <div class="relative bg-white/95 backdrop-blur-2xl border border-white rounded-3xl shadow-2xl p-8 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
-                            <!-- Preview de Bio Link -->
-                            <div class="space-y-4">
-                                <div class="flex items-center gap-4 mb-6">
-                                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-500 to-[#6c5ce7] flex items-center justify-center shadow-inner">
-                                        <span class="text-white text-2xl">👤</span>
+                <!-- Hero Carousel 3D -->
+                <div class="hidden lg:flex w-full max-w-[500px] h-[600px] mx-auto items-center justify-center relative perspective-[1200px] fade-in-element" style="animation-delay: 0.2s">
+                    
+                    <!-- 1. Bio Link (Celular) -->
+                    <div id="hero-slide-0" onclick="setHeroSlide(0)" class="hero-slide absolute w-[280px] h-[560px] rounded-[3rem] bg-white/70 backdrop-blur-2xl border border-white shadow-[0_20px_50px_-12px_rgba(0,119,230,0.15)] flex flex-col overflow-hidden transition-all duration-1000 ease-ios cursor-pointer z-30">
+                        <div class="absolute top-0 inset-x-0 h-6 bg-white rounded-b-3xl w-24 mx-auto z-30 shadow-sm border-x border-b border-gray-100"></div>
+                        <div class="w-full h-full bg-gradient-to-br from-brand-50 to-[#6c5ce7]/10 p-5 pt-12 flex flex-col items-center">
+                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-brand-500 to-[#6c5ce7] flex items-center justify-center shadow-lg mb-4 text-white text-2xl border-4 border-white">👤</div>
+                            <div class="h-4 w-28 bg-white/80 rounded mb-2 shadow-sm"></div>
+                            <div class="h-3 w-20 bg-white/60 rounded mb-6 shadow-sm"></div>
+                            <div class="w-full space-y-3">
+                                <div class="h-12 bg-white border border-gray-100 rounded-xl shadow-sm flex items-center justify-center text-gray-500 text-sm font-medium hover:scale-105 transition-transform">🔗 Meu Site</div>
+                                <div class="h-12 bg-white border border-gray-100 rounded-xl shadow-sm flex items-center justify-center text-gray-500 text-sm font-medium hover:scale-105 transition-transform">🔗 Portfólio</div>
+                                <div class="h-12 bg-brand-50 border border-brand-100 rounded-xl shadow-sm flex items-center justify-center text-brand-600 text-sm font-bold hover:scale-105 transition-transform">📱 WhatsApp</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. Site Personalizado (Browser) -->
+                    <div id="hero-slide-1" onclick="setHeroSlide(1)" class="hero-slide absolute w-[420px] h-[320px] rounded-2xl bg-white/70 backdrop-blur-2xl border border-white shadow-[0_20px_50px_-12px_rgba(0,119,230,0.15)] flex flex-col overflow-hidden transition-all duration-1000 ease-ios cursor-pointer z-20">
+                        <div class="h-8 bg-white/80 border-b border-gray-100 flex items-center px-3 gap-1.5 shrink-0">
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></div>
+                            <div class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></div>
+                            <div class="mx-auto w-32 h-3 bg-gray-100 rounded-full"></div>
+                        </div>
+                        <div class="w-full h-full bg-slate-50/50 p-4 flex flex-col gap-4 pointer-events-none">
+                            <div class="w-full h-24 bg-gradient-to-r from-brand-400 to-[#00c2cb] rounded-xl shadow-inner p-5 flex flex-col justify-center border border-white/20">
+                                <div class="w-1/2 h-4 bg-white rounded mb-2 shadow-sm"></div>
+                                <div class="w-1/3 h-3 bg-white/70 rounded shadow-sm"></div>
+                            </div>
+                            <div class="grid grid-cols-3 gap-3 flex-1">
+                                <div class="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col gap-2 p-2">
+                                    <div class="w-full h-12 bg-brand-50 rounded-md"></div>
+                                    <div class="w-full h-2 bg-gray-100 rounded"></div>
+                                </div>
+                                <div class="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col gap-2 p-2">
+                                    <div class="w-full h-12 bg-brand-50 rounded-md"></div>
+                                    <div class="w-full h-2 bg-gray-100 rounded"></div>
+                                </div>
+                                <div class="bg-white rounded-lg border border-gray-100 shadow-sm flex flex-col gap-2 p-2">
+                                    <div class="w-full h-12 bg-brand-50 rounded-md"></div>
+                                    <div class="w-full h-2 bg-gray-100 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Planilha Automatizada (Dashboard) -->
+                    <div id="hero-slide-2" onclick="setHeroSlide(2)" class="hero-slide absolute w-[420px] h-[320px] rounded-2xl bg-white/70 backdrop-blur-2xl border border-white shadow-[0_20px_50px_-12px_rgba(0,119,230,0.15)] flex flex-col overflow-hidden transition-all duration-1000 ease-ios cursor-pointer z-10">
+                        <div class="h-10 bg-emerald-500 text-white flex items-center px-4 justify-between shrink-0 shadow-sm z-10">
+                            <div class="w-1/3 h-3 bg-white/30 rounded-full"></div>
+                            <div class="flex gap-2">
+                                <div class="w-6 h-4 bg-white/20 rounded"></div>
+                                <div class="w-6 h-4 bg-white/20 rounded"></div>
+                            </div>
+                        </div>
+                        <div class="w-full h-full bg-gray-50/50 p-4 flex gap-4 pointer-events-none">
+                            <div class="w-1/4 h-full bg-white rounded-xl border border-gray-100 shadow-sm p-3 flex flex-col gap-3">
+                                <div class="w-full h-3 bg-emerald-100 rounded"></div>
+                                <div class="w-full h-3 bg-gray-100 rounded"></div>
+                                <div class="w-full h-3 bg-gray-100 rounded"></div>
+                                <div class="w-full h-3 bg-gray-100 rounded"></div>
+                                <div class="mt-auto w-full h-8 bg-emerald-50 rounded-lg border border-emerald-100"></div>
+                            </div>
+                            <div class="w-3/4 h-full flex flex-col gap-3">
+                                <div class="flex gap-3 h-[40%]">
+                                    <div class="flex-1 bg-white rounded-xl border border-gray-100 shadow-sm p-3 flex flex-col justify-between">
+                                        <div class="w-12 h-2 bg-gray-200 rounded"></div>
+                                        <div class="text-xl font-bold text-emerald-500">84%</div>
                                     </div>
-                                    <div>
-                                        <div class="h-4 w-28 bg-gray-200 rounded mb-2"></div>
-                                        <div class="h-3 w-20 bg-gray-100 rounded"></div>
+                                    <div class="flex-1 bg-white rounded-xl border border-gray-100 shadow-sm p-3 flex flex-col justify-between">
+                                        <div class="w-12 h-2 bg-gray-200 rounded"></div>
+                                        <div class="text-xl font-bold text-brand-500">1.2K</div>
                                     </div>
                                 </div>
-                                <div class="h-12 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium">
-                                    🔗 Link 1
-                                </div>
-                                <div class="h-12 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium">
-                                    🔗 Link 2
-                                </div>
-                                <div class="h-12 bg-gray-50 border border-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm font-medium">
-                                    🔗 Link 3
-                                </div>
-                                <div class="h-12 bg-brand-50 border border-brand-100 rounded-xl flex items-center justify-center text-brand-600 text-sm font-bold shadow-sm">
-                                    📱 WhatsApp
+                                <div class="flex-1 bg-white rounded-xl border border-gray-100 shadow-sm p-4 flex items-end justify-around gap-2">
+                                    <div class="w-full bg-emerald-400 rounded-t-sm h-[40%]"></div>
+                                    <div class="w-full bg-emerald-400 rounded-t-sm h-[70%]"></div>
+                                    <div class="w-full bg-emerald-400 rounded-t-sm h-[50%]"></div>
+                                    <div class="w-full bg-emerald-400 rounded-t-sm h-[90%]"></div>
+                                    <div class="w-full bg-brand-400 rounded-t-sm h-[60%]"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -273,25 +292,31 @@
                     <p class="text-gray-600 text-lg">Alguns dos trabalhos que desenvolvi para clientes reais.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="grid md:grid-cols-2 gap-8">
                     <!-- Projeto 1 -->
-                    <div class="group cursor-pointer fade-in-element">
-                        <div class="aspect-video bg-gradient-to-br from-blue-100 to-brand-100 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
-                            <svg class="w-16 h-16 text-brand-400 transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <div class="group fade-in-element cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-200 transition-all duration-300 overflow-hidden" onclick="openPortfolioModal(0)" onkeydown="if(event.key==='Enter')openPortfolioModal(0)" role="button" tabindex="0" aria-label="Ver detalhes do projeto EJUD Flow">
+                        <div class="aspect-video bg-gradient-to-br from-blue-100 to-brand-100 overflow-hidden relative flex items-center justify-center">
+                            <img src="assets/portfolio/ejud-flow-painel1.png" alt="Screenshot do EJUD Flow" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/40 transition-colors duration-300 flex items-center justify-center">
+                                <span class="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-600 px-4 py-2 rounded-lg shadow-lg">Ver detalhes</span>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-start px-1">
+                        <div class="flex flex-col items-start p-5">
                             <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md mb-2">Sistema de Gestão</span>
                             <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">EJUD Flow</h3>
-                            <p class="text-gray-600 text-sm">Sistema Kanban para gestão de demandas internas do TJAM.</p>
+                            <p class="text-gray-600 text-sm">Sistema Kanban para gestão de demandas internas da EJUD/TJAM.</p>
                         </div>
                     </div>
                     
                     <!-- Projeto 2 -->
-                    <div class="group cursor-pointer fade-in-element" style="animation-delay: 0.1s;">
-                        <div class="aspect-video bg-gradient-to-br from-teal-100 to-[#00c2cb]/20 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
-                            <svg class="w-16 h-16 text-[#00c2cb] transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <div class="group fade-in-element cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-200 transition-all duration-300 overflow-hidden" style="animation-delay: 0.1s;" onclick="openPortfolioModal(1)" onkeydown="if(event.key==='Enter')openPortfolioModal(1)" role="button" tabindex="0" aria-label="Ver detalhes do projeto Sâmela Matozinho">
+                        <div class="aspect-video bg-gradient-to-br from-teal-100 to-[#00c2cb]/20 overflow-hidden relative flex items-center justify-center">
+                            <img src="assets/portfolio/samela.png" alt="Screenshot do site Sâmela Matozinho" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/40 transition-colors duration-300 flex items-center justify-center">
+                                <span class="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-600 px-4 py-2 rounded-lg shadow-lg">Ver detalhes</span>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-start px-1">
+                        <div class="flex flex-col items-start p-5">
                             <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md mb-2">Site Institucional</span>
                             <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Sâmela Matozinho</h3>
                             <p class="text-gray-600 text-sm">Site profissional para consultoria acadêmica.</p>
@@ -299,14 +324,91 @@
                     </div>
 
                     <!-- Projeto 3 -->
-                    <div class="group cursor-pointer fade-in-element" style="animation-delay: 0.2s;">
-                        <div class="aspect-video bg-gradient-to-br from-purple-100 to-[#6c5ce7]/20 rounded-2xl overflow-hidden mb-4 relative flex items-center justify-center border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.08)]">
-                            <svg class="w-16 h-16 text-[#6c5ce7] transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                    <div class="group fade-in-element cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-200 transition-all duration-300 overflow-hidden" style="animation-delay: 0.2s;" onclick="openPortfolioModal(3)" onkeydown="if(event.key==='Enter')openPortfolioModal(3)" role="button" tabindex="0" aria-label="Ver detalhes do Bio Link Instagram">
+                        <div class="aspect-video bg-gradient-to-br from-purple-100 to-[#6c5ce7]/20 overflow-hidden relative flex items-center justify-center">
+                            <div class="flex items-center justify-center gap-3 p-4 w-full h-full group-hover:scale-105 transition-transform duration-500">
+                                <div class="w-16 h-28 rounded-xl bg-white border border-gray-200 shadow-sm p-1.5 flex flex-col items-center pt-2">
+                                    <div class="w-5 h-5 rounded-full bg-gray-200 mb-1"></div>
+                                    <div class="w-8 h-1 rounded bg-gray-200 mb-2"></div>
+                                    <div class="w-full space-y-1"><div class="h-3 bg-gray-100 rounded"></div><div class="h-3 bg-gray-100 rounded"></div></div>
+                                </div>
+                                <div class="w-16 h-28 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-sm p-1.5 flex flex-col items-center pt-2">
+                                    <div class="w-5 h-5 rounded-full bg-white/30 mb-1"></div>
+                                    <div class="w-8 h-1 rounded bg-white/40 mb-2"></div>
+                                    <div class="w-full space-y-1"><div class="h-3 bg-white/15 rounded"></div><div class="h-3 bg-white/15 rounded"></div></div>
+                                </div>
+                                <div class="w-16 h-28 rounded-xl bg-gradient-to-br from-gray-900 to-[#0a0a0a] border border-gray-700 shadow-sm p-1.5 flex flex-col items-center pt-2">
+                                    <div class="w-5 h-5 rounded-full bg-white/10 mb-1"></div>
+                                    <div class="w-8 h-1 rounded bg-white/10 mb-2"></div>
+                                    <div class="w-full space-y-1"><div class="h-3 bg-white/[0.06] rounded"></div><div class="h-3 bg-white/[0.06] rounded"></div></div>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/40 transition-colors duration-300 flex items-center justify-center">
+                                <span class="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-600 px-4 py-2 rounded-lg shadow-lg">Ver detalhes</span>
+                            </div>
                         </div>
-                        <div class="flex flex-col items-start px-1">
+                        <div class="flex flex-col items-start p-5">
                             <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md mb-2">Bio Link</span>
-                            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Bio Link Premium</h3>
-                            <p class="text-gray-600 text-sm">Página de links personalizada com design moderno.</p>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Bio Link Instagram</h3>
+                            <p class="text-gray-600 text-sm">3 modelos prontos com design moderno. Clique para ver.</p>
+                        </div>
+                    </div>
+
+                    <!-- Projeto 4 -->
+                    <div class="group fade-in-element cursor-pointer bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg hover:border-brand-200 transition-all duration-300 overflow-hidden" style="animation-delay: 0.3s;" onclick="openPortfolioModal(2)" onkeydown="if(event.key==='Enter')openPortfolioModal(2)" role="button" tabindex="0" aria-label="Ver detalhes da Brigada de Incêndio">
+                        <div class="aspect-video bg-gradient-to-br from-red-100 to-orange-100 overflow-hidden relative flex items-center justify-center">
+                            <img src="assets/portfolio/brigada-incendio-1.png" alt="Screenshot do Formulário Brigada de Incêndio" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-brand-900/0 group-hover:bg-brand-900/40 transition-colors duration-300 flex items-center justify-center">
+                                <span class="text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-brand-600 px-4 py-2 rounded-lg shadow-lg">Ver detalhes</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start p-5">
+                            <span class="text-xs font-semibold bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md mb-2">Formulário Inteligente</span>
+                            <h3 class="text-xl font-bold text-gray-900 mb-1 group-hover:text-brand-600 transition-colors">Brigada de Incêndio — TJAM</h3>
+                            <p class="text-gray-600 text-sm">Formulário de inscrição com controle de vagas em tempo real.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre Section -->
+        <section id="sobre" class="py-6 sm:py-8 relative px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto bg-white/90 backdrop-blur-xl rounded-[2.5rem] shadow-[0_20px_60px_-10px_rgba(0,0,0,0.15)] border border-white p-6 sm:p-10 lg:p-12 relative z-10">
+                <div class="grid lg:grid-cols-[280px_1fr] gap-10 items-center">
+                    
+                    <!-- Foto / Avatar -->
+                    <div class="flex flex-col items-center fade-in-element">
+                        <div class="w-48 h-48 lg:w-full lg:h-64 rounded-3xl bg-gradient-to-br from-brand-100 to-brand-200 shadow-lg border border-brand-100 overflow-hidden">
+                            <img src="assets/sobre/murylo.JPEG" alt="Murylo Neves — Desenvolvedor Web" class="w-full h-full object-cover object-top">
+                        </div>
+                        <div class="flex items-center gap-3 mt-5">
+                            <a href="https://www.instagram.com/murylo02_" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"/></svg>
+                            </a>
+                            <a href="https://www.linkedin.com/in/murylo-neves-77053a269" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-brand-50 hover:text-brand-600 transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Texto -->
+                    <div class="text-center lg:text-left fade-in-element" style="animation-delay: 0.1s">
+                        <span class="text-brand-600 font-semibold tracking-wide uppercase text-sm mb-2 block">Sobre mim</span>
+                        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Murylo Neves</h2>
+                        <p class="text-gray-600 text-base leading-relaxed mb-4">
+                            Desenvolvedor web de Manaus, AM. Estudante do 10º período de Engenharia da Computação e servidor da <strong>Divisão de Tecnologia da Informação</strong> da Escola Judicial do Tribunal de Justiça do Estado do Amazonas (EJUD/TJAM), onde crio soluções tecnológicas, cuido do front-end do Moodle institucional — estilização, modernização e responsividade — e desenvolvo sistemas internos sob demanda.
+                        </p>
+                        <p class="text-gray-600 text-base leading-relaxed mb-6">
+                            Já desenvolvi projetos para a <strong>EJUD/TJAM</strong> e para diversos clientes que precisavam de presença digital profissional sem complicação.
+                        </p>
+                        <div class="flex flex-wrap gap-2 justify-center lg:justify-start">
+                            <span class="px-3 py-1.5 bg-brand-50 text-brand-700 text-xs font-semibold rounded-lg">HTML / CSS / JS</span>
+                            <span class="px-3 py-1.5 bg-brand-50 text-brand-700 text-xs font-semibold rounded-lg">Tailwind CSS</span>
+                            <span class="px-3 py-1.5 bg-brand-50 text-brand-700 text-xs font-semibold rounded-lg">Google Sheets</span>
+                            <span class="px-3 py-1.5 bg-brand-50 text-brand-700 text-xs font-semibold rounded-lg">Apps Script</span>
+                            <span class="px-3 py-1.5 bg-brand-50 text-brand-700 text-xs font-semibold rounded-lg">Git / GitHub</span>
+                            <span class="px-3 py-1.5 bg-brand-50 text-brand-700 text-xs font-semibold rounded-lg">SEO</span>
                         </div>
                     </div>
                 </div>
@@ -352,18 +454,19 @@
                         <li><a href="#inicio" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Início</a></li>
                         <li><a href="#servicos" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Serviços</a></li>
                         <li><a href="#portfolio" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Portfólio</a></li>
+                        <li><a href="#sobre" class="text-gray-400 hover:text-brand-400 transition-colors text-sm">Sobre</a></li>
                     </ul>
                 </div>
 
                 <div class="col-span-1">
                     <h3 class="text-white font-semibold mb-4">Contato</h3>
                     <ul class="space-y-3">
-                        <li><a href="mailto:murylo.neves@gmail.com" class="text-gray-400 hover:text-brand-400 transition-colors text-sm flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> murylo.neves@gmail.com</a></li>
+                        <li><a href="mailto:murylo.neves@gmail.com" class="text-gray-400 hover:text-brand-400 transition-colors text-sm flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> murylo.neves@gmail.com</a></li>
                         <li class="flex items-center gap-4 mt-4">
-                            <a href="https://www.instagram.com/murylo02_" target="_blank" aria-label="Instagram" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
-                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                            <a href="https://www.instagram.com/murylo02_" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15-.748-.35-.35-.566-.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
                             </a>
-                            <a href="https://www.linkedin.com/in/murylo-neves-77053a269" target="_blank" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
+                            <a href="https://www.linkedin.com/in/murylo-neves-77053a269" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-brand-600 hover:text-white transition-colors">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"/></svg>
                             </a>
                         </li>
@@ -372,7 +475,7 @@
             </div>
 
             <div class="text-center text-gray-500 text-sm">
-                <p>&copy; 2026 Murylo Dev. Manaus, AM. Desenvolvido por Murylo Neves. Todos os direitos reservados.</p>
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Murylo Dev. Manaus, AM. Desenvolvido por Murylo Neves. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -404,7 +507,7 @@
                 <div class="space-y-3">
                     <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex gap-3">
                         <svg class="w-5 h-5 text-green-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <p class="text-sm text-green-800"><strong>Apenas para orçamento</strong> - Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.</p>
+                        <p id="modal-green-text" class="text-sm text-green-800"><strong>Apenas para orçamento</strong> - Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.</p>
                     </div>
                     <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex gap-3">
                         <svg class="w-5 h-5 text-amber-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
@@ -427,16 +530,18 @@
                     
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                         <!-- Clean -->
-                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all" data-id="clean" data-name="Clean" data-price="97">
-                            <div class="aspect-[3/4] bg-gradient-to-b from-gray-50 to-white p-4 flex flex-col items-center justify-center">
-                                <div class="w-10 h-10 rounded-full bg-gray-800 mb-3"></div>
-                                <div class="w-14 h-1.5 bg-gray-300 rounded mb-1.5"></div>
-                                <div class="w-10 h-1.5 bg-gray-200 rounded"></div>
+                        <div class="model-card cursor-pointer rounded-2xl border-2 border-gray-200 hover:border-brand-300 hover:shadow-xl transform transition-all duration-500 ease-ios z-0 overflow-hidden flex flex-col h-[280px] bg-white group" data-id="clean" data-name="Clean" data-price="35">
+                            <div class="flex-1 bg-gradient-to-b from-gray-50 to-white p-4 flex flex-col items-center justify-center relative border-b border-gray-100">
+                                <div class="w-12 h-12 rounded-full bg-gray-800 mb-3 transition-all duration-500 opacity-90"></div>
+                                <div class="w-16 h-2 rounded-full bg-gray-800 mb-2 transition-all duration-500 opacity-90"></div>
+                                <div class="w-12 h-2 rounded-full bg-gray-800 transition-all duration-500 opacity-90"></div>
                             </div>
-                            <div class="p-3 bg-white border-t">
-                                <p class="font-semibold text-gray-900 text-sm">Clean</p>
-                                <p class="text-brand-600 font-bold">R$ 97</p>
-                                <button onclick="event.stopPropagation(); openTester('clean')" class="mt-2 w-full py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                            <div class="bg-white p-3 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-sm font-bold text-gray-900 block">Clean</span>
+                                    <span class="text-brand-600 font-bold text-base block mb-2">R$ 35</span>
+                                </div>
+                                <button onclick="event.stopPropagation(); openTester('clean')" class="w-full py-1.5 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-brand-600 transition-colors">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                     Testar modelo
                                 </button>
@@ -444,34 +549,42 @@
                         </div>
                         
                         <!-- Gradient -->
-                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all relative" data-id="gradient" data-name="Gradient" data-price="147">
+                        <div class="model-card cursor-pointer rounded-2xl border-2 border-gray-200 hover:border-brand-300 hover:shadow-xl transform transition-all duration-500 ease-ios z-0 overflow-hidden flex flex-col h-[280px] bg-white group relative" data-id="gradient" data-name="Gradient" data-price="45">
                             <span class="absolute top-2 right-2 bg-brand-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Popular</span>
-                            <div class="aspect-[3/4] bg-gradient-to-br from-indigo-500 to-purple-600 p-4 flex flex-col items-center justify-center">
-                                <div class="w-10 h-10 rounded-full bg-white/30 mb-3"></div>
-                                <div class="w-14 h-1.5 bg-white/50 rounded mb-1.5"></div>
-                                <div class="w-10 h-1.5 bg-white/30 rounded"></div>
+                            <div class="flex-1 bg-gradient-to-br from-indigo-500 to-purple-600 p-4 flex flex-col items-center justify-center relative border-b border-gray-100">
+                                <div class="w-12 h-12 rounded-full bg-white/40 mb-3 transition-all duration-500 opacity-90"></div>
+                                <div class="w-16 h-2 rounded-full bg-white/40 mb-2 transition-all duration-500 opacity-90"></div>
+                                <div class="w-12 h-2 rounded-full bg-white/40 transition-all duration-500 opacity-90"></div>
                             </div>
-                            <div class="p-3 bg-white border-t">
-                                <p class="font-semibold text-gray-900 text-sm">Gradient</p>
-                                <p class="text-brand-600 font-bold">R$ 147</p>
-                                <button onclick="event.stopPropagation(); openTester('gradient')" class="mt-2 w-full py-1.5 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                            <div class="bg-white p-3 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-sm font-bold text-gray-900 block">Gradient</span>
+                                    <span class="text-brand-600 font-bold text-base block mb-2">R$ 45</span>
+                                </div>
+                                <button onclick="event.stopPropagation(); openTester('gradient')" class="w-full py-1.5 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-brand-600 transition-colors">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                     Testar modelo
                                 </button>
                             </div>
                         </div>
                         
-                        <!-- Glass -->
-                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all" data-id="glass" data-name="Glass" data-price="197">
-                            <div class="aspect-[3/4] bg-gradient-to-br from-slate-800 to-slate-900 p-4 flex flex-col items-center justify-center">
-                                <div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur mb-3"></div>
-                                <div class="w-14 h-1.5 bg-white/30 rounded mb-1.5"></div>
-                                <div class="w-10 h-1.5 bg-white/20 rounded"></div>
+                        <!-- Glass (Premium Black) -->
+                        <div class="model-card cursor-pointer rounded-2xl border-2 border-gray-200 hover:border-brand-300 hover:shadow-xl transform transition-all duration-500 ease-ios z-0 overflow-hidden flex flex-col h-[280px] bg-white group" data-id="glass" data-name="Glass Premium" data-price="100">
+                            <div class="flex-1 bg-gradient-to-tr from-slate-950 via-gray-900 to-slate-800 p-4 flex flex-col items-center justify-center relative border-b border-gray-100 overflow-hidden z-0">
+                                <!-- Efeitos de Luz Premium -->
+                                <div class="absolute -top-6 -right-6 w-20 h-20 bg-white/10 blur-2xl rounded-full pointer-events-none"></div>
+                                <div class="absolute -bottom-8 -left-8 w-24 h-24 bg-brand-500/10 blur-2xl rounded-full pointer-events-none"></div>
+                                
+                                <div class="w-12 h-12 rounded-full bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-md border border-white/10 mb-3 transition-all duration-500 shadow-lg"></div>
+                                <div class="w-16 h-2 rounded-full bg-white/10 backdrop-blur-md border border-white/5 mb-2 transition-all duration-500"></div>
+                                <div class="w-12 h-2 rounded-full bg-white/10 backdrop-blur-md border border-white/5 transition-all duration-500"></div>
                             </div>
-                            <div class="p-3 bg-white border-t">
-                                <p class="font-semibold text-gray-900 text-sm">Glass</p>
-                                <p class="text-brand-600 font-bold">R$ 197</p>
-                                <button onclick="event.stopPropagation(); openTester('glass')" class="mt-2 w-full py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg transition-colors flex items-center justify-center gap-1.5">
+                            <div class="bg-white p-3 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-sm font-bold text-gray-900 block">Glass Premium</span>
+                                    <span class="text-brand-600 font-bold text-base block mb-2">R$ 100</span>
+                                </div>
+                                <button onclick="event.stopPropagation(); openTester('glass')" class="w-full py-1.5 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-brand-600 transition-colors">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
                                     Testar modelo
                                 </button>
@@ -479,100 +592,137 @@
                         </div>
                         
                         <!-- Personalizado -->
-                        <div class="model-card cursor-pointer rounded-2xl overflow-hidden border-2 border-dashed border-gray-300 hover:border-brand-400 transition-all flex flex-col items-center justify-center bg-gray-50" data-id="personalizado" data-name="Personalizado" data-price="Sob consulta">
-                            <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
-                            </svg>
-                            <p class="font-semibold text-gray-700 text-sm">Personalizado</p>
-                            <p class="text-gray-500 text-xs mt-1 text-center px-2">Valor sob consulta</p>
+                        <div class="model-card cursor-pointer rounded-2xl border-2 border-dashed border-gray-300 hover:border-brand-400 bg-gray-50 hover:bg-white hover:shadow-xl transform transition-all duration-500 ease-ios z-0 flex flex-col items-center justify-center p-4 text-center group" data-id="personalizado" data-name="Personalizado" data-price="A partir de R$ 70">
+                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-3 text-gray-500 transition-all duration-500">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                            </div>
+                            <span class="text-sm font-bold text-gray-900 mb-1">Personalizado</span>
+                            <span class="text-xs text-gray-500 leading-tight">A partir de R$ 70</span>
+                            <span class="text-[10px] text-gray-400 mt-2 block px-2 leading-tight">Valor sujeito à mudança pelo escopo.</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Passo 2: Planos de Entrega -->
-                <div>
+                <div id="step-plans">
                     <h5 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                         <span id="numero-passo" class="w-6 h-6 bg-brand-600 text-white rounded-full text-sm flex items-center justify-center">1</span>
                         <span id="step-plan-title">Escolha o tipo de entrega:</span>
                     </h5>
                     
-                    <div class="space-y-4">
+                    <!-- PLANOS PADRÃO (Web & Biolink) -->
+                    <div id="plans-standard" class="space-y-4">
                         <!-- Essencial -->
-                        <div class="plan-card cursor-pointer border-2 border-transparent bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all" data-id="essencial" data-name="Essencial" data-duration="6 meses">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-bold text-lg text-gray-900">Essencial</h4>
-                                <span class="text-brand-600 font-bold">R$ 150+ <span class="text-xs text-gray-500 font-normal">/ 6 meses</span></span>
+                        <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0 relative" data-id="essencial" data-name="Essencial" data-duration="6 meses (Pgto Único)">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Essencial</h4>
+                                <div class="text-right flex flex-col items-end mt-[-2px]">
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px]">R$ 50</span>
+                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium">/ 6 meses</span>
+                                    </div>
+                                    <span class="text-[9px] text-gray-500 mt-1 font-semibold bg-gray-100 px-2 py-0.5 rounded">Pgto único (Pix/Cartão)</span>
+                                </div>
                             </div>
-                            <p class="text-sm text-gray-600 mb-3">Ideal para validar ideias de forma rápida e acessível.</p>
-                            <ul class="space-y-2 text-sm text-gray-600">
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Site no ar por 6 meses</li>
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Link funcional para compartilhar</li>
-                                <li class="flex items-center gap-2 text-gray-400"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> Sem alterações inclusas</li>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed">Hospedagem por 6 meses. O valor do desenvolvimento é orçado à parte.</p>
+                            <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Site no ar por 6 meses</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Link funcional para compartilhar</span></li>
+                                <li class="flex items-start gap-2.5 text-gray-400"><svg class="w-4 h-4 text-gray-300 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> <span class="leading-tight">Sem alterações inclusas</span></li>
                             </ul>
 
-                            <!-- Expandir Detalhes Essencial -->
-                            <details class="mt-4 group/details" onclick="event.stopPropagation()">
-                                <summary class="text-xs font-semibold text-brand-600 cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center gap-1 hover:text-brand-700 transition-colors w-max select-none">
+                            <details class="mt-4 pt-4 border-t border-gray-100 group/details" onclick="event.stopPropagation()">
+                                <summary class="text-[13px] font-bold text-brand-600 cursor-pointer list-none flex items-center gap-1.5 hover:text-brand-700 transition-colors w-max select-none">
                                     <svg class="w-4 h-4 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                                     <span>Ver detalhes do plano</span>
                                 </summary>
-                                <div class="pt-3 mt-2 border-t border-gray-100 text-xs text-gray-500 leading-relaxed text-justify">
+                                <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
                                     Este plano é ideal para quem busca uma solução rápida e acessível. O seu projeto será entregue totalmente funcional através de um link e ficará hospedado de forma segura pelo período de <strong>6 meses</strong>. Ao final deste prazo, você terá a opção de renovar a hospedagem por mais 6 meses para manter o site online. Caso opte por não renovar, o projeto será retirado do ar. Ressaltamos que este plano garante a entrega inicial impecável, porém <strong>não inclui manutenções ou alterações</strong> após a aprovação. Qualquer mudança futura será orçada e cobrada separadamente, de acordo com a complexidade do pedido.
                                 </div>
                             </details>
                         </div>
 
                         <!-- Profissional -->
-                        <div class="plan-card cursor-pointer border-2 border-brand-500 bg-brand-50/30 rounded-xl p-5 shadow-md relative" data-id="profissional" data-name="Profissional" data-duration="6 meses">
-                            <div class="absolute -top-3 right-4 bg-brand-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wide shadow-sm">Recomendado</div>
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-bold text-lg text-brand-900">Profissional</h4>
-                                <span class="text-brand-600 font-bold">R$ 250+ <span class="text-xs text-gray-500 font-normal">/ 6 meses</span></span>
+                        <div class="plan-card relative cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0" data-id="profissional" data-name="Profissional" data-duration="6 meses (Até 6x)">
+                            <div class="absolute -top-3 right-5 bg-brand-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm z-20 transition-all duration-300">Recomendado</div>
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Profissional</h4>
+                                <div class="text-right flex flex-col items-end mt-[-2px]">
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px]">R$ 200</span>
+                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium">/ 6 meses</span>
+                                    </div>
+                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded">Em até 6x (c/ taxas)</span>
+                                </div>
                             </div>
-                            <p class="text-sm text-gray-600 mb-3">Acompanhamento e atualizações para manter tudo em dia.</p>
-                            <ul class="space-y-2 text-sm text-gray-700">
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Tudo do plano Essencial</li>
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Suporte via WhatsApp</li>
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Até 3 atualizações simples/mês</li>
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Prioridade em correções</li>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed">Acompanhamento e atualizações para manter tudo em dia.</p>
+                            <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Tudo do plano Essencial</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Suporte via WhatsApp</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Até 3 atualizações simples/mês</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Prioridade em correções</span></li>
                             </ul>
 
-                            <!-- Expandir Detalhes Profissional -->
-                            <details class="mt-4 group/details" onclick="event.stopPropagation()">
-                                <summary class="text-xs font-semibold text-brand-700 cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center gap-1 hover:text-brand-800 transition-colors w-max select-none">
+                            <details class="mt-4 pt-4 border-t border-gray-100 group/details" onclick="event.stopPropagation()">
+                                <summary class="text-[13px] font-bold text-brand-600 cursor-pointer list-none flex items-center gap-1.5 hover:text-brand-700 transition-colors w-max select-none">
                                     <svg class="w-4 h-4 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                                     <span>Ver detalhes do plano</span>
                                 </summary>
-                                <div class="pt-3 mt-2 border-t border-brand-200/50 text-xs text-gray-600 leading-relaxed text-justify">
+                                <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
                                     Desenvolvido para oferecer tranquilidade e acompanhamento contínuo. O seu site ficará no ar por 6 meses com total <strong>suporte, manutenção e monitoramento</strong>. Você terá acesso prioritário via WhatsApp para tirar dúvidas e o direito a solicitar até <strong>3 pequenas alterações por mês</strong> (como atualizar textos, fotos ou links). Caso deseje renovar após os 6 meses, você garante um desconto exclusivo. Se decidir não renovar, o seu site não sairá do ar imediatamente: oferecemos <strong>1 mês extra de carência</strong> para continuar funcionando através do link, perdendo apenas o direito ao suporte e às atualizações mensais. Modificações que excedam a franquia do plano estarão sujeitas a cobrança adicional.
                                 </div>
                             </details>
                         </div>
 
                         <!-- Permanente -->
-                        <div class="plan-card cursor-pointer border-2 border-transparent bg-white rounded-xl p-5 shadow-sm hover:shadow-md transition-all" data-id="permanente" data-name="Permanente" data-duration="Vitalício">
-                            <div class="flex justify-between items-center mb-2">
-                                <h4 class="font-bold text-lg text-gray-900">Permanente</h4>
-                                <span class="text-brand-600 font-bold">R$ 350+ <span class="text-xs text-gray-500 font-normal">Vitalício</span></span>
+                        <div class="plan-card relative cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0" data-id="permanente" data-name="Permanente" data-duration="Vitalício (Até 6x)">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Permanente</h4>
+                                <div class="text-right flex flex-col items-end mt-[-2px]">
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px]">R$ 400</span>
+                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium">Vitalício</span>
+                                    </div>
+                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded">Em até 6x (c/ taxas)</span>
+                                </div>
                             </div>
-                            <p class="text-sm text-gray-600 mb-3">Controle total. O código e o site são 100% seus.</p>
-                            <ul class="space-y-2 text-sm text-gray-600">
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Recebe o código-fonte completo</li>
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Transferência para sua hospedagem</li>
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Fica no ar para sempre</li>
-                                <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Orientação de gerenciamento</li>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed">Controle total. O código e o site são 100% seus.</p>
+                            <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Recebe o código-fonte completo</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Transferência para sua hospedagem</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Fica no ar para sempre</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Orientação de gerenciamento</span></li>
                             </ul>
 
-                            <!-- Expandir Detalhes Permanente -->
-                            <details class="mt-4 group/details" onclick="event.stopPropagation()">
-                                <summary class="text-xs font-semibold text-brand-600 cursor-pointer list-none [&::-webkit-details-marker]:hidden flex items-center gap-1 hover:text-brand-700 transition-colors w-max select-none">
+                            <details class="mt-4 pt-4 border-t border-gray-100 group/details" onclick="event.stopPropagation()">
+                                <summary class="text-[13px] font-bold text-brand-600 cursor-pointer list-none flex items-center gap-1.5 hover:text-brand-700 transition-colors w-max select-none">
                                     <svg class="w-4 h-4 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                                     <span>Ver detalhes do plano</span>
                                 </summary>
-                                <div class="pt-3 mt-2 border-t border-gray-100 text-xs text-gray-500 leading-relaxed text-justify">
+                                <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
                                     A solução definitiva para quem deseja total independência e <strong>nenhum vínculo com mensalidades</strong>. Neste formato, realizamos a entrega completa de todos os arquivos e código-fonte originais. Iremos auxiliá-lo na configuração e transferência do site para a sua própria infraestrutura de hospedagem (como Hostinger, Vercel, etc.). A partir desse momento, você assume <strong>100% do controle do projeto</strong>. Por ser um plano vitalício e autogerenciado, não há suporte contínuo incluso. Qualquer necessidade futura de manutenção técnica, atualização estrutural ou correção será tratada de forma avulsa, mediante consulta e orçamento prévio, baseando-se no escopo do trabalho solicitado.
                                 </div>
                             </details>
+                        </div>
+                    </div>
+
+                    <!-- PLANOS SETUP (Serviços Pontuais) -->
+                    <div id="plans-setup" class="space-y-4 hidden">
+                        <!-- Serviço Único -->
+                        <div class="plan-card relative cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0" data-id="unico" data-name="Serviço Único" data-duration="Pagamento Único">
+                            <div class="absolute -top-3 right-5 bg-brand-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm z-20 transition-all duration-300">Recomendado</div>
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Serviço Único</h4>
+                                <div class="text-right flex items-baseline gap-1 mt-[-2px]">
+                                    <span class="text-brand-600 font-bold block leading-none text-[17px]">Sob consulta</span>
+                                </div>
+                            </div>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed">Pagamento único focado na entrega do resultado. Sem mensalidades.</p>
+                            <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Desenvolvimento e entrega final do projeto</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Revisões ajustáveis durante a criação</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Sem taxas de manutenção recorrentes</span></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -627,7 +777,7 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <div>
                                     <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">Modelo base</label>
-                                    <select id="builder-theme" onchange="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none">
+                                    <select id="builder-theme" onchange="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none transition-all duration-300 hover:border-brand-300">
                                         <option value="clean">Clean</option>
                                         <option value="gradient">Gradient</option>
                                         <option value="glass">Glass</option>
@@ -635,9 +785,10 @@
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">Formato dos Links</label>
-                                    <select id="builder-layout" onchange="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none">
+                                    <select id="builder-layout" onchange="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none transition-all duration-300 hover:border-brand-300">
                                         <option value="list">Lista (Vertical)</option>
-                                        <option value="grid">Grid (Lado a lado)</option>
+                                        <option value="grid2">Grid (2 Colunas)</option>
+                                        <option value="grid3">Grid (3 Colunas)</option>
                                     </select>
                                 </div>
                             </div>
@@ -647,12 +798,12 @@
                         <div class="space-y-4">
                             <h4 class="font-bold text-gray-900 flex items-center gap-2"><span class="text-brand-500">👤</span> Perfil</h4>
                             <div>
-                                <label class="block text-xs font-semibold text-gray-500 mb-1.5">NOME / @USUÁRIO</label>
-                                <input type="text" id="builder-name" value="@seunome" oninput="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none">
+                                <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">NOME / @USUÁRIO</label>
+                                <input type="text" id="builder-name" value="@seunome" oninput="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none transition-all duration-300 hover:border-brand-300 shadow-sm">
                             </div>
                             <div>
-                                <label class="block text-xs font-semibold text-gray-500 mb-1.5">BIO / DESCRIÇÃO</label>
-                                <textarea id="builder-bio" rows="2" oninput="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none resize-none">Empreendedor Digital 🚀&#10;Transformando ideias em negócios.</textarea>
+                                <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">BIO / DESCRIÇÃO</label>
+                                <textarea id="builder-bio" rows="2" oninput="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none resize-none transition-all duration-300 hover:border-brand-300 shadow-sm">Empreendedor Digital 🚀&#10;Transformando ideias em negócios.</textarea>
                             </div>
                         </div>
 
@@ -688,7 +839,9 @@
                         <!-- Tela Interna -->
                         <div id="phone-content" class="w-full h-full overflow-y-auto no-scrollbar flex flex-col items-center pt-12 pb-8 px-5 transition-all duration-500">
                             
-                            <img id="phone-avatar" src="https://ui-avatars.com/api/?name=SN&background=random&color=fff" class="w-24 h-24 rounded-full mb-4 shadow-lg object-cover border-4 border-white/20 transition-all" alt="Avatar do utilizador" loading="lazy">
+                            <div id="phone-avatar-container" class="w-24 h-24 rounded-full mb-4 shadow-lg flex items-center justify-center border-4 border-white/20 transition-all text-3xl font-bold tracking-tighter">
+                                <!-- Injetado via JS -->
+                            </div>
                             
                             <h2 id="phone-name-display" class="font-bold text-xl text-center mb-2 tracking-tight transition-colors">@seunome</h2>
                             <p id="phone-bio-display" class="text-sm text-center mb-8 opacity-90 leading-relaxed whitespace-pre-line transition-colors">Sua bio aparece aqui</p>
@@ -721,567 +874,60 @@
         </div>
     </div>
 
-    <!-- JavaScript Vanilla -->
-    <script>
-        // === 0. FIX DE SCROLL (Sempre carregar no topo) ===
-        if ('scrollRestoration' in history) {
-            history.scrollRestoration = 'manual';
-        }
-        window.scrollTo(0, 0);
+    <!-- Modal Portfólio -->
+    <div id="portfolio-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-gray-900/60 backdrop-blur-sm cursor-pointer" onclick="closePortfolioModal()"></div>
+        <div class="bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col relative z-10 shadow-2xl transform scale-95 transition-transform duration-300" id="portfolio-modal-container">
+            
+            <!-- Header -->
+            <div class="p-6 sm:p-8 border-b border-gray-100 flex justify-between items-start sticky top-0 bg-white rounded-t-3xl z-20">
+                <div>
+                    <span class="inline-block px-2.5 py-1 bg-brand-50 text-brand-700 text-xs font-semibold rounded-md mb-3" id="pf-modal-badge">Categoria</span>
+                    <h2 class="text-2xl font-bold text-gray-900" id="pf-modal-title">Nome do Projeto</h2>
+                </div>
+                <button onclick="closePortfolioModal()" class="p-2 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded-full transition-colors" aria-label="Fechar detalhes do projeto">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
 
-        // === 1. MOUSE GLOW BACKGROUND AESTHETIC ===
-        const mouseGlow = document.querySelector('.ia-mouse-glow');
-        if (mouseGlow && window.innerWidth > 768) { // Só ativa em telas maiores (desktop/tablet)
-            document.addEventListener('mousemove', (e) => {
-                mouseGlow.style.left = e.clientX + 'px';
-                mouseGlow.style.top = e.clientY + 'px';
-                mouseGlow.style.opacity = '1';
-            });
-            document.addEventListener('mouseleave', () => {
-                mouseGlow.style.opacity = '0';
-            });
-        }
+            <!-- Body -->
+            <div class="p-6 sm:p-8 overflow-y-auto no-scrollbar flex-1 space-y-6 bg-slate-50">
+                <!-- Screenshot Principal -->
+                <div class="w-full aspect-video rounded-2xl overflow-hidden border border-gray-100 shadow-sm" id="pf-modal-img-container">
+                    <!-- Preenchido via JS -->
+                </div>
 
-        // === 2. DADOS DOS SERVIÇOS ===
-        const servicesData = [
-            {
-                id: 'biolink',
-                title: 'Bio Link Instagram',
-                badge: '✨ Modelos prontos',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>',
-                shortDesc: 'Centralize todos os seus links em uma página profissional e atrativa.',
-                fullDesc: 'Uma página única com todos os seus links importantes (WhatsApp, loja, redes sociais, etc). Perfeito para colocar na bio do Instagram e facilitar o acesso dos seus seguidores.',
-                hasModels: true,
-                iconBg: 'from-pink-100 to-rose-100',
-                iconColor: 'text-rose-600'
-            },
-            {
-                id: 'portfolio',
-                title: 'Portfólio Digital',
-                badge: null,
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>',
-                shortDesc: 'Apresente seus trabalhos de forma elegante e impressione clientes.',
-                fullDesc: 'Site para apresentar seus trabalhos, projetos e habilidades de forma profissional. Ideal para fotógrafos, designers, artistas e freelancers.',
-                hasModels: false,
-                iconBg: 'from-violet-100 to-purple-100',
-                iconColor: 'text-violet-600'
-            },
-            {
-                id: 'institucional',
-                title: 'Site Institucional',
-                badge: null,
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>',
-                shortDesc: 'Estabeleça presença digital sólida para sua empresa ou marca.',
-                fullDesc: 'Presença digital completa para sua empresa ou negócio. Inclui páginas como Sobre, Serviços, Contato e o que mais precisar.',
-                hasModels: false,
-                iconBg: 'from-blue-100 to-indigo-100',
-                iconColor: 'text-blue-600'
-            },
-            {
-                id: 'forms',
-                title: 'Formulários Inteligentes',
-                badge: null,
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
-                shortDesc: 'Capture leads e dados com formulários integrados a planilhas.',
-                fullDesc: 'Formulários personalizados que salvam as respostas direto em planilhas do Google. Ótimo para cadastros, pesquisas, pedidos e inscrições.',
-                hasModels: false,
-                iconBg: 'from-emerald-100 to-green-100',
-                iconColor: 'text-emerald-600'
-            },
-            {
-                id: 'sistemas',
-                title: 'Sistemas de Gestão',
-                badge: null,
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
-                shortDesc: 'Dashboards e controles personalizados para seu negócio.',
-                fullDesc: 'Dashboards e sistemas sob medida para controlar seu negócio: vendas, estoque, atendimentos, tarefas e muito mais.',
-                hasModels: false,
-                iconBg: 'from-orange-100 to-amber-100',
-                iconColor: 'text-orange-600'
-            },
-            {
-                id: 'custom',
-                title: 'Projeto Personalizado',
-                badge: null,
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>',
-                shortDesc: 'Tem uma ideia diferente? Vamos conversar sobre ela.',
-                fullDesc: 'Tem uma ideia diferente? Conte-me sobre ela e vamos encontrar a melhor solução juntos.',
-                hasModels: false,
-                isDashed: true
-            }
-        ];
+                <!-- Descrição -->
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-2">Sobre o projeto</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed" id="pf-modal-desc">Descrição detalhada.</p>
+                </div>
 
-        // RENDERIZAR SERVIÇOS NA TELA
-        const servicesGrid = document.getElementById('services-grid');
-        if (servicesGrid) {
-            servicesData.forEach((s, index) => {
-                const isCustom = s.isDashed;
-                const cardClasses = isCustom ? 'border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-white hover:border-brand-400' : 'bg-white border border-gray-100 hover:border-brand-200 shadow-[0_8px_30px_rgb(0,0,0,0.08)]';
-                
-                const badgeHtml = s.badge ? `<span class="absolute -top-3 right-4 bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide shadow">${s.badge}</span>` : '';
-                
-                const iconBgClass = isCustom ? 'bg-gray-100 group-hover:bg-brand-100' : `bg-gradient-to-br ${s.iconBg}`;
-                const iconColorClass = isCustom ? 'text-gray-400 group-hover:text-brand-600' : s.iconColor;
-
-                servicesGrid.innerHTML += `
-                    <div class="card-hover ${cardClasses} rounded-2xl p-6 relative cursor-pointer fade-in-element group" style="animation-delay: ${index * 0.1}s" onclick="openModal('${s.id}')">
-                        ${badgeHtml}
-                        <div class="w-14 h-14 rounded-2xl ${iconBgClass} flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                            <svg class="w-7 h-7 ${iconColorClass} transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">${s.icon}</svg>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">${s.title}</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed mb-4">${s.shortDesc}</p>
-                        <div class="mt-5 flex items-center gap-1 text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                            Selecionar <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                        </div>
+                <!-- Tecnologias -->
+                <div>
+                    <h4 class="font-bold text-gray-900 mb-2">Tecnologias utilizadas</h4>
+                    <div class="flex flex-wrap gap-2" id="pf-modal-techs">
+                        <!-- Preenchido via JS -->
                     </div>
-                `;
-            });
-        }
+                </div>
+            </div>
+        </div>
+    </div>
 
-        // === 3. LÓGICA DO MODAL DE ORÇAMENTO ===
-        const modal = document.getElementById('orcamento-modal');
-        const modalContainer = document.getElementById('modal-container');
-        const btnWa = document.getElementById('btn-whatsapp');
-        const btnWaText = document.getElementById('btn-whatsapp-text');
-        
-        let currentState = {
-            service: null,
-            model: null,
-            plan: null
-        };
+    <!-- Modal Zoom Imagem -->
+    <div id="zoom-modal" class="fixed inset-0 z-[70] hidden flex items-center justify-center bg-gray-900/90 backdrop-blur-md cursor-zoom-out opacity-0 transition-opacity duration-300" onclick="closeZoom()">
+        <button class="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-colors z-20" aria-label="Fechar zoom" onclick="closeZoom()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full z-20">
+            <div class="w-1 h-1 rounded-full bg-brand-400"></div>
+            <span id="zoom-caption" class="text-xs text-white/80 italic"></span>
+        </div>
+        <img id="zoom-img" src="" alt="Zoom" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300" onclick="event.stopPropagation()">
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
 
-        function openModal(serviceId) {
-            const service = servicesData.find(s => s.id === serviceId);
-            currentState.service = service;
-            currentState.model = null;
-            currentState.plan = null;
-
-            // Preencher header
-            document.getElementById('modal-title').textContent = service.title;
-            document.getElementById('modal-desc').textContent = service.fullDesc;
-
-            // Mostrar/Esconder Passo 1 e ajustar aviso de valores
-            const stepModels = document.getElementById('step-models');
-            const warningText = document.getElementById('modal-warning-text');
-
-            if(service.hasModels) {
-                stepModels.classList.remove('hidden');
-                document.getElementById('numero-passo').textContent = '2';
-                if(warningText) {
-                    warningText.innerHTML = '<strong>Sobre os valores</strong> - Os modelos de Bio Link possuem valor fixo. O investimento total será a soma do modelo escolhido com o plano de entrega selecionado abaixo.';
-                }
-            } else {
-                stepModels.classList.add('hidden');
-                document.getElementById('numero-passo').textContent = '1';
-                if(warningText) {
-                    warningText.innerHTML = '<strong>Sobre os valores</strong> - Os valores abaixo são referentes ao plano de hospedagem e entrega. O serviço de desenvolvimento é orçado separadamente conforme a complexidade do projeto.';
-                }
-            }
-
-            // Resetar seleções visuais
-            document.querySelectorAll('.model-card').forEach(c => c.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300'));
-            document.querySelectorAll('.plan-card').forEach(c => {
-                c.classList.remove('ring-2', 'ring-brand-600');
-                if(c.dataset.id === 'profissional') {
-                    c.classList.add('border-brand-500'); // manter borda default do recomendado
-                } else {
-                    c.classList.add('border-transparent');
-                }
-            });
-
-            updateBtnWa();
-
-            // Retorna o scroll do modal para o topo
-            const scrollArea = document.getElementById('modal-scroll-area');
-            if (scrollArea) scrollArea.scrollTop = 0;
-
-            // Animação de entrada
-            if (modal) {
-                modal.classList.remove('hidden');
-                setTimeout(() => {
-                    modal.classList.remove('opacity-0');
-                    if (modalContainer) modalContainer.classList.remove('scale-95');
-                }, 10);
-            }
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            if (modal) modal.classList.add('opacity-0');
-            if (modalContainer) modalContainer.classList.add('scale-95');
-            setTimeout(() => {
-                if (modal) modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }, 300);
-        }
-
-        document.querySelectorAll('.modal-close').forEach(btn => btn.addEventListener('click', closeModal));
-
-        // Seleção de Modelos
-        document.querySelectorAll('.model-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const id = this.dataset.id;
-                if(currentState.model === id) {
-                    currentState.model = null; // deselecionar
-                    this.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300');
-                } else {
-                    currentState.model = id;
-                    document.querySelectorAll('.model-card').forEach(c => c.classList.remove('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300'));
-                    this.classList.add('ring-2', 'ring-brand-500', 'ring-offset-2', 'border-brand-300');
-                    // Correção visual borda dashed
-                    if(this.classList.contains('border-dashed')) this.classList.remove('border-gray-300');
-                }
-                updateBtnWa();
-            });
-        });
-
-        // Seleção de Planos
-        document.querySelectorAll('.plan-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const id = this.dataset.id;
-                if(currentState.plan === id) {
-                    currentState.plan = null;
-                    this.classList.remove('ring-2', 'ring-brand-600');
-                    if(id !== 'profissional') this.classList.add('border-transparent');
-                } else {
-                    currentState.plan = id;
-                    document.querySelectorAll('.plan-card').forEach(c => {
-                        c.classList.remove('ring-2', 'ring-brand-600');
-                        if(c.dataset.id !== 'profissional') c.classList.add('border-transparent');
-                    });
-                    this.classList.remove('border-transparent');
-                    this.classList.add('ring-2', 'ring-brand-600');
-                }
-                updateBtnWa();
-            });
-        });
-
-        function updateBtnWa() {
-            if (!btnWa || !btnWaText) return;
-            
-            const s = currentState.service;
-            let ready = false;
-
-            if(s && s.hasModels) {
-                if(!currentState.model && !currentState.plan) btnWaText.textContent = "Selecione um modelo e um plano";
-                else if(!currentState.model) btnWaText.textContent = "Selecione um modelo acima";
-                else if(!currentState.plan) btnWaText.textContent = "Selecione um plano de entrega";
-                else ready = true;
-            } else {
-                if(!currentState.plan) btnWaText.textContent = "Selecione um plano para continuar";
-                else ready = true;
-            }
-
-            if(ready) {
-                btnWa.disabled = false;
-                btnWa.classList.remove('bg-gray-300', 'cursor-not-allowed');
-                btnWa.classList.add('bg-green-500', 'hover:bg-green-600', 'shadow-lg', 'shadow-green-500/30');
-                btnWaText.textContent = "Solicitar Orçamento via WhatsApp";
-            } else {
-                btnWa.disabled = true;
-                btnWa.classList.add('bg-gray-300', 'cursor-not-allowed');
-                btnWa.classList.remove('bg-green-500', 'hover:bg-green-600', 'shadow-lg', 'shadow-green-500/30');
-            }
-        }
-
-        if (btnWa) {
-            btnWa.addEventListener('click', () => {
-                if(btnWa.disabled) return;
-                
-                const serviceName = currentState.service.title;
-                const planCard = document.querySelector(`.plan-card[data-id="${currentState.plan}"]`);
-                const planName = planCard.dataset.name;
-                const planDuration = planCard.dataset.duration;
-                
-                let msg = `Olá! Tenho interesse em solicitar um orçamento.\n\n`;
-                msg += `▸ Serviço: ${serviceName}\n`;
-                
-                if(currentState.service.hasModels) {
-                    const modelEl = document.querySelector(`.model-card[data-id="${currentState.model}"]`);
-                    const modelName = modelEl.dataset.name;
-                    const modelPrice = modelEl.dataset.price;
-                    if (modelPrice === "Sob consulta") {
-                        msg += `▸ Modelo: ${modelName} (sob consulta)\n`;
-                    } else {
-                        msg += `▸ Modelo: ${modelName} (R$ ${modelPrice})\n`;
-                    }
-                }
-                
-                msg += `▸ Plano: ${planName} — ${planDuration}\n\n`;
-                msg += `Aguardo seu retorno. Obrigado!`;
-
-                const encodedMsg = encodeURIComponent(msg);
-                const waUrl = `https://wa.me/5592992866146?text=${encodedMsg}`;
-                
-                window.open(waUrl, '_blank');
-                
-                // Refresh na página atual e força a voltar pro topo para limpar a interface
-                setTimeout(() => {
-                    window.scrollTo(0, 0);
-                    window.location.href = window.location.pathname;
-                }, 1000);
-            });
-        }
-
-        // === 4. HEADER SCROLL & MOBILE MENU ===
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (!header) return;
-            if (window.scrollY > 20) {
-                header.classList.add('glass-header', 'shadow-sm');
-                header.classList.remove('border-transparent');
-            } else {
-                header.classList.remove('glass-header', 'shadow-sm');
-                header.classList.add('border-transparent');
-            }
-        });
-
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIconPath = document.getElementById('menu-icon-path');
-        let isMenuOpen = false;
-
-        function toggleMenu() {
-            if (!mobileMenu || !menuIconPath) return;
-            isMenuOpen = !isMenuOpen;
-            if(isMenuOpen) {
-                mobileMenu.classList.remove('hidden');
-                menuIconPath.setAttribute('d', 'M6 18L18 6M6 6l12 12'); // X icon
-            } else {
-                mobileMenu.classList.add('hidden');
-                menuIconPath.setAttribute('d', 'M4 6h16M4 12h16M4 18h16'); // Hamburger icon
-            }
-        }
-
-        if (mobileMenuBtn) {
-            mobileMenuBtn.addEventListener('click', toggleMenu);
-        }
-        
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-        // === 5. ANIMAÇÕES DE SCROLL FADE-IN ===
-        const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.style.animation = `fadeInUp 0.8s ease-out forwards ${entry.target.style.animationDelay || '0s'}`;
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
-
-
-        // === 6. LÓGICA DO TESTADOR DE MODELOS (BIO LINK BUILDER) ===
-        const testerModal = document.getElementById('tester-modal');
-        const testerContainer = document.getElementById('tester-container');
-        
-        let builderData = {
-            theme: 'clean',
-            layout: 'list',
-            name: '@seunome',
-            bio: 'Empreendedor Digital 🚀\nTransformando ideias em negócios.',
-            links: [
-                { id: 1, title: 'Meu Site Oficial' },
-                { id: 2, title: 'Contato via WhatsApp' },
-                { id: 3, title: 'Catálogo de Produtos' }
-            ]
-        };
-
-        const themeStyles = {
-            clean: {
-                screen: 'bg-white',
-                textName: 'text-gray-900',
-                textBio: 'text-gray-600',
-                linkList: 'bg-white border border-gray-200 text-gray-800 shadow-sm hover:shadow-md font-medium',
-                linkGrid: 'bg-white border border-gray-200 text-gray-800 shadow-sm hover:shadow-md font-medium flex-col justify-center text-center'
-            },
-            gradient: {
-                screen: 'bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500',
-                textName: 'text-white drop-shadow-sm',
-                textBio: 'text-white/90 drop-shadow-sm',
-                linkList: 'bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30 font-semibold',
-                linkGrid: 'bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30 font-semibold flex-col justify-center text-center'
-            },
-            glass: {
-                screen: 'bg-slate-900',
-                textName: 'text-white drop-shadow-md',
-                textBio: 'text-gray-300',
-                linkList: 'bg-white/10 backdrop-blur-xl border border-white/10 text-white shadow-xl hover:bg-white/20 font-medium',
-                linkGrid: 'bg-white/10 backdrop-blur-xl border border-white/10 text-white shadow-xl hover:bg-white/20 font-medium flex-col justify-center text-center'
-            }
-        };
-
-        function openTester(themeId) {
-            builderData.theme = themeId;
-            const themeSelect = document.getElementById('builder-theme');
-            if (themeSelect) themeSelect.value = themeId;
-            
-            builderUpdateState(); // Prepara os dados
-            renderBuilderLinks(); // Renderiza os inputs da esquerda
-            
-            // Retorna o scroll ao topo e exibe a seta se for mobile
-            const scrollArea = document.getElementById('tester-scroll-area');
-            if (scrollArea) scrollArea.scrollTop = 0;
-            const indicator = document.getElementById('mobile-scroll-indicator');
-            if (indicator) {
-                indicator.classList.remove('opacity-0', 'pointer-events-none');
-                indicator.classList.add('opacity-100');
-            }
-
-            // Animação de entrada
-            if (testerModal) {
-                testerModal.classList.remove('hidden');
-                setTimeout(() => {
-                    testerModal.classList.remove('opacity-0');
-                    if (testerContainer) testerContainer.classList.remove('scale-95');
-                }, 10);
-            }
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeTester(selectModel = false) {
-            if (testerModal) testerModal.classList.add('opacity-0');
-            if (testerContainer) testerContainer.classList.add('scale-95');
-            
-            if (selectModel) {
-                // Verifica se o modelo atual já está selecionado para não desmarcar sem querer (efeito toggle)
-                if (currentState.model !== builderData.theme) {
-                    const modelCard = document.querySelector(`.model-card[data-id="${builderData.theme}"]`);
-                    if(modelCard) modelCard.click(); 
-                }
-            }
-
-            setTimeout(() => {
-                if (testerModal) testerModal.classList.add('hidden');
-                // Se o modal de orçamento estiver aberto, mantemos o overflow hidden do body
-                if(modal && modal.classList.contains('hidden')) {
-                    document.body.style.overflow = 'auto';
-                }
-            }, 300);
-        }
-
-        // Lógica para esconder a seta flutuante no scroll
-        function handleTesterScroll() {
-            const scrollArea = document.getElementById('tester-scroll-area');
-            const indicator = document.getElementById('mobile-scroll-indicator');
-            if (!indicator || !scrollArea) return;
-
-            // Se o scroll passar de 50px, esconde a seta
-            if (scrollArea.scrollTop > 50) {
-                indicator.classList.remove('opacity-100');
-                indicator.classList.add('opacity-0', 'pointer-events-none');
-            } else {
-                indicator.classList.remove('opacity-0', 'pointer-events-none');
-                indicator.classList.add('opacity-100');
-            }
-        }
-
-        // Atualiza o estado lendo os inputs da esquerda
-        function builderUpdateState() {
-            const themeEl = document.getElementById('builder-theme');
-            const layoutEl = document.getElementById('builder-layout');
-            const nameEl = document.getElementById('builder-name');
-            const bioEl = document.getElementById('builder-bio');
-
-            if (themeEl) builderData.theme = themeEl.value;
-            if (layoutEl) builderData.layout = layoutEl.value;
-            if (nameEl) builderData.name = nameEl.value || '@seunome';
-            if (bioEl) builderData.bio = bioEl.value || 'Sua bio aparece aqui';
-
-            // Atualizar os títulos dos links
-            builderData.links.forEach(link => {
-                const input = document.getElementById(`link-input-${link.id}`);
-                if (input) link.title = input.value || 'Link';
-            });
-
-            renderPhonePreview();
-        }
-
-        // Renderiza os inputs de edição de link no painel esquerdo
-        function renderBuilderLinks() {
-            const container = document.getElementById('builder-links-container');
-            if (!container) return;
-
-            container.innerHTML = '';
-            
-            builderData.links.forEach((link, index) => {
-                container.innerHTML += `
-                    <div class="flex items-center gap-2 bg-white p-2 rounded-xl border border-gray-200 shadow-sm group">
-                        <div class="text-gray-300 cursor-move px-1">⋮⋮</div>
-                        <input type="text" id="link-input-${link.id}" value="${link.title}" oninput="builderUpdateState()" placeholder="Título do Botão" class="flex-1 text-sm outline-none bg-transparent font-medium text-gray-700">
-                        <button onclick="builderRemoveLink(${link.id})" class="text-red-400 hover:text-red-600 p-2 opacity-0 group-hover:opacity-100 transition-opacity" aria-label="Remover este link">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
-                        </button>
-                    </div>
-                `;
-            });
-        }
-
-        function builderAddLink() {
-            const newId = builderData.links.length > 0 ? Math.max(...builderData.links.map(l => l.id)) + 1 : 1;
-            builderData.links.push({ id: newId, title: 'Novo Link' });
-            renderBuilderLinks();
-            renderPhonePreview();
-        }
-
-        function builderRemoveLink(id) {
-            builderData.links = builderData.links.filter(l => l.id !== id);
-            renderBuilderLinks();
-            renderPhonePreview();
-        }
-
-        // Aplica o estado ao visual do Celular (Direita)
-        function renderPhonePreview() {
-            const screen = document.getElementById('phone-screen');
-            const nameDisplay = document.getElementById('phone-name-display');
-            const bioDisplay = document.getElementById('phone-bio-display');
-            const avatar = document.getElementById('phone-avatar');
-            const linksContainer = document.getElementById('phone-links-display');
-
-            if (!screen || !nameDisplay || !bioDisplay || !avatar || !linksContainer) return;
-
-            const style = themeStyles[builderData.theme];
-
-            // Atualizar Textos
-            nameDisplay.textContent = builderData.name;
-            bioDisplay.textContent = builderData.bio;
-            
-            // Gerar avatar (Pega as duas primeiras letras para o avatar placeholder)
-            const initials = builderData.name.replace('@', '').substring(0,2).toUpperCase() || 'SN';
-            avatar.src = `https://ui-avatars.com/api/?name=${initials}&background=random&color=fff&size=150`;
-
-            // Resetar e aplicar classes de tema
-            screen.className = `relative w-[300px] h-[600px] border-[14px] border-gray-900 rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500 ${style.screen}`;
-            nameDisplay.className = `font-bold text-xl text-center mb-1 tracking-tight transition-colors ${style.textName}`;
-            bioDisplay.className = `text-sm text-center mb-8 opacity-90 leading-relaxed whitespace-pre-line transition-colors ${style.textBio}`;
-
-            // Configurar Layout dos links
-            if (builderData.layout === 'grid') {
-                linksContainer.className = "w-full grid grid-cols-2 gap-3";
-            } else {
-                linksContainer.className = "w-full flex flex-col gap-3";
-            }
-
-            // Renderizar botões no celular
-            linksContainer.innerHTML = '';
-            builderData.links.forEach(link => {
-                const isGrid = builderData.layout === 'grid';
-                const layoutClasses = isGrid ? `aspect-square p-4 ${style.linkGrid}` : `w-full py-4 px-6 flex items-center justify-center ${style.linkList}`;
-                
-                linksContainer.innerHTML += `
-                    <div class="rounded-xl transition-all duration-300 transform hover:-translate-y-1 flex cursor-pointer ${layoutClasses}">
-                        ${isGrid ? '<div class="w-8 h-8 rounded-full bg-white/20 mb-3 mx-auto"></div>' : ''}
-                        <span class="text-sm tracking-wide text-center">${link.title}</span>
-                    </div>
-                `;
-            });
-        }
-
-    </script>
 </body>
 </html>
