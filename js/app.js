@@ -1176,6 +1176,57 @@
             }, 300);
         }
 
+        // === MOBILE CAROUSEL 3D (Réplica do Desktop) ===
+        let currentMobSlide = 0;
+        const totalMobSlides = 3;
+        let mobInterval;
+
+        function updateMobCarousel() {
+            const prevSlide = (currentMobSlide - 1 + totalMobSlides) % totalMobSlides;
+            const nextSlide = (currentMobSlide + 1) % totalMobSlides;
+
+            for (let i = 0; i < totalMobSlides; i++) {
+                const el = document.getElementById(`mob-slide-${i}`);
+                if (!el) return;
+
+                if (i === currentMobSlide) {
+                    el.style.transform = 'translateX(0) translateY(0) scale(1) rotate(0deg)';
+                    el.style.zIndex = '30';
+                    el.style.opacity = '1';
+                    el.style.filter = 'blur(0px)';
+                } else if (i === nextSlide) {
+                    el.style.transform = 'translateX(90px) translateY(15px) scale(0.85) rotate(3deg)';
+                    el.style.zIndex = '20';
+                    el.style.opacity = '0.5';
+                    el.style.filter = 'blur(4px)';
+                } else if (i === prevSlide) {
+                    el.style.transform = 'translateX(-90px) translateY(15px) scale(0.85) rotate(-3deg)';
+                    el.style.zIndex = '20';
+                    el.style.opacity = '0.5';
+                    el.style.filter = 'blur(4px)';
+                }
+            }
+        }
+
+        function setMobSlide(index) {
+            currentMobSlide = index;
+            updateMobCarousel();
+            clearInterval(mobInterval);
+            startMobCarousel();
+        }
+
+        function startMobCarousel() {
+            mobInterval = setInterval(() => {
+                currentMobSlide = (currentMobSlide + 1) % totalMobSlides;
+                updateMobCarousel();
+            }, 3500);
+        }
+
+        if (document.getElementById('mob-slide-0') && window.innerWidth < 1024) {
+            setTimeout(updateMobCarousel, 50);
+            startMobCarousel();
+        }
+
         // === 7. HERO CAROUSEL ANIMATION ===
         let currentHeroSlide = 0;
         const totalHeroSlides = 3;

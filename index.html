@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -234,8 +234,8 @@
 
     <main>
         <!-- Hero Section -->
-        <section id="inicio" class="pt-24 pb-8 lg:pt-32 lg:pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-hidden z-10">
-            <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <section id="inicio" class="pt-24 pb-8 lg:pt-32 lg:pb-10 px-5 sm:px-6 lg:px-8 max-w-7xl mx-auto relative overflow-hidden z-10">
+            <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
                 <!-- Text Content -->
                 <div class="text-center lg:text-left fade-in-element">
                     <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs sm:text-sm font-medium mb-6 shadow-sm">
@@ -243,9 +243,9 @@
                         Disponível para novos projetos
                     </div>
                     
-                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6 fade-in-element" style="animation-delay: 0.1s">
+                    <h1 class="text-[1.75rem] sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-6 fade-in-element" style="animation-delay: 0.1s">
                         Desenvolvimento web<br>focado em 
-                        <span class="font-serif italic font-normal text-brand-600 text-4xl sm:text-6xl lg:text-7xl drop-shadow-sm">resultados</span>
+                        <span class="font-serif italic font-normal text-brand-600 text-[2rem] sm:text-6xl lg:text-7xl drop-shadow-sm">resultados</span>
                     </h1>
                     <span class="sr-only">Desenvolvedor web freelancer em Manaus, AM — criação de sites, bio links, portfólios e sistemas sob medida.</span>
                     
@@ -355,68 +355,95 @@
                     </div>
                 </div>
 
-                <!-- Hero Mobile Carousel -->
-                <div class="lg:hidden w-full mt-8 fade-in-element" style="animation-delay: 0.3s">
-                    <div class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4 px-1">
-                        <div class="snap-center shrink-0 w-[200px] h-[320px] rounded-[2rem] bg-white/70 backdrop-blur-xl border border-white shadow-lg flex flex-col overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-brand-50 to-[#6c5ce7]/10 p-4 pt-8 flex flex-col items-center">
-                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-500 to-[#6c5ce7] flex items-center justify-center shadow-md mb-3 text-white text-lg border-2 border-white">👤</div>
-                                <div class="h-3 w-20 bg-white/80 rounded mb-1.5"></div>
-                                <div class="h-2 w-14 bg-white/60 rounded mb-4"></div>
+                <!-- Hero Mobile Carousel (3D - réplica exata do desktop) -->
+                <div class="lg:hidden w-full mt-6 fade-in-element" style="animation-delay: 0.3s">
+                    <div class="relative h-[380px] flex items-center justify-center perspective-[1200px]">
+                        
+                        <!-- 1. Bio Link (Celular) - réplica desktop -->
+                        <div id="mob-slide-0" onclick="setMobSlide(0)" class="hero-slide absolute w-[190px] h-[380px] rounded-[2.5rem] bg-white/70 backdrop-blur-2xl border border-white shadow-[0_20px_50px_-12px_rgba(0,119,230,0.15)] flex flex-col overflow-hidden transition-all duration-1000 ease-ios cursor-pointer z-30">
+                            <div class="absolute top-0 inset-x-0 h-4 bg-white rounded-b-2xl w-16 mx-auto z-30 shadow-sm border-x border-b border-gray-100"></div>
+                            <div class="w-full h-full bg-gradient-to-br from-brand-50 to-[#6c5ce7]/10 p-3 pt-8 flex flex-col items-center">
+                                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-brand-500 to-[#6c5ce7] flex items-center justify-center shadow-lg mb-3 text-white text-lg border-3 border-white">👤</div>
+                                <div class="h-3 w-20 bg-white/80 rounded mb-1.5 shadow-sm"></div>
+                                <div class="h-2 w-14 bg-white/60 rounded mb-4 shadow-sm"></div>
                                 <div class="w-full space-y-2">
-                                    <div class="h-8 bg-white border border-gray-100 rounded-lg shadow-sm flex items-center justify-center text-gray-400 text-[10px] font-medium">🔗 Meu Site</div>
-                                    <div class="h-8 bg-white border border-gray-100 rounded-lg shadow-sm flex items-center justify-center text-gray-400 text-[10px] font-medium">🔗 Portfólio</div>
+                                    <div class="h-8 bg-white border border-gray-100 rounded-lg shadow-sm flex items-center justify-center text-gray-500 text-[10px] font-medium">🔗 Meu Site</div>
+                                    <div class="h-8 bg-white border border-gray-100 rounded-lg shadow-sm flex items-center justify-center text-gray-500 text-[10px] font-medium">🔗 Portfólio</div>
                                     <div class="h-8 bg-brand-50 border border-brand-100 rounded-lg shadow-sm flex items-center justify-center text-brand-600 text-[10px] font-bold">📱 WhatsApp</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="snap-center shrink-0 w-[260px] h-[200px] rounded-2xl bg-white/70 backdrop-blur-xl border border-white shadow-lg flex flex-col overflow-hidden self-center">
-                            <div class="h-6 bg-white/80 border-b border-gray-100 flex items-center px-2.5 gap-1 shrink-0">
+
+                        <!-- 2. Site Personalizado (Browser) - réplica desktop -->
+                        <div id="mob-slide-1" onclick="setMobSlide(1)" class="hero-slide absolute w-[280px] h-[220px] rounded-xl bg-white/70 backdrop-blur-2xl border border-white shadow-[0_20px_50px_-12px_rgba(0,119,230,0.15)] flex flex-col overflow-hidden transition-all duration-1000 ease-ios cursor-pointer z-20">
+                            <div class="h-6 bg-white/80 border-b border-gray-100 flex items-center px-2 gap-1 shrink-0">
                                 <div class="w-2 h-2 rounded-full bg-[#ff5f56]"></div>
                                 <div class="w-2 h-2 rounded-full bg-[#ffbd2e]"></div>
                                 <div class="w-2 h-2 rounded-full bg-[#27c93f]"></div>
                                 <div class="mx-auto w-20 h-2 bg-gray-100 rounded-full"></div>
                             </div>
-                            <div class="flex-1 bg-slate-50/50 p-3 flex flex-col gap-2">
-                                <div class="w-full h-14 bg-gradient-to-r from-brand-400 to-[#00c2cb] rounded-lg p-3 flex flex-col justify-center">
-                                    <div class="w-1/2 h-2.5 bg-white rounded mb-1"></div>
-                                    <div class="w-1/3 h-2 bg-white/70 rounded"></div>
+                            <div class="w-full h-full bg-slate-50/50 p-3 flex flex-col gap-2.5 pointer-events-none">
+                                <div class="w-full h-16 bg-gradient-to-r from-brand-400 to-[#00c2cb] rounded-lg shadow-inner p-3 flex flex-col justify-center border border-white/20">
+                                    <div class="w-1/2 h-2.5 bg-white rounded mb-1.5 shadow-sm"></div>
+                                    <div class="w-1/3 h-2 bg-white/70 rounded shadow-sm"></div>
                                 </div>
                                 <div class="grid grid-cols-3 gap-2 flex-1">
-                                    <div class="bg-white rounded-md border border-gray-100 p-1.5"><div class="w-full h-6 bg-brand-50 rounded mb-1"></div><div class="w-full h-1.5 bg-gray-100 rounded"></div></div>
-                                    <div class="bg-white rounded-md border border-gray-100 p-1.5"><div class="w-full h-6 bg-brand-50 rounded mb-1"></div><div class="w-full h-1.5 bg-gray-100 rounded"></div></div>
-                                    <div class="bg-white rounded-md border border-gray-100 p-1.5"><div class="w-full h-6 bg-brand-50 rounded mb-1"></div><div class="w-full h-1.5 bg-gray-100 rounded"></div></div>
+                                    <div class="bg-white rounded-md border border-gray-100 shadow-sm flex flex-col gap-1 p-1.5">
+                                        <div class="w-full h-8 bg-brand-50 rounded"></div>
+                                        <div class="w-full h-1.5 bg-gray-100 rounded"></div>
+                                    </div>
+                                    <div class="bg-white rounded-md border border-gray-100 shadow-sm flex flex-col gap-1 p-1.5">
+                                        <div class="w-full h-8 bg-brand-50 rounded"></div>
+                                        <div class="w-full h-1.5 bg-gray-100 rounded"></div>
+                                    </div>
+                                    <div class="bg-white rounded-md border border-gray-100 shadow-sm flex flex-col gap-1 p-1.5">
+                                        <div class="w-full h-8 bg-brand-50 rounded"></div>
+                                        <div class="w-full h-1.5 bg-gray-100 rounded"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="snap-center shrink-0 w-[260px] h-[200px] rounded-2xl bg-white/70 backdrop-blur-xl border border-white shadow-lg flex flex-col overflow-hidden self-center">
-                            <div class="h-6 bg-emerald-500 text-white flex items-center px-3 justify-between shrink-0">
+
+                        <!-- 3. Dashboard - réplica desktop com métricas -->
+                        <div id="mob-slide-2" onclick="setMobSlide(2)" class="hero-slide absolute w-[280px] h-[220px] rounded-xl bg-white/70 backdrop-blur-2xl border border-white shadow-[0_20px_50px_-12px_rgba(0,119,230,0.15)] flex flex-col overflow-hidden transition-all duration-1000 ease-ios cursor-pointer z-10">
+                            <div class="h-7 bg-emerald-500 text-white flex items-center px-3 justify-between shrink-0 shadow-sm z-10">
                                 <div class="w-1/3 h-2 bg-white/30 rounded-full"></div>
+                                <div class="flex gap-1.5">
+                                    <div class="w-4 h-3 bg-white/20 rounded"></div>
+                                    <div class="w-4 h-3 bg-white/20 rounded"></div>
+                                </div>
                             </div>
-                            <div class="flex-1 bg-gray-50/50 p-3 flex gap-2">
-                                <div class="w-1/4 bg-white rounded-lg border border-gray-100 p-2 flex flex-col gap-1.5">
+                            <div class="w-full h-full bg-gray-50/50 p-2.5 flex gap-2.5 pointer-events-none">
+                                <div class="w-1/4 h-full bg-white rounded-lg border border-gray-100 shadow-sm p-2 flex flex-col gap-2">
                                     <div class="w-full h-2 bg-emerald-100 rounded"></div>
                                     <div class="w-full h-2 bg-gray-100 rounded"></div>
                                     <div class="w-full h-2 bg-gray-100 rounded"></div>
+                                    <div class="w-full h-2 bg-gray-100 rounded"></div>
+                                    <div class="mt-auto w-full h-5 bg-emerald-50 rounded border border-emerald-100"></div>
                                 </div>
-                                <div class="flex-1 flex flex-col gap-2">
-                                    <div class="flex gap-2 h-1/2">
-                                        <div class="flex-1 bg-white rounded-lg border border-gray-100 p-2"><div class="h-full bg-emerald-50 rounded"></div></div>
-                                        <div class="flex-1 bg-white rounded-lg border border-gray-100 p-2"><div class="h-full bg-brand-50 rounded"></div></div>
+                                <div class="w-3/4 h-full flex flex-col gap-2">
+                                    <div class="flex gap-2 h-[40%]">
+                                        <div class="flex-1 bg-white rounded-lg border border-gray-100 shadow-sm p-2 flex flex-col justify-between">
+                                            <div class="w-8 h-1.5 bg-gray-200 rounded"></div>
+                                            <div class="text-sm font-bold text-emerald-500">84%</div>
+                                        </div>
+                                        <div class="flex-1 bg-white rounded-lg border border-gray-100 shadow-sm p-2 flex flex-col justify-between">
+                                            <div class="w-8 h-1.5 bg-gray-200 rounded"></div>
+                                            <div class="text-sm font-bold text-brand-500">1.2K</div>
+                                        </div>
                                     </div>
-                                    <div class="flex-1 bg-white rounded-lg border border-gray-100 p-2"><div class="h-full bg-gray-50 rounded"></div></div>
+                                    <div class="flex-1 bg-white rounded-lg border border-gray-100 shadow-sm p-2.5 flex items-end justify-around gap-1">
+                                        <div class="w-full bg-emerald-400 rounded-t-sm h-[40%]"></div>
+                                        <div class="w-full bg-emerald-400 rounded-t-sm h-[70%]"></div>
+                                        <div class="w-full bg-emerald-400 rounded-t-sm h-[50%]"></div>
+                                        <div class="w-full bg-emerald-400 rounded-t-sm h-[90%]"></div>
+                                        <div class="w-full bg-brand-400 rounded-t-sm h-[60%]"></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center gap-1.5 mt-2">
-                        <span class="text-[10px] text-gray-400 flex items-center gap-1">
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            Deslize para ver mais
-                        </span>
-                    </div>
                 </div>
-            </div>
         </section>
 
         <!-- Serviços Section -->
@@ -533,7 +560,7 @@
                     <!-- Foto / Avatar -->
                     <div class="flex flex-col items-center fade-in-element">
                         <div class="w-48 h-48 lg:w-full lg:h-64 rounded-3xl bg-gradient-to-br from-brand-100 to-brand-200 shadow-lg border border-brand-100 overflow-hidden">
-                            <img src="assets/sobre/murylo.JPEG" alt="Murylo Neves — Desenvolvedor Web" class="w-full h-full object-cover object-top">
+                            <img src="assets/sobre/murylo.jpg" alt="Murylo Neves — Desenvolvedor Web" class="w-full h-full object-cover object-top">
                         </div>
                         <div class="flex items-center gap-3 mt-5">
                             <a href="https://www.instagram.com/murylo02_" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-brand-50 hover:text-brand-600 transition-colors">
