@@ -900,7 +900,7 @@
                 if (project.images.length === 1) {
                     const safeCaption0 = (caption0 || '').replace(/'/g, "\\'");
                     imgContainer.innerHTML = `
-                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onmousemove="handleImgZoom(event)" onmouseleave="resetImgZoom(this)" onclick="handleImgClick(event, '${project.images[0]}', '${safeCaption0}')" oncontextmenu="handleImgRightClick(event)">
+                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onmousemove="handleImgZoom(event)" onmouseleave="resetImgZoom(this)" onclick="handleImgClick(event, '${project.images[0]}', '${safeCaption0}')" oncontextmenu="handleImgRightClick(event)" ontouchstart="handleImgTouchStart(event)" ontouchmove="handleImgTouchMove(event)" ontouchend="handleImgTouchEnd(event)">
                             <img src="${project.images[0]}" alt="Screenshot de ${project.title}" class="zoom-ready w-full h-auto max-h-[60vh] object-contain mx-auto">
                             <div class="zoom-cursor"></div>
                             <button onclick="event.stopPropagation(); openZoom('${project.images[0]}', '${safeCaption0}')" class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-500 hover:text-brand-600 hover:bg-white transition-all shadow-sm z-10 cursor-pointer">
@@ -911,7 +911,7 @@
                     `;
                 } else {
                     imgContainer.innerHTML = `
-                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onmousemove="handleImgZoom(event)" onmouseleave="resetImgZoom(this)" onclick="handleImgClick(event, document.getElementById('pf-slide-img').src, document.getElementById('pf-caption')?.querySelector('span')?.textContent || '')" oncontextmenu="handleImgRightClick(event)">
+                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onmousemove="handleImgZoom(event)" onmouseleave="resetImgZoom(this)" onclick="handleImgClick(event, document.getElementById('pf-slide-img').src, document.getElementById('pf-caption')?.querySelector('span')?.textContent || '')" oncontextmenu="handleImgRightClick(event)" ontouchstart="handleImgTouchStart(event)" ontouchmove="handleImgTouchMove(event)" ontouchend="handleImgTouchEnd(event)">
                             <img id="pf-slide-img" src="${project.images[0]}" alt="Screenshot de ${project.title}" class="zoom-ready w-full h-auto max-h-[60vh] object-contain mx-auto transition-opacity duration-300">
                             <div class="zoom-cursor"></div>
                             <button onclick="event.stopPropagation(); openZoom(document.getElementById('pf-slide-img').src, document.getElementById('pf-caption')?.querySelector('span')?.textContent || '')" class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-500 hover:text-brand-600 hover:bg-white transition-all shadow-sm z-10 cursor-pointer">
@@ -1089,6 +1089,80 @@
                 container.classList.remove('zoom-active');
                 const img = container.querySelector('img.zoom-ready');
                 if (img) img.style.transformOrigin = 'center center';
+            }
+        }
+
+        // === ZOOM TOUCH (MOBILE) ===
+        let touchZoomActive = false;
+
+        function handleImgTouchStart(e) {
+            const container = e.currentTarget;
+            if (e.touches.length !== 1) return;
+
+            if (!touchZoomActive) {
+                // Primeiro toque: ativa zoom no ponto
+                touchZoomActive = true;
+                container.classList.add('zoom-active');
+                const cursor = container.querySelector('.zoom-cursor');
+                const img = container.querySelector('img.zoom-ready');
+                if (cursor) cursor.style.opacity = '0'; // Esconder cursor no mobile
+                if (img) {
+                    const rect = container.getBoundingClientRect();
+                    const x = e.touches[0].clientX - rect.left;
+                    const y = e.touches[0].clientY - rect.top;
+                    img.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
+                }
+                e.preventDefault();
+            }
+        }
+
+        function handleImgTouchMove(e) {
+            const container = e.currentTarget;
+            if (!touchZoomActive || e.touches.length !== 1) return;
+            e.preventDefault();
+
+            const img = container.querySelector('img.zoom-ready');
+            if (!img) return;
+
+            const rect = container.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const y = e.touches[0].clientY - rect.top;
+            const percentX = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            const percentY = Math.max(0, Math.min(100, (y / rect.height) * 100));
+
+            img.style.transformOrigin = `${percentX}% ${percentY}%`;
+        }
+
+        function handleImgTouchEnd(e) {
+            const container = e.currentTarget;
+            if (!touchZoomActive) return;
+
+            // Se o dedo soltou, desativa zoom
+            if (e.touches.length === 0) {
+                // Segundo toque rápido abre fullscreen (double tap)
+                const now = Date.now();
+                if (container._lastTouchEnd && (now - container._lastTouchEnd) < 300) {
+                    touchZoomActive = false;
+                    container.classList.remove('zoom-active');
+                    const img = container.querySelector('img.zoom-ready');
+                    if (img) img.style.transformOrigin = 'center center';
+                    const src = img ? img.src : '';
+                    const caption = document.getElementById('pf-caption')?.querySelector('span')?.textContent || '';
+                    openZoom(src, caption);
+                    container._lastTouchEnd = 0;
+                    return;
+                }
+                container._lastTouchEnd = now;
+
+                // Soltar dedo: desativa zoom
+                setTimeout(() => {
+                    if (touchZoomActive) {
+                        touchZoomActive = false;
+                        container.classList.remove('zoom-active');
+                        const img = container.querySelector('img.zoom-ready');
+                        if (img) img.style.transformOrigin = 'center center';
+                    }
+                }, 300);
             }
         }
 
