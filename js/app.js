@@ -20,12 +20,12 @@
         // === 2. DADOS DOS SERVIÇOS ===
         // ═══ CONFIGURAÇÃO DE PREÇOS (mude aqui e reflete em todo o site) ═══
         const PRECOS = {
-            modelos: { clean: 35, gradient: 45, glass: 100, personalizado: 70 },
-            planos: { essencial: 50, profissional: 200, permanente: 400 },
+            modelos: { clean: 50, gradient: 70, glass: 120, personalizado: 120 },
+            planos: { essencial: 75, profissional: 230, permanente: 400 },
             mensais: { essencial: 15, profissional: 45 },
-            extras: { painelAdmin: 200 },
+            extras: { painelAdmin: 300 },
             regras: { entradaMinima: 150 },
-            linktreePro: 30 // mensal (comparativo)
+            linktreePro: 29 // mensal (comparativo)
         };
         // ═══ FIM DA CONFIGURAÇÃO ═══
 
@@ -61,7 +61,7 @@
                 badge: null,
                 icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>',
                 shortDesc: 'Estabeleça presença digital sólida para sua empresa ou marca.',
-                fullDesc: 'Presença digital completa para sua empresa ou negócio. Inclui páginas como Sobre, Serviços, Contato e o que mais precisar.',
+                fullDesc: 'Presença digital completa para sua empresa ou negócio. Inclui páginas como Sobre, Serviços, Contato e o que mais precisar. Um painel administrativo (área de login para você editar textos, fotos e informações sozinho) pode ser incluído conforme a necessidade do projeto.',
                 hasModels: false,
                 iconBg: 'from-blue-100 to-indigo-100',
                 iconColor: 'text-blue-600'
@@ -85,7 +85,7 @@
                 badge: null,
                 icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>',
                 shortDesc: 'Dashboards e controles personalizados para seu negócio.',
-                fullDesc: 'Dashboards e sistemas sob medida para controlar seu negócio: vendas, estoque, atendimentos, tarefas e muito mais.',
+                fullDesc: 'Dashboards e sistemas sob medida para controlar seu negócio: vendas, estoque, atendimentos, tarefas e muito mais. A área administrativa com login e controle total já faz parte do projeto.',
                 hasModels: false,
                 iconBg: 'from-orange-100 to-amber-100',
                 iconColor: 'text-orange-600'
@@ -121,7 +121,7 @@
                 badge: '💻 Design to Code',
                 icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>',
                 shortDesc: 'Transformo seu design (Figma/Adobe XD) em site ou desenvolvo sua ideia do zero.',
-                fullDesc: 'Você entrega o design no Figma, Adobe XD ou outra ferramenta e eu transformo em código perfeito — HTML/CSS/JS limpo, rápido e responsivo. Também pego sua ideia e desenvolvo do zero, ou melhoro um projeto que já existe.',
+                fullDesc: 'Você entrega o design no Figma, Adobe XD ou outra ferramenta e eu transformo em código perfeito — HTML/CSS/JS limpo, rápido e responsivo. Também pego sua ideia e desenvolvo do zero, ou melhoro um projeto que já existe. Se o projeto precisar de uma área administrativa (login para editar conteúdo), o valor será incluído no orçamento.',
                 hasModels: false,
                 iconBg: 'from-sky-100 to-cyan-100',
                 iconColor: 'text-cyan-600'
@@ -187,6 +187,19 @@
             currentState.model = null;
             currentState.plan = null;
             currentState.addon = false;
+
+            // Fechar detalhes abertos dos planos
+            document.querySelectorAll('#modal-scroll-area details[open]').forEach(function(d) {
+                d.removeAttribute('open');
+            });
+
+            // Resetar toggles de período para semestral
+            document.querySelectorAll('.plan-card[data-periodo]').forEach(function(card) {
+                var planId = card.getAttribute('data-id');
+                if (planId === 'essencial' || planId === 'profissional') {
+                    togglePeriodo(planId, 'semestral');
+                }
+            });
 
             // Preencher header
             document.getElementById('modal-title').textContent = service.title;
@@ -259,26 +272,33 @@
                 }
                 if(biolinkComparison) biolinkComparison.classList.add('hidden');
                 const addonPanel3 = document.getElementById('addon-panel');
-                if(addonPanel3) addonPanel3.classList.add('hidden');
+                if(addonPanel3) {
+                    if (service.id === 'portfolio') {
+                        addonPanel3.classList.remove('hidden');
+                        resetAddonUI();
+                    } else {
+                        addonPanel3.classList.add('hidden');
+                    }
+                }
             }
 
             // Atualiza UI para limpar estados anteriores de forma fluida
             updateSelectionUI();
             updateBtnWa();
 
-            // Retorna o scroll do modal para o topo
-            const scrollArea = document.getElementById('modal-scroll-area');
-            if (scrollArea) scrollArea.scrollTop = 0;
-
             // Animação de entrada
             if (modal) {
                 modal.classList.remove('hidden');
+                // Scroll pro topo DEPOIS do modal ficar visível
+                const scrollArea = document.getElementById('modal-scroll-area');
+                if (scrollArea) scrollArea.scrollTop = 0;
                 setTimeout(() => {
                     modal.classList.remove('opacity-0');
                     if (modalContainer) modalContainer.classList.remove('scale-95');
                 }, 10);
             }
             document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
         }
 
         function closeModal() {
@@ -287,6 +307,7 @@
             setTimeout(() => {
                 if (modal) modal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
+                document.documentElement.style.overflow = 'auto';
             }, 300);
         }
 
@@ -368,8 +389,8 @@
                 updateSelectionUI();
                 updateBtnWa();
 
-                // Scroll + flash no addon se Bio Link
-                if(currentState.plan && currentState.service && currentState.service.hasModels) {
+                // Scroll + flash no addon se Bio Link ou Portfólio
+                if(currentState.plan && currentState.service && (currentState.service.hasModels || currentState.service.id === 'portfolio')) {
                     const addonCard = document.getElementById('addon-card');
                     if(addonCard) {
                         setTimeout(() => {
@@ -472,7 +493,7 @@
                     }
                     
                     msg += `▸ Plano: ${planName} — ${planDuration}${planPeriodo === 'mensal' ? ' (mensal)' : ''}\n`;
-                    if(currentState.addon) {
+                    if(currentState.addon && (currentState.service.hasModels || currentState.service.id === 'portfolio')) {
                         msg += `▸ Extra: Painel Administrativo (+R$ ${PRECOS.extras.painelAdmin})\n`;
                     }
                     msg += `\n`;
@@ -1329,7 +1350,7 @@
                 if (duracaoEl) duracaoEl.textContent = isMensal ? 'Site no ar por 1 mês (renovável)' : 'Site no ar por 6 meses';
                 card.setAttribute('data-duration', isMensal ? '1 mês (Renovável)' : '6 meses (Pgto Único)');
                 var hintEl = card.querySelector('.plan-hint');
-                if (hintEl) hintEl.textContent = isMensal ? 'ou R$ ' + PRECOS.planos.essencial + ' por 6 meses' : 'ou R$ ' + PRECOS.mensais.essencial + '/mês';
+                if (hintEl) hintEl.textContent = isMensal ? 'ou R$ ' + PRECOS.planos.essencial + ' por 6 meses (economia de R$ ' + (PRECOS.mensais.essencial * 6 - PRECOS.planos.essencial) + ')' : 'ou R$ ' + PRECOS.mensais.essencial + '/mês (sem desconto)';
             } else if (planId === 'profissional') {
                 if (precoEl) precoEl.textContent = isMensal ? 'R$ ' + PRECOS.mensais.profissional : 'R$ ' + PRECOS.planos.profissional;
                 if (labelEl) labelEl.textContent = isMensal ? '/ mês' : '/ 6 meses';
@@ -1338,7 +1359,7 @@
                 if (duracaoEl) duracaoEl.textContent = isMensal ? 'Site no ar por 1 mês (renovável)' : 'Site no ar por 6 meses';
                 card.setAttribute('data-duration', isMensal ? '1 mês (Renovável)' : '6 meses (Até 6x)');
                 var hintEl = card.querySelector('.plan-hint');
-                if (hintEl) hintEl.textContent = isMensal ? 'ou R$ ' + PRECOS.planos.profissional + ' por 6 meses' : 'ou R$ ' + PRECOS.mensais.profissional + '/mês';
+                if (hintEl) hintEl.textContent = isMensal ? 'ou R$ ' + PRECOS.planos.profissional + ' por 6 meses (economia de R$ ' + (PRECOS.mensais.profissional * 6 - PRECOS.planos.profissional) + ')' : 'ou R$ ' + PRECOS.mensais.profissional + '/mês (sem desconto)';
             }
 
             if (typeof updateBtnWa === 'function') updateBtnWa();
@@ -1356,7 +1377,7 @@
                 else if (k === 'essencial') v = 'R$ ' + PRECOS.planos.essencial;
                 else if (k === 'profissional') v = 'R$ ' + PRECOS.planos.profissional;
                 else if (k === 'permanente') v = 'R$ ' + PRECOS.planos.permanente;
-                else if (k === 'painelAdmin') v = '+ R$ ' + PRECOS.extras.painelAdmin + ' (único)';
+                else if (k === 'painelAdmin') v = 'a partir de R$ ' + PRECOS.extras.painelAdmin + ' (único)';
                 else if (k === 'essencialMes') v = 'R$ ' + PRECOS.mensais.essencial + '/mês';
                 else if (k === 'profissionalMes') v = 'R$ ' + PRECOS.mensais.profissional + '/mês';
                 else if (k === 'linktreeMes') v = 'R$ ' + PRECOS.linktreePro;
