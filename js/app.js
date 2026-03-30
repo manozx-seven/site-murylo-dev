@@ -1,4 +1,4 @@
-// === 0. FIX DE SCROLL (Sempre carregar no topo) ===hjhjhj
+// === 0. FIX DE SCROLL (Sempre carregar no topo) ===
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
         }
