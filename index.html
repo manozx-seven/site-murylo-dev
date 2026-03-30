@@ -731,14 +731,14 @@
                         <div class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-3">
                             <div class="flex-1 bg-gray-50 rounded-xl p-3 text-center">
                                 <span class="text-[10px] text-gray-400 uppercase tracking-wider font-bold block mb-1">Linktree Pro</span>
-                                <span class="text-gray-900 font-bold text-sm">R$ 30<span class="text-gray-400 font-normal text-xs">/mês</span></span>
-                                <span class="block text-[10px] text-gray-400 mt-0.5">= R$ 180 por semestre</span>
+                                <span class="text-gray-900 font-bold text-sm"><span data-preco="linktreeMes">R$ 30</span><span class="text-gray-400 font-normal text-xs">/mês</span></span>
+                                <span class="block text-[10px] text-gray-400 mt-0.5" data-preco="linktreeSem">= R$ 180 por semestre</span>
                             </div>
                             <div class="text-gray-300 text-lg font-bold">vs</div>
                             <div class="flex-1 bg-brand-50 rounded-xl p-3 text-center border border-brand-200">
                                 <span class="text-[10px] text-brand-600 uppercase tracking-wider font-bold block mb-1">Murylo Dev</span>
-                                <span class="text-brand-700 font-bold text-sm">A partir de R$ 85</span>
-                                <span class="block text-[10px] text-brand-500 mt-0.5">por semestre (pgto único)</span>
+                                <span class="text-brand-700 font-bold text-sm" data-preco="muryloMin">A partir de R$ 85</span>
+                                <span class="block text-[10px] text-brand-500 mt-0.5">por semestre ou <span data-preco="essencialMes">R$ 15/mês</span></span>
                             </div>
                         </div>
                     </div>
@@ -768,7 +768,7 @@
                             <div class="bg-white p-3 flex flex-col justify-between">
                                 <div>
                                     <span class="text-sm font-bold text-gray-900 block">Clean</span>
-                                    <span class="text-brand-600 font-bold text-base block mb-2">R$ 35</span>
+                                    <span class="text-brand-600 font-bold text-base block mb-2" data-preco="clean">R$ 35</span>
                                 </div>
                                 <button onclick="event.stopPropagation(); openTester('clean')" class="w-full py-1.5 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-brand-600 transition-colors">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
@@ -788,7 +788,7 @@
                             <div class="bg-white p-3 flex flex-col justify-between">
                                 <div>
                                     <span class="text-sm font-bold text-gray-900 block">Gradient</span>
-                                    <span class="text-brand-600 font-bold text-base block mb-2">R$ 45</span>
+                                    <span class="text-brand-600 font-bold text-base block mb-2" data-preco="gradient">R$ 45</span>
                                 </div>
                                 <button onclick="event.stopPropagation(); openTester('gradient')" class="w-full py-1.5 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-brand-600 transition-colors">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
@@ -811,7 +811,7 @@
                             <div class="bg-white p-3 flex flex-col justify-between">
                                 <div>
                                     <span class="text-sm font-bold text-gray-900 block">Glass Premium</span>
-                                    <span class="text-brand-600 font-bold text-base block mb-2">R$ 100</span>
+                                    <span class="text-brand-600 font-bold text-base block mb-2" data-preco="glass">R$ 100</span>
                                 </div>
                                 <button onclick="event.stopPropagation(); openTester('glass')" class="w-full py-1.5 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-gray-600 bg-gray-100 rounded-md hover:bg-gray-200 hover:text-brand-600 transition-colors">
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
@@ -826,7 +826,7 @@
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
                             </div>
                             <span class="text-sm font-bold text-gray-900 mb-1">Personalizado</span>
-                            <span class="text-xs text-gray-500 leading-tight">A partir de R$ 70</span>
+                            <span class="text-xs text-gray-500 leading-tight" data-preco="personalizado">A partir de R$ 70</span>
                             <span class="text-[10px] text-gray-400 mt-2 block px-2 leading-tight">Valor sujeito à mudança pelo escopo.</span>
                         </div>
                     </div>
@@ -842,20 +842,27 @@
                     <!-- PLANOS PADRÃO (Web & Biolink) -->
                     <div id="plans-standard" class="space-y-4">
                         <!-- Essencial -->
-                        <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0 relative" data-id="essencial" data-name="Essencial" data-duration="6 meses (Pgto Único)">
+                        <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0 relative" data-id="essencial" data-name="Essencial" data-duration="6 meses (Pgto Único)" data-periodo="semestral">
                             <div class="flex justify-between items-start mb-3">
-                                <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Essencial</h4>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Essencial</h4>
+                                    <div class="flex gap-1 mt-1.5" onclick="event.stopPropagation()">
+                                        <button class="periodo-btn periodo-ativa text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300" data-plan="essencial" data-per="semestral" onclick="togglePeriodo('essencial','semestral')">6 meses</button>
+                                        <button class="periodo-btn text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300 bg-gray-100 text-gray-500 hover:bg-gray-200" data-plan="essencial" data-per="mensal" onclick="togglePeriodo('essencial','mensal')">1 mês</button>
+                                    </div>
+                                </div>
                                 <div class="text-right flex flex-col items-end mt-[-2px]">
                                     <div class="flex items-baseline gap-1">
-                                        <span class="text-brand-600 font-bold block leading-none text-[17px]">R$ 50</span>
-                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium">/ 6 meses</span>
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px] plan-preco" data-preco="essencial">R$ 50</span>
+                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium plan-periodo-label">/ 6 meses</span>
                                     </div>
-                                    <span class="text-[9px] text-gray-500 mt-1 font-semibold bg-gray-100 px-2 py-0.5 rounded">Pgto único (Pix/Cartão)</span>
+                                    <span class="text-[9px] text-gray-500 mt-1 font-semibold bg-gray-100 px-2 py-0.5 rounded plan-pagamento-badge">Pgto único (Pix/Cartão)</span>
+                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded block plan-hint" data-preco="essencialMes">ou R$ 15/mês</span>
                                 </div>
                             </div>
-                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed">Hospedagem por 6 meses. O valor do desenvolvimento é orçado à parte.</p>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed plan-desc">Hospedagem por 6 meses com pagamento único. O valor do desenvolvimento é orçado à parte.</p>
                             <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
-                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Site no ar por 6 meses</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight plan-duracao">Site no ar por 6 meses</span></li>
                                 <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Link funcional para compartilhar</span></li>
                                 <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">1 alteração simples inclusa</span></li>
                             </ul>
@@ -866,27 +873,34 @@
                                     <span>Ver detalhes do plano</span>
                                 </summary>
                                 <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
-                                    Este plano é ideal para quem busca uma solução rápida e acessível. O seu projeto será entregue totalmente funcional através de um link e ficará hospedado de forma segura pelo período de <strong>6 meses</strong>. Ao final deste prazo, você terá a opção de renovar a hospedagem por mais 6 meses para manter o site online. Caso opte por não renovar, o projeto será retirado do ar. Ressaltamos que este plano garante a entrega inicial impecável, porém <strong>não inclui manutenções ou alterações</strong> após a aprovação. Qualquer mudança futura será orçada e cobrada separadamente, de acordo com a complexidade do pedido.
+                                    Este plano é ideal para quem busca uma solução rápida e acessível. O seu projeto será entregue totalmente funcional através de um link e ficará hospedado de forma segura pelo período de <strong>6 meses</strong> (pagamento único) ou <strong>mês a mês</strong> (renovação mensal). Na opção mensal, o site fica no ar enquanto a mensalidade estiver ativa — se não renovar, o projeto será pausado até a próxima renovação. Você tem direito a <strong>1 alteração simples inclusa</strong> após a entrega. Alterações adicionais serão orçadas e cobradas separadamente, de acordo com a complexidade do pedido.
                                 </div>
                             </details>
                         </div>
 
                         <!-- Profissional -->
-                        <div class="plan-card relative cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0" data-id="profissional" data-name="Profissional" data-duration="6 meses (Até 6x)">
+                        <div class="plan-card relative cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0" data-id="profissional" data-name="Profissional" data-duration="6 meses (Até 6x)" data-periodo="semestral">
                             <div class="absolute -top-3 right-5 bg-brand-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm z-20 transition-all duration-300">Recomendado</div>
                             <div class="flex justify-between items-start mb-3">
-                                <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Profissional</h4>
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Profissional</h4>
+                                    <div class="flex gap-1 mt-1.5" onclick="event.stopPropagation()">
+                                        <button class="periodo-btn periodo-ativa text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300" data-plan="profissional" data-per="semestral" onclick="togglePeriodo('profissional','semestral')">6 meses</button>
+                                        <button class="periodo-btn text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300 bg-gray-100 text-gray-500 hover:bg-gray-200" data-plan="profissional" data-per="mensal" onclick="togglePeriodo('profissional','mensal')">1 mês</button>
+                                    </div>
+                                </div>
                                 <div class="text-right flex flex-col items-end mt-[-2px]">
                                     <div class="flex items-baseline gap-1">
-                                        <span class="text-brand-600 font-bold block leading-none text-[17px]">R$ 200</span>
-                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium">/ 6 meses</span>
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px] plan-preco" data-preco="profissional">R$ 200</span>
+                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium plan-periodo-label">/ 6 meses</span>
                                     </div>
-                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded">Em até 6x (c/ taxas)</span>
+                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded plan-pagamento-badge" title="Taxas de parcelamento da operadora são repassadas ao cliente">Em até 6x (c/ taxas da operadora)</span>
+                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded block plan-hint" data-preco="profissionalMes">ou R$ 45/mês</span>
                                 </div>
                             </div>
-                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed">Acompanhamento e atualizações para manter tudo em dia.</p>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed plan-desc">Acompanhamento e atualizações por 6 meses. O valor do desenvolvimento é orçado à parte.</p>
                             <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
-                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Tudo do plano Essencial</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight plan-duracao">Site no ar por 6 meses</span></li>
                                 <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Suporte via WhatsApp</span></li>
                                 <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Até 3 atualizações simples/mês</span></li>
                                 <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Prioridade em correções</span></li>
@@ -898,7 +912,7 @@
                                     <span>Ver detalhes do plano</span>
                                 </summary>
                                 <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
-                                    Desenvolvido para oferecer tranquilidade e acompanhamento contínuo. O seu site ficará no ar por 6 meses com total <strong>suporte, manutenção e monitoramento</strong>. Você terá acesso prioritário via WhatsApp para tirar dúvidas e o direito a solicitar até <strong>3 pequenas alterações por mês</strong> (como atualizar textos, fotos ou links). Caso deseje renovar após os 6 meses, você garante um desconto exclusivo. Se decidir não renovar, o seu site não sairá do ar imediatamente: oferecemos <strong>1 mês extra de carência</strong> para continuar funcionando através do link, perdendo apenas o direito ao suporte e às atualizações mensais. Modificações que excedam a franquia do plano estarão sujeitas a cobrança adicional.
+                                    Desenvolvido para oferecer tranquilidade e acompanhamento contínuo. O seu site ficará no ar por <strong>6 meses</strong> (pagamento único) ou <strong>mês a mês</strong> (renovação mensal), com total <strong>suporte, manutenção e monitoramento</strong>. Na opção mensal, o site fica ativo enquanto a mensalidade estiver em dia — se não renovar, o projeto será pausado até a próxima renovação. Você terá acesso prioritário via WhatsApp para tirar dúvidas e o direito a solicitar até <strong>3 pequenas alterações por mês</strong> (como atualizar textos, fotos ou links). No semestral, caso deseje renovar após os 6 meses, oferecemos <strong>1 mês extra de carência</strong> (site no ar, sem suporte). Modificações que excedam a franquia do plano estarão sujeitas a cobrança adicional.
                                 </div>
                             </details>
                         </div>
@@ -909,7 +923,7 @@
                                 <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Permanente</h4>
                                 <div class="text-right flex flex-col items-end mt-[-2px]">
                                     <div class="flex items-baseline gap-1">
-                                        <span class="text-brand-600 font-bold block leading-none text-[17px]">R$ 400</span>
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px]"><span class="text-[12px] font-medium">A partir de</span> <span data-preco="permanente">R$ 400</span></span>
                                         <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium">Vitalício</span>
                                     </div>
                                     <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded">Em até 6x (c/ taxas)</span>
@@ -967,7 +981,7 @@
                                 <div class="min-w-0">
                                     <span class="text-sm font-bold text-gray-900">Painel Administrativo</span>
                                     <span class="text-[10px] font-bold bg-brand-600 text-white px-1.5 py-0.5 rounded-full uppercase tracking-wider ml-1.5 align-middle">Extra</span>
-                                    <span class="block text-xs text-gray-400 mt-0.5">Gerencie seu Bio Link sozinho — + R$ 200 (único)</span>
+                                    <span class="block text-xs text-gray-400 mt-0.5">Gerencie seu Bio Link sozinho — <span data-preco="painelAdmin">+ R$ 200 (único)</span></span>
                                 </div>
                             </div>
                             <div id="addon-toggle" class="w-11 h-6 bg-gray-200 rounded-full relative transition-colors duration-300 shrink-0 cursor-pointer ml-3" onclick="toggleAddon()">

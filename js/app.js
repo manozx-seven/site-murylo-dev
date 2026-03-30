@@ -18,6 +18,17 @@
         }
 
         // === 2. DADOS DOS SERVIÇOS ===
+        // ═══ CONFIGURAÇÃO DE PREÇOS (mude aqui e reflete em todo o site) ═══
+        const PRECOS = {
+            modelos: { clean: 35, gradient: 45, glass: 100, personalizado: 70 },
+            planos: { essencial: 50, profissional: 200, permanente: 400 },
+            mensais: { essencial: 15, profissional: 45 },
+            extras: { painelAdmin: 200 },
+            regras: { entradaMinima: 150 },
+            linktreePro: 30 // mensal (comparativo)
+        };
+        // ═══ FIM DA CONFIGURAÇÃO ═══
+
         const servicesData = [
             {
                 id: 'biolink',
@@ -62,7 +73,7 @@
                 badge: '📋 Apps Script',
                 icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
                 shortDesc: 'Receba pedidos, cadastros e inscrições organizados automaticamente.',
-                fullDesc: 'Formulários personalizados feitos direto no Google Apps Script, com os dados salvos na sua planilha Google. Você recebe o formulário pronto e a planilha — sem custo de hospedagem. A partir de R$ 60.',
+                fullDesc: 'Formulários personalizados feitos direto no Google Apps Script, com os dados salvos na sua planilha Google. Você recebe o formulário pronto e a planilha — sem custo de hospedagem.',
                 hasModels: false,
                 iconBg: 'from-emerald-100 to-green-100',
                 iconColor: 'text-emerald-600'
@@ -86,7 +97,7 @@
                 badge: '🔥 Alta demanda',
                 icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>',
                 shortDesc: 'Configuração profissional para ser encontrado na sua região.',
-                fullDesc: 'Otimização completa do seu perfil no Google Maps. Aumente as visitas físicas e contatos locais sem investir em anúncios. A partir de R$ 80.',
+                fullDesc: 'Otimização completa do seu perfil no Google Maps. Aumente as visitas físicas e contatos locais sem investir em anúncios.',
                 hasModels: false,
                 iconBg: 'from-red-100 to-rose-100',
                 iconColor: 'text-red-600'
@@ -409,8 +420,17 @@
                     const planPrice = parseFloat(planPriceText);
                     
                     if(!isNaN(modelPrice) && !isNaN(planPrice)) {
-                        const addonPrice = currentState.addon ? 200 : 0;
-                        const total = modelPrice + planPrice + addonPrice;
+                        const addonPrice = currentState.addon ? PRECOS.extras.painelAdmin : 0;
+                        // Verificar se plano selecionado tem período mensal ativo
+                        var planPeriodo = planEl ? planEl.closest('.plan-card') : null;
+                        var periodoAtual = planPeriodo ? planPeriodo.getAttribute('data-periodo') : 'semestral';
+                        var precoPlanoFinal = planPrice;
+                        if (periodoAtual === 'mensal') {
+                            var planIdAtual = planPeriodo ? planPeriodo.getAttribute('data-id') : '';
+                            if (planIdAtual === 'essencial') precoPlanoFinal = PRECOS.mensais.essencial;
+                            else if (planIdAtual === 'profissional') precoPlanoFinal = PRECOS.mensais.profissional;
+                        }
+                        const total = modelPrice + precoPlanoFinal + addonPrice;
                         const addonLabel = currentState.addon ? ' (c/ Painel Admin)' : '';
                         btnWaText.textContent = `Solicitar Orçamento — Total: R$ ${total}${addonLabel}`;
                     } else {
@@ -438,6 +458,7 @@
                     const planCard = document.querySelector(`.plan-card[data-id="${currentState.plan}"]`);
                     const planName = planCard.dataset.name;
                     const planDuration = planCard.dataset.duration;
+                    const planPeriodo = planCard.dataset.periodo || 'semestral';
                     
                     if(currentState.service.hasModels) {
                         const modelEl = document.querySelector(`.model-card[data-id="${currentState.model}"]`);
@@ -450,9 +471,9 @@
                         }
                     }
                     
-                    msg += `▸ Plano: ${planName} — ${planDuration}\n`;
+                    msg += `▸ Plano: ${planName} — ${planDuration}${planPeriodo === 'mensal' ? ' (mensal)' : ''}\n`;
                     if(currentState.addon) {
-                        msg += `▸ Extra: Painel Administrativo (+R$ 200)\n`;
+                        msg += `▸ Extra: Painel Administrativo (+R$ ${PRECOS.extras.painelAdmin})\n`;
                     }
                     msg += `\n`;
                 } else {
@@ -1276,6 +1297,79 @@
                 updateHeroCarousel();
             }, 3500); // Rotação automática a cada 3.5s
         }
+
+        // Toggle período (semestral/mensal) nos planos
+        function togglePeriodo(planId, periodo) {
+            var card = document.querySelector('.plan-card[data-id="'+planId+'"]');
+            if (!card) return;
+            card.setAttribute('data-periodo', periodo);
+
+            card.querySelectorAll('.periodo-btn').forEach(function(btn) {
+                if (btn.getAttribute('data-per') === periodo) {
+                    btn.classList.add('periodo-ativa');
+                    btn.classList.remove('bg-gray-100','text-gray-500','hover:bg-gray-200');
+                } else {
+                    btn.classList.remove('periodo-ativa');
+                    btn.classList.add('bg-gray-100','text-gray-500','hover:bg-gray-200');
+                }
+            });
+
+            var isMensal = periodo === 'mensal';
+            var precoEl = card.querySelector('.plan-preco');
+            var labelEl = card.querySelector('.plan-periodo-label');
+            var badgeEl = card.querySelector('.plan-pagamento-badge');
+            var descEl = card.querySelector('.plan-desc');
+            var duracaoEl = card.querySelector('.plan-duracao');
+
+            if (planId === 'essencial') {
+                if (precoEl) precoEl.textContent = isMensal ? 'R$ ' + PRECOS.mensais.essencial : 'R$ ' + PRECOS.planos.essencial;
+                if (labelEl) labelEl.textContent = isMensal ? '/ mês' : '/ 6 meses';
+                if (badgeEl) { badgeEl.textContent = isMensal ? 'Renovação mensal (Pix)' : 'Pgto único (Pix/Cartão)'; badgeEl.className = isMensal ? 'text-[9px] mt-1 font-semibold px-2 py-0.5 rounded text-brand-600 bg-brand-50' : 'text-[9px] mt-1 font-semibold px-2 py-0.5 rounded text-gray-500 bg-gray-100'; }
+                if (descEl) descEl.textContent = isMensal ? 'Hospedagem mês a mês. Renove quando quiser. O valor do desenvolvimento é orçado à parte.' : 'Hospedagem por 6 meses com pagamento único. O valor do desenvolvimento é orçado à parte.';
+                if (duracaoEl) duracaoEl.textContent = isMensal ? 'Site no ar por 1 mês (renovável)' : 'Site no ar por 6 meses';
+                card.setAttribute('data-duration', isMensal ? '1 mês (Renovável)' : '6 meses (Pgto Único)');
+                var hintEl = card.querySelector('.plan-hint');
+                if (hintEl) hintEl.textContent = isMensal ? 'ou R$ ' + PRECOS.planos.essencial + ' por 6 meses' : 'ou R$ ' + PRECOS.mensais.essencial + '/mês';
+            } else if (planId === 'profissional') {
+                if (precoEl) precoEl.textContent = isMensal ? 'R$ ' + PRECOS.mensais.profissional : 'R$ ' + PRECOS.planos.profissional;
+                if (labelEl) labelEl.textContent = isMensal ? '/ mês' : '/ 6 meses';
+                if (badgeEl) { badgeEl.textContent = isMensal ? 'Renovação mensal (Pix)' : 'Em até 6x (c/ taxas da operadora)'; badgeEl.className = isMensal ? 'text-[9px] mt-1 font-semibold px-2 py-0.5 rounded text-brand-600 bg-brand-50' : 'text-[9px] mt-1 font-semibold px-2 py-0.5 rounded text-brand-600 bg-brand-50'; }
+                if (descEl) descEl.textContent = isMensal ? 'Acompanhamento e atualizações mês a mês. Renove quando quiser.' : 'Acompanhamento e atualizações por 6 meses. O valor do desenvolvimento é orçado à parte.';
+                if (duracaoEl) duracaoEl.textContent = isMensal ? 'Site no ar por 1 mês (renovável)' : 'Site no ar por 6 meses';
+                card.setAttribute('data-duration', isMensal ? '1 mês (Renovável)' : '6 meses (Até 6x)');
+                var hintEl = card.querySelector('.plan-hint');
+                if (hintEl) hintEl.textContent = isMensal ? 'ou R$ ' + PRECOS.planos.profissional + ' por 6 meses' : 'ou R$ ' + PRECOS.mensais.profissional + '/mês';
+            }
+
+            if (typeof updateBtnWa === 'function') updateBtnWa();
+        }
+
+        // Popula preços dinâmicos no HTML
+        function popularPrecos() {
+            document.querySelectorAll('[data-preco]').forEach(function(el) {
+                var k = el.getAttribute('data-preco');
+                var v = '';
+                if (k === 'clean') v = 'R$ ' + PRECOS.modelos.clean;
+                else if (k === 'gradient') v = 'R$ ' + PRECOS.modelos.gradient;
+                else if (k === 'glass') v = 'R$ ' + PRECOS.modelos.glass;
+                else if (k === 'personalizado') v = 'A partir de R$ ' + PRECOS.modelos.personalizado;
+                else if (k === 'essencial') v = 'R$ ' + PRECOS.planos.essencial;
+                else if (k === 'profissional') v = 'R$ ' + PRECOS.planos.profissional;
+                else if (k === 'permanente') v = 'R$ ' + PRECOS.planos.permanente;
+                else if (k === 'painelAdmin') v = '+ R$ ' + PRECOS.extras.painelAdmin + ' (único)';
+                else if (k === 'essencialMes') v = 'R$ ' + PRECOS.mensais.essencial + '/mês';
+                else if (k === 'profissionalMes') v = 'R$ ' + PRECOS.mensais.profissional + '/mês';
+                else if (k === 'linktreeMes') v = 'R$ ' + PRECOS.linktreePro;
+                else if (k === 'linktreeSem') v = '= R$ ' + (PRECOS.linktreePro * 6) + ' por semestre';
+                else if (k === 'muryloMin') v = 'A partir de R$ ' + (PRECOS.modelos.clean + PRECOS.planos.essencial);
+                if (v) el.textContent = v;
+            });
+            document.querySelectorAll('.model-card[data-id="clean"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.clean); });
+            document.querySelectorAll('.model-card[data-id="gradient"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.gradient); });
+            document.querySelectorAll('.model-card[data-id="glass"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.glass); });
+            document.querySelectorAll('.model-card[data-id="personalizado"]').forEach(function(el) { el.setAttribute('data-price', 'A partir de R$ ' + PRECOS.modelos.personalizado); });
+        }
+        popularPrecos();
 
         // Pausa o carousel ao passar o mouse
         document.querySelectorAll('.hero-slide').forEach(slide => {
