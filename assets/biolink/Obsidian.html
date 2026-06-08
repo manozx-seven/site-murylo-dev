@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio | Ethereal Glass Modern</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Plus Jakarta Sans (Extremamente moderna, geométrica e sofisticada) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-deep: #050507; /* Preto muito sutil, quase azul marinho escuro */
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --glass-hover-bg: rgba(255, 255, 255, 0.05);
+            --glass-hover-border: rgba(255, 255, 255, 0.15);
+            --accent-glow: rgba(100, 150, 255, 0.4); /* Azul Safira sutil */
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            color: #ffffff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Efeito de Luz Ambiente (Orb) que vai seguir o mouse via JS */
+        .ambient-orb {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 60vw;
+            height: 60vh;
+            background: radial-gradient(circle, var(--accent-glow) 0%, rgba(255,255,255,0.05) 40%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(80px);
+            z-index: -1;
+            pointer-events: none;
+            transition: transform 0.2s ease-out; /* Suaviza o movimento do parallax */
+            opacity: 0.6;
+        }
+
+        /* Avatar Minimalista com Anel de Vidro */
+        .glass-avatar-wrapper {
+            position: relative;
+            padding: 6px;
+            border-radius: 9999px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.01));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.25rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-avatar-wrapper img {
+            width: 104px;
+            height: 104px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: contrast(1.05) brightness(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .glass-avatar-wrapper:hover img {
+            filter: contrast(1.1) brightness(1);
+            transform: scale(1.02);
+        }
+
+        /* Status Dot (Ponto Verde de Disponibilidade) */
+        .status-dot {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 14px;
+            height: 14px;
+            background-color: #10B981; /* Esmeralda Tailwind */
+            border-radius: 50%;
+            border: 3px solid var(--bg-deep);
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+            z-index: 10;
+        }
+
+        /* Cartões de Vidro (Ethereal Glass) */
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem; /* Bordas arredondadas modernas */
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Animação super macia da Apple */
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-card:hover {
+            background: var(--glass-hover-bg);
+            border-color: var(--glass-hover-border);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        /* O ícone esquerdo do cartão */
+        .glass-icon-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover .glass-icon-box {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        /* Animação suave da seta */
+        .arrow-indicator {
+            opacity: 0.4;
+            transform: translateX(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover .arrow-indicator {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Módulos do Grid (Mini info) */
+        .glass-module {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .glass-module:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 255, 255, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* Rodapé Redes Sociais */
+        .social-bubble {
+            color: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-bubble:hover {
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.1);
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+
+        /* Animação de Entrada do Site */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center py-16 px-4 sm:px-6 lg:px-8">
+
+    <!-- Fundo de Luz Ambiente (Se move com o mouse) -->
+    <div class="ambient-orb" id="ambient-orb"></div>
+
+    <main class="w-full max-w-[440px] z-10 flex flex-col items-stretch">
+        
+        <!-- 1. Cabeçalho de Perfil -->
+        <header class="flex flex-col items-center text-center mb-12 reveal-up">
+            <div class="glass-avatar-wrapper">
+                <img id="pm-avatar" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" 
+                     alt="Foto de Perfil do Advogado">
+                <div class="status-dot"></div>
+            </div>
+            
+            <h1 id="pm-nome" class="text-2xl font-semibold tracking-tight text-white mb-2">
+                Dr. Alexandre Vasconcelos
+            </h1>
+            
+            <!-- Tags Modernas (Pílulas) -->
+            <div class="flex items-center justify-center gap-2 mb-5">
+                <span id="pm-subtitulo" class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium tracking-wide text-gray-300 uppercase">
+                    Direito Digital
+                </span>
+                <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-medium tracking-wide text-gray-300 uppercase">
+                    M&A
+                </span>
+            </div>
+            
+            <p id="pm-bio" class="text-[15px] font-light text-gray-400 max-w-[300px] leading-relaxed">
+                Assessoria jurídica de vanguarda para startups e empresas de base tecnológica.
+            </p>
+        </header>
+
+        <!-- 2. Lista de 4 Links (Ethereal Cards) -->
+        <div class="w-full flex flex-col gap-3.5 mb-10">
+            
+            <a id="pm-link-0" href="#" class="glass-card flex items-stretch p-3 reveal-up group">
+                <div class="glass-icon-box w-12 h-12 flex items-center justify-center flex-shrink-0 text-gray-400">
+                    <i id="pm-link-0-icon" data-lucide="scale" stroke-width="1.5" class="w-5 h-5"></i>
+                </div>
+                <div class="flex-grow flex items-center justify-between px-4">
+                    <span id="pm-link-0-texto" class="font-medium text-[16px] text-gray-100 tracking-wide">Áreas de Atuação</span>
+                    <i data-lucide="chevron-right" stroke-width="1.5" class="arrow-indicator w-5 h-5 text-gray-400"></i>
+                </div>
+            </a>
+
+            <a id="pm-link-1" href="#" class="glass-card flex items-stretch p-3 reveal-up group">
+                <div class="glass-icon-box w-12 h-12 flex items-center justify-center flex-shrink-0 text-gray-400">
+                    <i id="pm-link-1-icon" data-lucide="calendar" stroke-width="1.5" class="w-5 h-5"></i>
+                </div>
+                <div class="flex-grow flex items-center justify-between px-4">
+                    <span id="pm-link-1-texto" class="font-medium text-[16px] text-gray-100 tracking-wide">Agendar Consultoria</span>
+                    <i data-lucide="chevron-right" stroke-width="1.5" class="arrow-indicator w-5 h-5 text-gray-400"></i>
+                </div>
+            </a>
+
+            <a id="pm-link-2" href="#" class="glass-card flex items-stretch p-3 reveal-up group">
+                <div class="glass-icon-box w-12 h-12 flex items-center justify-center flex-shrink-0 text-gray-400">
+                    <i id="pm-link-2-icon" data-lucide="file-text" stroke-width="1.5" class="w-5 h-5"></i>
+                </div>
+                <div class="flex-grow flex items-center justify-between px-4">
+                    <span id="pm-link-2-texto" class="font-medium text-[16px] text-gray-100 tracking-wide">Artigos Jurídicos</span>
+                    <i data-lucide="chevron-right" stroke-width="1.5" class="arrow-indicator w-5 h-5 text-gray-400"></i>
+                </div>
+            </a>
+
+            <a id="pm-link-3" href="#" class="glass-card flex items-stretch p-3 reveal-up group">
+                <div class="glass-icon-box w-12 h-12 flex items-center justify-center flex-shrink-0 text-gray-400">
+                    <i id="pm-link-3-icon" data-lucide="message-square" stroke-width="1.5" class="w-5 h-5"></i>
+                </div>
+                <div class="flex-grow flex items-center justify-between px-4">
+                    <span id="pm-link-3-texto" class="font-medium text-[16px] text-gray-100 tracking-wide">Contato WhatsApp</span>
+                    <i data-lucide="chevron-right" stroke-width="1.5" class="arrow-indicator w-5 h-5 text-gray-400"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- 3. Grid de 3 Ícones (Informações Rápidas) -->
+        <div class="grid grid-cols-3 gap-3 w-full mb-12 reveal-up">
+            <a id="pm-mini-0" href="#" class="glass-module flex flex-col items-center justify-center py-5 px-2 group">
+                <i id="pm-mini-0-icon" data-lucide="map-pin" stroke-width="1.5" class="w-5 h-5 mb-2.5 text-gray-500 group-hover:text-white transition-colors duration-300"></i>
+                <span id="pm-mini-0-texto" class="text-[11px] font-semibold tracking-wider text-gray-400 group-hover:text-gray-100 uppercase transition-colors">Local</span>
+            </a>
+            
+            <a id="pm-mini-1" href="#" class="glass-module flex flex-col items-center justify-center py-5 px-2 group">
+                <i id="pm-mini-1-icon" data-lucide="briefcase" stroke-width="1.5" class="w-5 h-5 mb-2.5 text-gray-500 group-hover:text-white transition-colors duration-300"></i>
+                <span id="pm-mini-1-texto" class="text-[11px] font-semibold tracking-wider text-gray-400 group-hover:text-gray-100 uppercase transition-colors">Casos</span>
+            </a>
+            
+            <a id="pm-mini-2" href="#" class="glass-module flex flex-col items-center justify-center py-5 px-2 group">
+                <i id="pm-mini-2-icon" data-lucide="globe" stroke-width="1.5" class="w-5 h-5 mb-2.5 text-gray-500 group-hover:text-white transition-colors duration-300"></i>
+                <span id="pm-mini-2-texto" class="text-[11px] font-semibold tracking-wider text-gray-400 group-hover:text-gray-100 uppercase transition-colors">Site</span>
+            </a>
+        </div>
+
+        <!-- 4. Rodapé / Redes Sociais Centrais Exatas (Blindado em SVG puro) -->
+        <footer class="flex flex-row justify-center items-center gap-8 p-4 w-full reveal-up">
+            
+            <!-- WhatsApp (SVG Direto) -->
+            <a href="#" class="social-bubble" aria-label="WhatsApp">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M16.5 15.5c-.3.3-.8.4-1.2.3-1.6-.4-3.2-1.3-4.4-2.5-1.2-1.2-2.1-2.8-2.5-4.4-.1-.4 0-.9.3-1.2l1-1c.2-.2.6-.3.9-.1l1.5 1.1c.2.2.3.6.1.9l-.6.9c1 1.8 2.5 3.3 4.3 4.3l.9-.6c.3-.2.7-.1.9.1l1.1 1.5c.2.3.1.7-.1.9l-1 1z"/></svg>
+            </a>
+
+            <!-- Instagram (SVG Direto) -->
+            <a href="#" class="social-bubble" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+
+            <!-- LinkedIn (SVG Direto) -->
+            <a href="#" class="social-bubble" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            
+        </footer>
+        
+    </main>
+
+    <script>
+        // Inicializa ícones Lucide
+        lucide.createIcons();
+
+        // Listener postMessage para edição via painel externo
+        window.addEventListener('message', function(e) {
+            const d = e.data;
+            if (!d || d.type !== 'pm-update') return;
+            if (d.campo === 'avatar' && d.valor) document.getElementById('pm-avatar').src = d.valor;
+            if (d.campo === 'nome' && d.valor !== undefined) document.getElementById('pm-nome').textContent = d.valor;
+            if (d.campo === 'subtitulo' && d.valor !== undefined) document.getElementById('pm-subtitulo').textContent = d.valor;
+            if (d.campo === 'bio' && d.valor !== undefined) document.getElementById('pm-bio').textContent = d.valor;
+            if (d.campo === 'link-texto') { const el = document.getElementById('pm-link-' + d.index + '-texto'); if (el) el.textContent = d.valor; }
+            if (d.campo === 'link-href') { const el = document.getElementById('pm-link-' + d.index); if (el) el.href = d.valor || '#'; }
+            if (d.campo === 'link-icon') {
+                const el = document.getElementById('pm-link-' + d.index + '-icon');
+                if (el) { el.setAttribute('data-lucide', d.valor); lucide.createIcons(); }
+            }
+            if (d.campo === 'mini-texto') { const el = document.getElementById('pm-mini-' + d.index + '-texto'); if (el) el.textContent = d.valor; }
+            if (d.campo === 'mini-href') { const el = document.getElementById('pm-mini-' + d.index); if (el) el.href = d.valor || '#'; }
+            if (d.campo === 'mini-icon') {
+                const el = document.getElementById('pm-mini-' + d.index + '-icon');
+                if (el) { el.setAttribute('data-lucide', d.valor); lucide.createIcons(); }
+            }
+        });
+
+        // Animação de entrada cascata (Reveal Up)
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll('.reveal-up');
+            
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('active');
+                }, 150 * index);
+            });
+        });
+
+        // Efeito Parallax - Luz Ambiente (Ambient Orb)
+        const orb = document.getElementById('ambient-orb');
+        
+        document.addEventListener('mousemove', (e) => {
+            // Pega as dimensões da janela
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            // Calcula a posição do mouse em relação ao centro (de -0.5 a 0.5)
+            const mouseX = (e.clientX / windowWidth) - 0.5;
+            const mouseY = (e.clientY / windowHeight) - 0.5;
+            
+            // Move a luz levemente na direção oposta (efeito profundidade)
+            // Multiplicador 100 e 80 define a "força" do movimento
+            const moveX = mouseX * -100;
+            const moveY = mouseY * -80;
+            
+            orb.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+        });
+    </script>
+</body>
+</html>

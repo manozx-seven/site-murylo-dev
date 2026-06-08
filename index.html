@@ -852,11 +852,50 @@
                         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
                             <!-- Neon -->
                             <div class="model-card cursor-pointer rounded-2xl border-2 border-gray-200 hover:border-brand-300 hover:shadow-xl transform transition-all duration-500 ease-ios z-0 overflow-hidden flex flex-col h-[280px] bg-white group" data-id="neon" data-name="Neon" data-price="50">
-                                <div class="flex-1 bg-gradient-to-b from-gray-950 to-gray-900 p-4 flex flex-col items-center justify-center relative border-b border-gray-800 overflow-hidden">
-                                    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 80%, rgba(0,255,180,0.18) 0%, transparent 70%)"></div>
-                                    <div class="w-12 h-12 rounded-full border border-emerald-400/40 bg-emerald-400/10 mb-3 shadow-[0_0_18px_2px_rgba(0,255,180,0.25)]"></div>
-                                    <div class="w-16 h-2 rounded-full bg-emerald-400/30 mb-2"></div>
-                                    <div class="w-12 h-2 rounded-full bg-emerald-400/20"></div>
+                                <div class="flex-1 bg-gradient-to-b from-gray-950 to-gray-900 p-3 flex flex-col items-center relative border-b border-gray-800 overflow-hidden">
+                                    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 15% 50%, rgba(0,229,255,0.08) 0%, transparent 40%), radial-gradient(ellipse at 85% 30%, rgba(255,0,85,0.08) 0%, transparent 40%)"></div>
+                                    <!-- Avatar com anel -->
+                                    <div class="relative mt-2 mb-1.5">
+                                        <div class="w-10 h-10 rounded-full border-2 border-[#ff0055]/60 bg-gray-800 shadow-[0_0_12px_rgba(255,0,85,0.4)]"></div>
+                                        <div class="absolute inset-[-3px] rounded-full border border-dashed border-[#00e5ff]/50"></div>
+                                    </div>
+                                    <!-- Nome + subtítulo -->
+                                    <div class="w-14 h-1.5 rounded-full bg-[#00e5ff]/60 mb-0.5 shadow-[0_0_6px_rgba(0,229,255,0.5)]"></div>
+                                    <div class="w-10 h-1 rounded-full bg-[#00e5ff]/30 mb-2"></div>
+                                    <!-- 4 links tech-card -->
+                                    <div class="w-full space-y-1 mb-2">
+                                        <div class="flex items-center gap-1 rounded bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.15)] px-1.5 py-1">
+                                            <div class="w-3 h-3 rounded-sm bg-[#00e5ff]/20 shrink-0"></div>
+                                            <div class="flex-1 h-1 rounded-full bg-gray-600"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1 rounded bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.15)] px-1.5 py-1">
+                                            <div class="w-3 h-3 rounded-sm bg-[#00e5ff]/20 shrink-0"></div>
+                                            <div class="flex-1 h-1 rounded-full bg-gray-600"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1 rounded bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.15)] px-1.5 py-1">
+                                            <div class="w-3 h-3 rounded-sm bg-[#00e5ff]/20 shrink-0"></div>
+                                            <div class="flex-1 h-1 rounded-full bg-gray-600"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1 rounded bg-[rgba(0,229,255,0.04)] border border-[rgba(0,229,255,0.15)] px-1.5 py-1">
+                                            <div class="w-3 h-3 rounded-sm bg-[#00e5ff]/20 shrink-0"></div>
+                                            <div class="flex-1 h-1 rounded-full bg-gray-600"></div>
+                                        </div>
+                                    </div>
+                                    <!-- 3 mini módulos -->
+                                    <div class="w-full grid grid-cols-3 gap-1">
+                                        <div class="flex flex-col items-center py-1 rounded border border-[rgba(0,229,255,0.1)] bg-[rgba(0,229,255,0.03)]">
+                                            <div class="w-3 h-3 rounded-sm bg-[#00e5ff]/20 mb-0.5"></div>
+                                            <div class="w-5 h-0.5 rounded-full bg-gray-600"></div>
+                                        </div>
+                                        <div class="flex flex-col items-center py-1 rounded border border-[rgba(0,229,255,0.1)] bg-[rgba(0,229,255,0.03)]">
+                                            <div class="w-3 h-3 rounded-sm bg-[#00e5ff]/20 mb-0.5"></div>
+                                            <div class="w-5 h-0.5 rounded-full bg-gray-600"></div>
+                                        </div>
+                                        <div class="flex flex-col items-center py-1 rounded border border-[rgba(0,229,255,0.1)] bg-[rgba(0,229,255,0.03)]">
+                                            <div class="w-3 h-3 rounded-sm bg-[#00e5ff]/20 mb-0.5"></div>
+                                            <div class="w-5 h-0.5 rounded-full bg-gray-600"></div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="bg-white p-3 flex flex-col justify-between">
                                     <div>
@@ -873,11 +912,51 @@
                             <!-- Aurora -->
                             <div class="model-card cursor-pointer rounded-2xl border-2 border-gray-200 hover:border-brand-300 hover:shadow-xl transform transition-all duration-500 ease-ios z-0 overflow-hidden flex flex-col h-[280px] bg-white group relative" data-id="aurora" data-name="Aurora" data-price="70">
                                 <span class="absolute top-2 right-2 bg-brand-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-full z-10">Novo</span>
-                                <div class="flex-1 p-4 flex flex-col items-center justify-center relative border-b border-gray-100 overflow-hidden" style="background: linear-gradient(135deg, #0f0c29, #302b63, #24243e)">
-                                    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 30% 30%, rgba(138,43,226,0.3) 0%, transparent 60%), radial-gradient(ellipse at 70% 70%, rgba(0,200,255,0.2) 0%, transparent 60%)"></div>
-                                    <div class="w-12 h-12 rounded-full mb-3" style="background: linear-gradient(135deg, rgba(138,43,226,0.5), rgba(0,200,255,0.4)); border: 1px solid rgba(255,255,255,0.15)"></div>
-                                    <div class="w-16 h-2 rounded-full mb-2" style="background: rgba(255,255,255,0.15)"></div>
-                                    <div class="w-12 h-2 rounded-full" style="background: rgba(255,255,255,0.1)"></div>
+                                <div class="flex-1 p-3 flex flex-col items-center relative border-b border-gray-100 overflow-hidden" style="background: #030712">
+                                    <!-- Aurora ribbons -->
+                                    <div class="absolute pointer-events-none" style="top:5%; left:-20%; width:140%; height:25%; background: linear-gradient(90deg, transparent, rgba(16,185,129,0.25), rgba(0,245,212,0.2), transparent); filter: blur(8px); transform: rotate(-15deg);"></div>
+                                    <div class="absolute pointer-events-none" style="bottom:10%; right:-20%; width:150%; height:20%; background: linear-gradient(90deg, transparent, rgba(123,44,191,0.2), rgba(16,185,129,0.15), transparent); filter: blur(8px); transform: rotate(10deg);"></div>
+                                    <!-- Avatar com glow -->
+                                    <div class="relative mt-2 mb-1.5">
+                                        <div class="w-10 h-10 rounded-full bg-gray-700" style="box-shadow: 0 0 0 2px rgba(0,245,212,0.6), 0 0 12px rgba(0,245,212,0.3)"></div>
+                                    </div>
+                                    <!-- Nome + subtítulo -->
+                                    <div class="w-14 h-1.5 rounded-full mb-0.5" style="background: rgba(255,255,255,0.7)"></div>
+                                    <div class="w-10 h-1 rounded-full mb-2" style="background: rgba(0,245,212,0.5)"></div>
+                                    <!-- 4 links frosted -->
+                                    <div class="w-full space-y-1 mb-2">
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08)">
+                                            <div class="w-3 h-3 rounded-full shrink-0" style="background: rgba(0,245,212,0.3)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.2)"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08)">
+                                            <div class="w-3 h-3 rounded-full shrink-0" style="background: rgba(0,245,212,0.3)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.2)"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08)">
+                                            <div class="w-3 h-3 rounded-full shrink-0" style="background: rgba(0,245,212,0.3)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.2)"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08)">
+                                            <div class="w-3 h-3 rounded-full shrink-0" style="background: rgba(0,245,212,0.3)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.2)"></div>
+                                        </div>
+                                    </div>
+                                    <!-- 3 mini módulos -->
+                                    <div class="w-full grid grid-cols-3 gap-1">
+                                        <div class="flex flex-col items-center py-1 rounded-lg" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded-full mb-0.5" style="background: rgba(0,245,212,0.25)"></div>
+                                            <div class="w-5 h-0.5 rounded-full" style="background: rgba(255,255,255,0.2)"></div>
+                                        </div>
+                                        <div class="flex flex-col items-center py-1 rounded-lg" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded-full mb-0.5" style="background: rgba(0,245,212,0.25)"></div>
+                                            <div class="w-5 h-0.5 rounded-full" style="background: rgba(255,255,255,0.2)"></div>
+                                        </div>
+                                        <div class="flex flex-col items-center py-1 rounded-lg" style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded-full mb-0.5" style="background: rgba(0,245,212,0.25)"></div>
+                                            <div class="w-5 h-0.5 rounded-full" style="background: rgba(255,255,255,0.2)"></div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="bg-white p-3 flex flex-col justify-between">
                                     <div>
@@ -893,12 +972,55 @@
 
                             <!-- Obsidian -->
                             <div class="model-card cursor-pointer rounded-2xl border-2 border-gray-200 hover:border-brand-300 hover:shadow-xl transform transition-all duration-500 ease-ios z-0 overflow-hidden flex flex-col h-[280px] bg-white group" data-id="obsidian" data-name="Obsidian" data-price="120">
-                                <div class="flex-1 p-4 flex flex-col items-center justify-center relative border-b border-gray-100 overflow-hidden" style="background: #0a0a0a">
-                                    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.08) 0%, transparent 60%)"></div>
-                                    <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent)"></div>
-                                    <div class="w-12 h-12 rounded-full mb-3" style="background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border: 1px solid rgba(255,215,0,0.3); box-shadow: 0 0 20px rgba(255,215,0,0.1)"></div>
-                                    <div class="w-16 h-2 rounded-full mb-2" style="background: rgba(255,215,0,0.15)"></div>
-                                    <div class="w-12 h-2 rounded-full" style="background: rgba(255,215,0,0.08)"></div>
+                                <div class="flex-1 p-3 flex flex-col items-center relative border-b border-gray-100 overflow-hidden" style="background: #0a0a0a">
+                                    <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 0%, rgba(255,215,0,0.06) 0%, transparent 50%)"></div>
+                                    <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,215,0,0.35), transparent)"></div>
+                                    <!-- Avatar -->
+                                    <div class="w-10 h-10 rounded-full mt-2 mb-1.5" style="background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border: 1px solid rgba(255,215,0,0.3); box-shadow: 0 0 14px rgba(255,215,0,0.12)"></div>
+                                    <!-- Nome + tag pílula -->
+                                    <div class="w-14 h-1.5 rounded-full mb-1" style="background: rgba(255,255,255,0.5)"></div>
+                                    <div class="flex gap-1 mb-2">
+                                        <div class="h-1 w-8 rounded-full" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1)"></div>
+                                        <div class="h-1 w-5 rounded-full" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1)"></div>
+                                    </div>
+                                    <!-- 4 links glass-card -->
+                                    <div class="w-full space-y-1 mb-2">
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded shrink-0" style="background: rgba(255,215,0,0.12)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.15)"></div>
+                                            <div class="w-1.5 h-1.5 rounded-full" style="background: rgba(255,255,255,0.1)"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded shrink-0" style="background: rgba(255,215,0,0.12)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.15)"></div>
+                                            <div class="w-1.5 h-1.5 rounded-full" style="background: rgba(255,255,255,0.1)"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded shrink-0" style="background: rgba(255,215,0,0.12)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.15)"></div>
+                                            <div class="w-1.5 h-1.5 rounded-full" style="background: rgba(255,255,255,0.1)"></div>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 rounded-lg px-1.5 py-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded shrink-0" style="background: rgba(255,215,0,0.12)"></div>
+                                            <div class="flex-1 h-1 rounded-full" style="background: rgba(255,255,255,0.15)"></div>
+                                            <div class="w-1.5 h-1.5 rounded-full" style="background: rgba(255,255,255,0.1)"></div>
+                                        </div>
+                                    </div>
+                                    <!-- 3 mini módulos -->
+                                    <div class="w-full grid grid-cols-3 gap-1">
+                                        <div class="flex flex-col items-center py-1 rounded-lg" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded mb-0.5" style="background: rgba(255,215,0,0.1)"></div>
+                                            <div class="w-5 h-0.5 rounded-full" style="background: rgba(255,255,255,0.15)"></div>
+                                        </div>
+                                        <div class="flex flex-col items-center py-1 rounded-lg" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded mb-0.5" style="background: rgba(255,215,0,0.1)"></div>
+                                            <div class="w-5 h-0.5 rounded-full" style="background: rgba(255,255,255,0.15)"></div>
+                                        </div>
+                                        <div class="flex flex-col items-center py-1 rounded-lg" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)">
+                                            <div class="w-3 h-3 rounded mb-0.5" style="background: rgba(255,215,0,0.1)"></div>
+                                            <div class="w-5 h-0.5 rounded-full" style="background: rgba(255,255,255,0.15)"></div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="bg-white p-3 flex flex-col justify-between">
                                     <div>
@@ -911,16 +1033,15 @@
                                     </button>
                                 </div>
                             </div>
-
-                            <!-- Personalizado -->
+                        <!-- Personalizado -->
                             <div class="model-card cursor-pointer rounded-2xl border-2 border-dashed border-gray-300 hover:border-brand-400 bg-gray-50 hover:bg-white hover:shadow-xl transform transition-all duration-500 ease-ios z-0 flex flex-col items-center justify-center p-4 text-center group" data-id="personalizado" data-name="Personalizado" data-price="A partir de R$ 120">
-                            <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-3 text-gray-500 transition-all duration-500">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                                <div class="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-3 text-gray-500 transition-all duration-500">
+                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                                </div>
+                                <span class="text-sm font-bold text-gray-900 mb-1">Personalizado</span>
+                                <span class="text-xs text-gray-500 leading-tight">A partir de R$ 120</span>
+                                <span class="text-[10px] text-gray-400 mt-2 block px-2 leading-tight">Valor sujeito à mudança pelo escopo.</span>
                             </div>
-                            <span class="text-sm font-bold text-gray-900 mb-1">Personalizado</span>
-                            <span class="text-xs text-gray-500 leading-tight" data-preco="personalizado">A partir de R$ 120</span>
-                            <span class="text-[10px] text-gray-400 mt-2 block px-2 leading-tight">Valor sujeito à mudança pelo escopo.</span>
-                        </div>
                         </div><!-- fecha grid premium -->
                     </div><!-- fecha mt-4 wrapper premium -->
                 </div><!-- fecha step-models -->
@@ -953,11 +1074,14 @@
                                     <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded block plan-hint" data-preco="essencialMes">ou R$ 15/mês</span>
                                 </div>
                             </div>
-                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed plan-desc">Hospedagem por 6 meses com pagamento único. O valor do desenvolvimento é orçado à parte.</p>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed plan-desc">Hospedagem por 6 meses com pagamento único, suporte contínuo e atendimento via WhatsApp. O valor do desenvolvimento é orçado à parte.</p>
                             <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
                                 <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight plan-duracao">Site no ar por 6 meses</span></li>
                                 <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Link funcional para compartilhar</span></li>
-                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">1 alteração simples inclusa</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Suporte e manutenção inclusos</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Atendimento via WhatsApp</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">Até 3 pequenas alterações por mês</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> <span class="leading-tight">1 mês extra de carência no semestral</span></li>
                             </ul>
 
                             <details class="mt-4 pt-4 border-t border-gray-100 group/details" onclick="event.stopPropagation()">
@@ -966,7 +1090,7 @@
                                     <span>Ver detalhes do plano</span>
                                 </summary>
                                 <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
-                                    Este plano é ideal para quem busca uma solução rápida e acessível. O seu projeto será entregue totalmente funcional através de um link e ficará hospedado de forma segura pelo período de <strong>6 meses</strong> (pagamento único) ou <strong>mês a mês</strong> (renovação mensal). Na opção mensal, o site fica no ar enquanto a mensalidade estiver ativa — se não renovar, o projeto será pausado até a próxima renovação. Você tem direito a <strong>1 alteração simples inclusa</strong> após a entrega. Alterações adicionais serão orçadas e cobradas separadamente, de acordo com a complexidade do pedido.
+                                    Este plano é ideal para quem quer o site no ar com suporte contínuo. O projeto será entregue totalmente funcional através de um link e ficará hospedado pelo período de <strong>6 meses</strong> (pagamento único) ou <strong>mês a mês</strong> (renovação mensal). Na opção mensal, o site fica ativo enquanto a mensalidade estiver em dia — se não renovar, o projeto será pausado até a próxima renovação. Você terá acesso via WhatsApp para tirar dúvidas e o direito a solicitar até <strong>3 pequenas alterações por mês</strong> (como atualizar textos, fotos ou links). No semestral, caso deseje renovar após os 6 meses, oferecemos <strong>1 mês extra de carência</strong> (site no ar, sem suporte). Modificações que excedam a franquia do plano estarão sujeitas a cobrança adicional.
                                 </div>
                             </details>
                         </div>
@@ -980,42 +1104,146 @@
                                 </div>
                                 <svg class="w-4 h-4 text-gray-400 transition-transform duration-300 shrink-0 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                             </button>
-                            <div class="quermais-body hidden px-5 pb-5 space-y-3 border-t border-gray-100">
-                                <!-- Profissional -->
-                                <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-xl p-4 hover:border-brand-300 hover:shadow-md transition-all duration-300" data-id="profissional" data-name="Profissional" data-duration="Hospedagem + Suporte">
-                                    <div class="flex justify-between items-start">
-                                        <div>
-                                            <h4 class="font-bold text-sm text-gray-900 plan-title">Profissional</h4>
-                                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">Hospedagem por mim + suporte contínuo. Ideal para quem quer ter alguém responsável pelo projeto.</p>
-                                        </div>
-                                        <span class="text-brand-600 font-bold text-sm shrink-0 ml-3">A partir de<br>R$ 230</span>
-                                    </div>
-                                    <ul class="mt-3 space-y-1.5">
-                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Site no ar enquanto o plano estiver ativo</li>
-                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Suporte e manutenção inclusos</li>
-                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Atendimento prioritário via WhatsApp</li>
-                                    </ul>
-                                    <p class="text-[10px] text-gray-400 mt-3">Valor varia conforme escopo. Definido em conversa.</p>
-                                </div>
+                            <div class="quermais-body hidden px-5 pb-5 border-t border-gray-100 pt-4">
                                 <!-- Permanente -->
                                 <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-xl p-4 hover:border-brand-300 hover:shadow-md transition-all duration-300" data-id="permanente" data-name="Permanente" data-duration="Código-fonte Entregue">
-                                    <div class="flex justify-between items-start">
+                                    <div class="flex justify-between items-start mb-3">
                                         <div>
                                             <h4 class="font-bold text-sm text-gray-900 plan-title">Permanente</h4>
-                                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">Você recebe todo o código-fonte e hospeda onde quiser. Controle total, sem vínculo.</p>
+                                            <p class="text-xs text-gray-500 mt-1 leading-relaxed">Você recebe todo o código-fonte e hospeda onde quiser. Controle total, sem vínculo com mensalidades.</p>
                                         </div>
-                                        <span class="text-brand-600 font-bold text-sm shrink-0 ml-3">A partir de<br>R$ 400</span>
+                                        <span class="text-brand-600 font-bold text-sm shrink-0 ml-3 text-right">A partir de<br>R$ 400</span>
                                     </div>
-                                    <ul class="mt-3 space-y-1.5">
+                                    <ul class="space-y-1.5 mb-3">
                                         <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Código-fonte completo entregue</li>
-                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Você hospeda onde preferir</li>
-                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Orientação de configuração inclusa</li>
+                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Transferência para sua hospedagem</li>
+                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Sem prazo de validade — depende só da sua hospedagem</li>
+                                        <li class="flex items-center gap-2 text-xs text-gray-600"><svg class="w-3.5 h-3.5 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Orientação por call de como gerenciar</li>
                                     </ul>
+                                    <details class="mt-3 group/perm" onclick="event.stopPropagation()">
+                                        <summary class="text-[11px] font-semibold text-brand-600 cursor-pointer list-none flex items-center gap-1 hover:text-brand-700 transition-colors w-max select-none">
+                                            <svg class="w-3 h-3 transition-transform duration-300 group-open/perm:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                            Ver detalhes
+                                        </summary>
+                                        <div class="pt-3 mt-2 border-t border-gray-100 text-[11px] text-gray-500 leading-relaxed text-justify">
+                                            A solução definitiva para quem deseja total independência e <strong>nenhum vínculo com mensalidades</strong>. Realizamos a entrega completa de todos os arquivos e código-fonte originais e auxiliamos na configuração e transferência do site para a sua própria hospedagem (como Hostinger, Vercel, etc.). A partir desse momento, você assume <strong>100% do controle do projeto</strong> — a permanência do site depende exclusivamente da sua hospedagem. Por ser um plano autogerenciado, não há suporte contínuo incluso. Qualquer manutenção futura será tratada de forma avulsa, mediante orçamento prévio.
+                                        </div>
+                                    </details>
                                     <p class="text-[10px] text-gray-400 mt-3">Valor varia conforme escopo. Definido em conversa.</p>
                                 </div>
                             </div>
                         </div>
                     </div><!-- fecha #plans-standard -->
+
+                    <!-- PLANOS INSTITUCIONAL (3 planos completos) -->
+                    <div id="plans-institucional" class="space-y-4 hidden">
+                        <!-- Essencial -->
+                        <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0 relative" data-id="essencial" data-name="Essencial" data-duration="6 meses (Pgto Único)" data-periodo="semestral">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Essencial</h4>
+                                    <div class="flex gap-1 mt-1.5" onclick="event.stopPropagation()">
+                                        <button class="periodo-btn periodo-ativa text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300" data-plan="essencial" data-per="semestral" onclick="togglePeriodo('essencial','semestral')">6 meses · <span style="color:#16a34a;">-17%</span></button>
+                                        <button class="periodo-btn text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300 bg-gray-100 text-gray-500 hover:bg-gray-200" data-plan="essencial" data-per="mensal" onclick="togglePeriodo('essencial','mensal')">1 mês</button>
+                                    </div>
+                                </div>
+                                <div class="text-right flex flex-col items-end mt-[-2px]">
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px] plan-preco" data-preco="essencial">R$ 75</span>
+                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium plan-periodo-label">/ 6 meses</span>
+                                    </div>
+                                    <span class="text-[9px] text-gray-500 mt-1 font-semibold bg-gray-100 px-2 py-0.5 rounded plan-pagamento-badge">Pgto único (Pix/Cartão)</span>
+                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded block plan-hint" data-preco="essencialMes">ou R$ 15/mês (sem desconto)</span>
+                                </div>
+                            </div>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed plan-desc">Hospedagem por 6 meses com pagamento único, suporte contínuo e atendimento via WhatsApp. O valor do desenvolvimento é orçado à parte.</p>
+                            <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight plan-duracao">Site no ar por 6 meses</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Link funcional para compartilhar</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Suporte e manutenção inclusos</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Atendimento via WhatsApp</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Até 3 pequenas alterações por mês</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">1 mês extra de carência no semestral</span></li>
+                            </ul>
+                            <details class="mt-4 pt-4 border-t border-gray-100 group/details" onclick="event.stopPropagation()">
+                                <summary class="text-[13px] font-bold text-brand-600 cursor-pointer list-none flex items-center gap-1.5 hover:text-brand-700 transition-colors w-max select-none">
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-open/details:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    <span>Ver detalhes do plano</span>
+                                </summary>
+                                <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
+                                    Este plano é ideal para quem quer o site no ar com suporte contínuo. O projeto será entregue totalmente funcional através de um link e ficará hospedado pelo período de <strong>6 meses</strong> (pagamento único) ou <strong>mês a mês</strong> (renovação mensal). Na opção mensal, o site fica ativo enquanto a mensalidade estiver em dia. Você terá acesso via WhatsApp para tirar dúvidas e o direito a solicitar até <strong>3 pequenas alterações por mês</strong>. No semestral, oferecemos <strong>1 mês extra de carência</strong> ao renovar.
+                                </div>
+                            </details>
+                        </div>
+
+                        <!-- Profissional -->
+                        <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0 relative" data-id="profissional" data-name="Profissional" data-duration="6 meses (Até 6x)" data-periodo="semestral">
+                            <div class="absolute -top-3 right-5 bg-brand-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm z-20">Recomendado</div>
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Profissional</h4>
+                                    <div class="flex gap-1 mt-1.5" onclick="event.stopPropagation()">
+                                        <button class="periodo-btn periodo-ativa text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300" data-plan="profissional" data-per="semestral" onclick="togglePeriodo('profissional','semestral')">6 meses · <span style="color:#16a34a;">-17%</span></button>
+                                        <button class="periodo-btn text-[10px] font-bold px-2.5 py-1 rounded-full transition-all duration-300 bg-gray-100 text-gray-500 hover:bg-gray-200" data-plan="profissional" data-per="mensal" onclick="togglePeriodo('profissional','mensal')">1 mês</button>
+                                    </div>
+                                </div>
+                                <div class="text-right flex flex-col items-end mt-[-2px]">
+                                    <div class="flex items-baseline gap-1">
+                                        <span class="text-brand-600 font-bold block leading-none text-[17px] plan-preco" data-preco="profissional">R$ 200</span>
+                                        <span class="text-[11px] text-gray-500 uppercase tracking-wider font-medium plan-periodo-label">/ 6 meses</span>
+                                    </div>
+                                    <span class="text-[9px] text-gray-500 mt-1 font-semibold bg-gray-100 px-2 py-0.5 rounded plan-pagamento-badge">Pix/Cartão (até 6x)</span>
+                                    <span class="text-[9px] text-brand-600 mt-1 font-semibold bg-brand-50 px-2 py-0.5 rounded block plan-hint" data-preco="profissionalMes">ou R$ 45/mês (sem desconto)</span>
+                                </div>
+                            </div>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed plan-desc">Hospedagem semestral com suporte total, manutenção e monitoramento. O valor do desenvolvimento é orçado à parte.</p>
+                            <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight plan-duracao">Site no ar por 6 meses</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Suporte, manutenção e monitoramento</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Acesso prioritário via WhatsApp</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Até 3 pequenas alterações por mês</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">1 mês extra de carência ao renovar</span></li>
+                            </ul>
+                            <details class="mt-4 pt-4 border-t border-gray-100 group/details2" onclick="event.stopPropagation()">
+                                <summary class="text-[13px] font-bold text-brand-600 cursor-pointer list-none flex items-center gap-1.5 hover:text-brand-700 transition-colors w-max select-none">
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-open/details2:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    <span>Ver detalhes do plano</span>
+                                </summary>
+                                <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
+                                    O plano ideal para quem quer tranquilidade total. O projeto ficará hospedado de forma segura pelo período de <strong>6 meses</strong> (pagamento único) ou <strong>mês a mês</strong> (renovação mensal), com total <strong>suporte, manutenção e monitoramento</strong>. Na opção mensal, o site fica ativo enquanto a mensalidade estiver em dia. Você terá acesso prioritário via WhatsApp para tirar dúvidas e o direito a solicitar até <strong>3 pequenas alterações por mês</strong>. No semestral, oferecemos <strong>1 mês extra de carência</strong> ao renovar.
+                                </div>
+                            </details>
+                        </div>
+
+                        <!-- Permanente -->
+                        <div class="plan-card cursor-pointer border-2 border-gray-200 bg-white rounded-2xl p-5 hover:border-brand-300 hover:shadow-lg transform transition-all duration-500 ease-ios z-0" data-id="permanente" data-name="Permanente" data-duration="Vitalício">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="font-bold text-lg text-gray-900 plan-title transition-colors duration-300">Permanente</h4>
+                                </div>
+                                <div class="text-right flex flex-col items-end mt-[-2px]">
+                                    <span class="text-brand-600 font-bold block leading-none text-[17px]">A partir de R$ 400</span>
+                                    <span class="text-[9px] text-gray-500 mt-1 font-semibold bg-gray-100 px-2 py-0.5 rounded">Em até 6x (c/ taxas da operadora)</span>
+                                </div>
+                            </div>
+                            <p class="text-[13px] text-gray-600 mb-5 leading-relaxed">Controle total. O código e o site são 100% seus. Sem vínculo com mensalidades.</p>
+                            <ul class="space-y-3 text-[13px] text-gray-600 mb-5">
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Código-fonte completo entregue</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Transferência para sua hospedagem</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Sem prazo de validade — depende só da sua hospedagem</span></li>
+                                <li class="flex items-start gap-2.5 font-medium text-gray-700"><svg class="w-4 h-4 text-green-500 shrink-0 mt-[2px]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span class="leading-tight">Orientação por call de como gerenciar</span></li>
+                            </ul>
+                            <details class="mt-4 pt-4 border-t border-gray-100 group/details3" onclick="event.stopPropagation()">
+                                <summary class="text-[13px] font-bold text-brand-600 cursor-pointer list-none flex items-center gap-1.5 hover:text-brand-700 transition-colors w-max select-none">
+                                    <svg class="w-4 h-4 transition-transform duration-300 group-open/details3:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    <span>Ver detalhes do plano</span>
+                                </summary>
+                                <div class="pt-3 mt-1 text-[13px] text-gray-500 leading-relaxed text-justify">
+                                    A solução definitiva para quem deseja total independência e <strong>nenhum vínculo com mensalidades</strong>. Realizamos a entrega completa de todos os arquivos e código-fonte originais e auxiliamos na configuração e transferência do site para a sua própria hospedagem (como Hostinger, Vercel, etc.). A partir desse momento, você assume <strong>100% do controle do projeto</strong> — a permanência do site depende exclusivamente da sua hospedagem. Por ser um plano autogerenciado, não há suporte contínuo incluso. Qualquer manutenção futura será tratada de forma avulsa, mediante orçamento prévio.
+                                </div>
+                            </details>
+                        </div>
+                    </div><!-- fecha #plans-institucional -->
 
                     <!-- PLANOS SETUP (Serviços Pontuais) -->
                     <div id="plans-setup" class="space-y-4 hidden">
@@ -1188,16 +1416,8 @@
                             <div class="grid grid-cols-2 gap-3">
                                 <div>
                                     <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">Modelo base</label>
-                                    <select id="builder-theme" onchange="builderUpdateState()" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl focus:ring-brand-500 focus:border-brand-500 block p-2.5 outline-none transition-all duration-300 hover:border-brand-300">
-                                        <option value="clean">Clean</option>
-                                        <option value="gradient">Gradient</option>
-                                        <option value="glass">Glass Premium</option>
-                                        <option value="sunset">Sunset</option>
-                                        <option value="neon">Neon</option>
-                                        <option value="aurora">Aurora</option>
-                                        <option value="obsidian">Obsidian</option>
-                                        <option value="personalizado">Personalizado</option>
-                                    </select>
+                                    <div id="builder-theme-display" class="w-full bg-gray-50 border border-gray-200 text-gray-900 text-sm rounded-xl p-2.5 font-semibold capitalize"></div>
+                                    <input type="hidden" id="builder-theme" value="clean">
                                 </div>
                                 <div>
                                     <label class="block text-xs font-semibold text-gray-500 mb-1.5 uppercase">Formato dos Links</label>
@@ -1349,6 +1569,93 @@
     
     <!-- JavaScript -->
     <script src="js/app.js"></script>
+
+<!-- Modal Tester Premium (Neon / Aurora / Obsidian) -->
+    <div id="tester-premium-modal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-gray-900/85 backdrop-blur-sm opacity-0 transition-opacity duration-300 p-3 sm:p-6">
+        <div class="bg-white rounded-[2rem] w-full max-w-6xl h-[92vh] flex flex-col overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300" id="tester-premium-container">
+
+            <!-- Header -->
+            <div class="px-5 py-4 border-b border-gray-100 flex justify-between items-center shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 text-sm">Painel Interativo</h3>
+                        <p class="text-xs text-gray-400" id="pm-modelo-label">Modelo Premium</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="closeTesterPremium(true)" class="px-4 py-2 bg-brand-600 text-white text-xs font-semibold rounded-xl hover:bg-brand-700 transition-colors">Usar este modelo</button>
+                    <button onclick="closeTesterPremium(false)" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors text-gray-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Body: painel + iframe -->
+            <div class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+
+                <!-- Painel de Edição -->
+                <div class="w-full lg:w-[340px] shrink-0 overflow-y-auto border-b lg:border-b-0 lg:border-r border-gray-100 bg-white p-5 space-y-5">
+
+                    <!-- Foto -->
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Foto de Perfil</label>
+                        <div class="flex items-center gap-3">
+                            <img id="pm-preview-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&q=80" class="w-12 h-12 rounded-full object-cover border-2 border-gray-200">
+                            <label class="flex-1 cursor-pointer flex items-center justify-center gap-2 py-2 px-3 border-2 border-dashed border-gray-200 rounded-xl hover:border-brand-400 hover:bg-brand-50 transition-colors text-xs font-semibold text-gray-500 hover:text-brand-600">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                                Escolher da galeria
+                                <input type="file" accept="image/*" class="hidden" onchange="pmUpdateAvatar(this)">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Nome / Subtítulo / Bio -->
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Nome</label>
+                            <input type="text" id="pm-input-nome" oninput="pmSend('nome', this.value)" placeholder="Seu nome" class="w-full text-sm border border-gray-200 rounded-xl px-3 py-2 outline-none focus:border-brand-400 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Subtítulo</label>
+                            <input type="text" id="pm-input-subtitulo" oninput="pmSend('subtitulo', this.value)" placeholder="Ex: Designer · Criador" class="w-full text-sm border border-gray-200 rounded-xl px-3 py-2 outline-none focus:border-brand-400 transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Bio</label>
+                            <textarea id="pm-input-bio" rows="2" oninput="pmSend('bio', this.value)" placeholder="Uma frase sobre você..." class="w-full text-sm border border-gray-200 rounded-xl px-3 py-2 outline-none focus:border-brand-400 transition-colors resize-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Links Principais -->
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Links Principais</label>
+                        <div class="space-y-2" id="pm-links-container"></div>
+                    </div>
+
+                    <!-- Mini Módulos -->
+                    <div>
+                        <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-wider mb-2">Mini Módulos</label>
+                        <div class="space-y-2" id="pm-minis-container"></div>
+                    </div>
+
+                </div>
+
+                <!-- Preview iframe -->
+                <div class="flex-1 bg-gray-950 flex items-center justify-center overflow-hidden relative">
+                    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle, #ffffff22 1px, transparent 1px); background-size: 24px 24px;"></div>
+                    <div class="relative z-10 flex flex-col items-center gap-3">
+                        <span class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Preview em tempo real</span>
+                        <div class="rounded-[2.5rem] border-[10px] border-gray-800 shadow-2xl overflow-hidden" style="width:320px; height:640px;">
+                            <iframe id="pm-iframe" src="" class="w-full h-full border-0 bg-white" scrolling="yes"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

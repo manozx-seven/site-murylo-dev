@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio | Neon Tech & Holographic</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Rajdhani (Estilo Tecnológico/Sci-Fi) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-base: #06060c;
+            --neon-cyan: #00e5ff;
+            --neon-pink: #ff0055;
+            --card-bg: rgba(0, 229, 255, 0.03);
+            --border-color: rgba(0, 229, 255, 0.2);
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-base);
+            color: #e0e0e0;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 85, 0.08), transparent 25%);
+        }
+
+        /* Efeito Canvas Digital no Fundo */
+        #tech-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.6;
+        }
+
+        /* Avatar Holográfico com Anel Giratório */
+        .tech-avatar-wrapper {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-avatar-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px dashed var(--neon-cyan);
+            animation: spin-ring 15s linear infinite;
+            filter: drop-shadow(0 0 8px var(--neon-cyan));
+            opacity: 0.7;
+        }
+
+        .tech-avatar-wrapper img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
+            z-index: 10;
+            object-fit: cover;
+        }
+
+        @keyframes spin-ring {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Textos e Brilhos */
+        .text-glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.7), 0 0 20px rgba(0, 229, 255, 0.4);
+            color: #ffffff;
+        }
+
+        .text-glow-pink {
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.7);
+            color: var(--neon-pink);
+        }
+
+        /* Cards Estilo Painel de Controle (Tech) */
+        .tech-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            /* Corte nos cantos típico de UI futurista */
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+
+        /* Linha de escaneamento que passa pelo card no hover */
+        .tech-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--neon-pink);
+            box-shadow: 0 0 10px var(--neon-pink);
+            transition: all 0.5s ease;
+        }
+
+        .tech-card:hover {
+            background: rgba(0, 229, 255, 0.1);
+            border-color: var(--neon-cyan);
+            box-shadow: inset 0 0 20px rgba(0, 229, 255, 0.2), 0 0 15px rgba(0, 229, 255, 0.4);
+            transform: translateX(5px);
+        }
+
+        .tech-card:hover::before {
+            left: 100%;
+        }
+
+        .tech-card .icon-box {
+            background: rgba(0, 0, 0, 0.5);
+            border-right: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .tech-card:hover .icon-box {
+            border-color: var(--neon-cyan);
+            background: rgba(0, 229, 255, 0.2);
+        }
+
+        .tech-card:hover .card-text {
+            color: #ffffff;
+            text-shadow: 0 0 5px var(--neon-cyan);
+        }
+
+        /* Ícones Mini Grid Estilo Módulos */
+        .tech-mini-module {
+            background: transparent;
+            border: 1px solid rgba(255, 0, 85, 0.3);
+            transition: all 0.3s ease;
+            clip-path: polygon(5px 0, 100% 0, 100% calc(100% - 5px), calc(100% - 5px) 100%, 0 100%, 0 5px);
+        }
+
+        .tech-mini-module:hover {
+            background: rgba(255, 0, 85, 0.15);
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .tech-mini-module:hover .module-icon {
+            color: var(--neon-pink);
+            filter: drop-shadow(0 0 5px var(--neon-pink));
+        }
+
+        /* Animação de Inicialização (Boot up sequence) */
+        .glitch-enter {
+            opacity: 0;
+            transform: scale(0.95);
+            filter: blur(10px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .glitch-enter.visible {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0);
+        }
+
+        /* Rodapé Redes Sociais */
+        .tech-social {
+            color: #888;
+            transition: all 0.3s;
+        }
+
+        .tech-social:hover {
+            color: var(--neon-cyan);
+            filter: drop-shadow(0 0 8px var(--neon-cyan));
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8">
+
+    <!-- Background Interativo de Partículas Quadradas -->
+    <canvas id="tech-canvas"></canvas>
+
+    <main class="w-full max-w-md z-10 flex flex-col items-stretch">
+        
+        <!-- Seção de Perfil -->
+        <header class="flex flex-col items-center text-center mb-10 glitch-enter">
+            <div class="tech-avatar-wrapper">
+                <div class="tech-avatar-ring"></div>
+                <img id="pm-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80" 
+                     alt="Foto de Perfil">
+            </div>
+            
+            <h1 id="pm-nome" class="text-4xl font-bold tracking-widest text-glow-cyan mb-1 uppercase">
+                Zero<span class="text-glow-pink font-light">_Cool</span>
+            </h1>
+            <p id="pm-subtitulo" class="text-[13px] font-medium text-[#00e5ff] mb-4 tracking-[0.2em] uppercase">
+                [ Sistema Operacional ]
+            </p>
+            <p id="pm-bio" class="text-gray-400 text-sm max-w-[280px] font-light leading-relaxed">
+                Desenvolvedor de realidades virtuais. Navegando na rede desde 1999. ⚡
+            </p>
+        </header>
+
+        <!-- 4 Cards Principais -->
+        <div class="w-full flex flex-col gap-4 mb-8">
+            
+            <a id="pm-link-0" href="#" class="tech-card flex items-stretch glitch-enter group">
+                <div class="icon-box w-14 flex items-center justify-center flex-shrink-0 text-[#00e5ff]">
+                    <i id="pm-link-0-icon" data-lucide="terminal" class="w-6 h-6 transition-transform group-hover:scale-110"></i>
+                </div>
+                <div class="flex-grow p-4 flex items-center justify-between">
+                    <span id="pm-link-0-texto" class="card-text font-semibold text-[16px] tracking-wide text-gray-200 uppercase">Acessar Terminal</span>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-500 group-hover:text-[#00e5ff]"></i>
+                </div>
+            </a>
+
+            <a id="pm-link-1" href="#" class="tech-card flex items-stretch glitch-enter group">
+                <div class="icon-box w-14 flex items-center justify-center flex-shrink-0 text-[#00e5ff]">
+                    <i id="pm-link-1-icon" data-lucide="cpu" class="w-6 h-6 transition-transform group-hover:scale-110"></i>
+                </div>
+                <div class="flex-grow p-4 flex items-center justify-between">
+                    <span id="pm-link-1-texto" class="card-text font-semibold text-[16px] tracking-wide text-gray-200 uppercase">Projetos de Hardware</span>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-500 group-hover:text-[#00e5ff]"></i>
+                </div>
+            </a>
+
+            <a id="pm-link-2" href="#" class="tech-card flex items-stretch glitch-enter group">
+                <div class="icon-box w-14 flex items-center justify-center flex-shrink-0 text-[#00e5ff]">
+                    <i id="pm-link-2-icon" data-lucide="gamepad-2" class="w-6 h-6 transition-transform group-hover:scale-110"></i>
+                </div>
+                <div class="flex-grow p-4 flex items-center justify-between">
+                    <span id="pm-link-2-texto" class="card-text font-semibold text-[16px] tracking-wide text-gray-200 uppercase">Twitch Stream</span>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-500 group-hover:text-[#00e5ff]"></i>
+                </div>
+            </a>
+
+            <a id="pm-link-3" href="#" class="tech-card flex items-stretch glitch-enter group">
+                <div class="icon-box w-14 flex items-center justify-center flex-shrink-0 text-[#00e5ff]">
+                    <i id="pm-link-3-icon" data-lucide="mail" class="w-6 h-6 transition-transform group-hover:scale-110"></i>
+                </div>
+                <div class="flex-grow p-4 flex items-center justify-between">
+                    <span id="pm-link-3-texto" class="card-text font-semibold text-[16px] tracking-wide text-gray-200 uppercase">Ping / Contato</span>
+                    <i data-lucide="arrow-up-right" class="w-5 h-5 text-gray-500 group-hover:text-[#00e5ff]"></i>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- 3 Ícones em Grid: Mini Módulos -->
+        <div class="grid grid-cols-3 gap-3 w-full mb-10">
+            <a id="pm-mini-0" href="#" class="tech-mini-module flex flex-col items-center justify-center py-4 px-2 text-gray-400 glitch-enter">
+                <i id="pm-mini-0-icon" data-lucide="database" class="module-icon w-6 h-6 mb-2 transition-colors"></i>
+                <span id="pm-mini-0-texto" class="text-[11px] font-bold tracking-widest uppercase">Arquivos</span>
+            </a>
+            
+            <a id="pm-mini-1" href="#" class="tech-mini-module flex flex-col items-center justify-center py-4 px-2 text-gray-400 glitch-enter">
+                <i id="pm-mini-1-icon" data-lucide="zap" class="module-icon w-6 h-6 mb-2 transition-colors"></i>
+                <span id="pm-mini-1-texto" class="text-[11px] font-bold tracking-widest uppercase">Boost</span>
+            </a>
+            
+            <a id="pm-mini-2" href="#" class="tech-mini-module flex flex-col items-center justify-center py-4 px-2 text-gray-400 glitch-enter">
+                <i id="pm-mini-2-icon" data-lucide="headphones" class="module-icon w-6 h-6 mb-2 transition-colors"></i>
+                <span id="pm-mini-2-texto" class="text-[11px] font-bold tracking-widest uppercase">Audio</span>
+            </a>
+        </div>
+
+        <!-- Rodapé / Redes Sociais -->
+        <footer class="flex gap-6 glitch-enter w-full justify-center mt-2 relative">
+            <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 w-16 h-[1px] bg-gradient-to-r from-transparent via-[#00e5ff] to-transparent opacity-50"></div>
+
+            <a href="#" class="tech-social p-2" aria-label="Discord">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="1"/><circle cx="15" cy="12" r="1"/><path d="M7.5 7.5c3.5-1 5.5-1 9 0"/><path d="M7 16.5c3.5 1 6.5 1 10 0"/><path d="M15.5 17c0 1 1.5 3 2 3 .5 0 2.5-2 3-3 1-5.5-.5-10-3-11-1 0-2.5 0-2.5 0s-1 1-1 1c-1.5 0-3 0-3 0s-.5-1-1-1c0 0-1.5 0-2.5 0-2.5 1-4 5.5-3 11 .5 1 2.5 3 3 3 .5 0 2-2 2-3"/></svg>
+            </a>
+            <a href="#" class="tech-social p-2" aria-label="Github">
+                <i data-lucide="github" class="w-5 h-5"></i>
+            </a>
+            <a href="#" class="tech-social p-2" aria-label="Twitter">
+                <i data-lucide="twitter" class="w-5 h-5"></i>
+            </a>
+        </footer>
+        
+    </main>
+
+    <script>
+        // Inicializa os ícones
+        lucide.createIcons();
+
+        // Listener postMessage para edição via painel externo
+        window.addEventListener('message', function(e) {
+            const d = e.data;
+            if (!d || d.type !== 'pm-update') return;
+            if (d.campo === 'avatar' && d.valor) document.getElementById('pm-avatar').src = d.valor;
+            if (d.campo === 'nome' && d.valor !== undefined) document.getElementById('pm-nome').textContent = d.valor;
+            if (d.campo === 'subtitulo' && d.valor !== undefined) document.getElementById('pm-subtitulo').textContent = d.valor;
+            if (d.campo === 'bio' && d.valor !== undefined) document.getElementById('pm-bio').textContent = d.valor;
+            if (d.campo === 'link-texto') { const el = document.getElementById('pm-link-' + d.index + '-texto'); if (el) el.textContent = d.valor; }
+            if (d.campo === 'link-href') { const el = document.getElementById('pm-link-' + d.index); if (el) el.href = d.valor || '#'; }
+            if (d.campo === 'link-icon') {
+                const el = document.getElementById('pm-link-' + d.index + '-icon');
+                if (el) { el.setAttribute('data-lucide', d.valor); lucide.createIcons(); }
+            }
+            if (d.campo === 'mini-texto') { const el = document.getElementById('pm-mini-' + d.index + '-texto'); if (el) el.textContent = d.valor; }
+            if (d.campo === 'mini-href') { const el = document.getElementById('pm-mini-' + d.index); if (el) el.href = d.valor || '#'; }
+            if (d.campo === 'mini-icon') {
+                const el = document.getElementById('pm-mini-' + d.index + '-icon');
+                if (el) { el.setAttribute('data-lucide', d.valor); lucide.createIcons(); }
+            }
+        });
+
+        // Efeito de inicialização do sistema (System Boot Sequence)
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll('.glitch-enter');
+            
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('visible');
+                }, 120 * index); 
+            });
+            
+            initTechCanvas();
+        });
+
+        // Partículas "Bits de Dados" Quadradas para um visual Tecnológico
+        function initTechCanvas() {
+            const canvas = document.getElementById('tech-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let particles = [];
+
+            function resize() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+
+            class TechParticle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.size = Math.random() * 3 + 1; // Quadrados de tamanhos variados
+                    this.speedY = Math.random() * 1.5 + 0.5; // Cai de cima pra baixo
+                    // Cores Ciano e Rosa
+                    this.color = Math.random() > 0.3 ? 'rgba(0, 229, 255, 0.3)' : 'rgba(255, 0, 85, 0.3)';
+                }
+                update() {
+                    this.y += this.speedY;
+
+                    if (this.y > height) {
+                        this.y = 0;
+                        this.x = Math.random() * width;
+                    }
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.fillRect(this.x, this.y, this.size, this.size); // Desenha quadrados
+                }
+            }
+
+            // Cria 60 "bits de dados"
+            for (let i = 0; i < 60; i++) {
+                particles.push(new TechParticle());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        }
+    </script>
+</body>
+</html>

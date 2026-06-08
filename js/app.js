@@ -20,7 +20,7 @@
         // === 2. DADOS DOS SERVIÇOS ===
         // ═══ CONFIGURAÇÃO DE PREÇOS (mude aqui e reflete em todo o site) ═══
         const PRECOS = {
-            modelos: { clean: 30, gradient: 30, glass: 30, sunset: 30, neon: 50, aurora: 70, obsidian: 120, personalizado: 120 },
+            modelos: { clean: 30, gradient: 30, glass: 30, sunset: 30, neon: 50, aurora: 70, obsidian: 120 },
             planos: { essencial: 75, profissional: 230, permanente: 400 },
             mensais: { essencial: 15, profissional: 45 },
             extras: { painelAdmin: 300 },
@@ -48,8 +48,8 @@
                 title: 'Portfólio Digital',
                 badge: null,
                 icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>',
-                shortDesc: 'Apresente seus trabalhos de forma elegante e impressione clientes.',
-                fullDesc: 'Site para apresentar seus trabalhos, projetos e habilidades de forma profissional. Ideal para fotógrafos, designers, artistas e freelancers.',
+                shortDesc: 'Seu portfólio em formato de site — disponível 24h, com link para compartilhar.',
+                fullDesc: 'Um site personalizado para apresentar seus trabalhos, projetos, habilidades e experiências de forma profissional e interativa. Diferente de um PDF, Canva, PowerPoint ou Google Apresentações, um site portfólio fica disponível 24h por dia com link próprio para compartilhar, se atualiza em tempo real e causa muito mais impacto em clientes e recrutadores. E se preferir, também posso entregar seu portfólio nesses outros formatos — PDF, Canva, PowerPoint ou Google Apresentações — basta me contar o que faz mais sentido para você. Ideal para fotógrafos, designers, artistas, freelancers, profissionais liberais e qualquer pessoa que queira se destacar.',
                 hasModels: false,
                 iconBg: 'from-violet-100 to-purple-100',
                 iconColor: 'text-violet-600'
@@ -108,8 +108,8 @@
                 title: 'Planilhas Automatizadas',
                 badge: '📊 Produtividade',
                 icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>',
-                shortDesc: 'Organização via Google Sheets com automações em Apps Script.',
-                fullDesc: 'Criação de dashboards, fórmulas complexas e automações via Google Apps Script para economizar horas do seu dia. Tudo dentro do Google Sheets, sem ferramentas externas.',
+                shortDesc: 'Planilhas no Excel ou Google Sheets — para projetos acadêmicos, empresariais e muito mais.',
+                fullDesc: 'Criação de planilhas profissionais no Excel ou Google Sheets para qualquer necessidade: projetos acadêmicos, controle financeiro, gestão de estoque, relatórios empresariais, cadastros e muito mais. Desenvolvo desde planilhas simples com fórmulas organizadas até soluções completas com dashboards, automações via Google Apps Script e integração com outras ferramentas do Google. O objetivo é eliminar trabalho manual repetitivo e deixar tudo organizado, fácil de usar e pronto para o dia a dia.',
                 hasModels: false,
                 iconBg: 'from-emerald-100 to-teal-100',
                 iconColor: 'text-teal-600'
@@ -125,6 +125,18 @@
                 hasModels: false,
                 iconBg: 'from-sky-100 to-cyan-100',
                 iconColor: 'text-cyan-600'
+            },
+            {
+                id: 'apresentacoes',
+                category: 'setup',
+                title: 'Slides & Apresentações',
+                badge: '🎯 Novo',
+                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>',
+                shortDesc: 'Slides profissionais para trabalhos, pitches e apresentações — no formato que preferir.',
+                fullDesc: 'Criação de apresentações profissionais para qualquer contexto: trabalhos acadêmicos, apresentações empresariais, pitches de negócio, relatórios institucionais e muito mais. Entrego no formato que fizer mais sentido para você — Canva, PowerPoint, Google Apresentações, PDF ou Docs. E se quiser algo que realmente impressione, também desenvolvo sua apresentação como um site interativo: animações, navegação por clique, acesso por link e visual único que nenhum slide comum consegue entregar.',
+                hasModels: false,
+                iconBg: 'from-fuchsia-100 to-pink-100',
+                iconColor: 'text-fuchsia-600'
             },
             
             {
@@ -210,6 +222,7 @@
             const stepPlans = document.getElementById('step-plans');
             const plansStandard = document.getElementById('plans-standard');
             const plansSetup = document.getElementById('plans-setup');
+            const plansInstitucional = document.getElementById('plans-institucional');
             const warningText = document.getElementById('modal-warning-text');
             const greenText = document.getElementById('modal-green-text');
             const biolinkComparison = document.getElementById('biolink-comparison');
@@ -217,6 +230,7 @@
             if(service.category === 'custom') {
                 stepModels.classList.add('hidden');
                 stepPlans.classList.add('hidden');
+                if (plansInstitucional) plansInstitucional.classList.add('hidden');
                 if(greenText) {
                     greenText.innerHTML = '<strong>Sem compromisso</strong> - Me conte sua ideia e respondo em até 24h com uma proposta personalizada.';
                 }
@@ -231,6 +245,7 @@
                 stepPlans.classList.remove('hidden');
                 plansStandard.classList.add('hidden');
                 plansSetup.classList.remove('hidden');
+                if (plansInstitucional) plansInstitucional.classList.add('hidden');
                 document.getElementById('numero-passo').textContent = '1';
                 currentState.plan = 'unico';
                 if(greenText) {
@@ -247,6 +262,7 @@
                 stepPlans.classList.remove('hidden');
                 plansStandard.classList.remove('hidden');
                 plansSetup.classList.add('hidden');
+                if (plansInstitucional) plansInstitucional.classList.add('hidden');
                 document.getElementById('numero-passo').textContent = '2';
                 if(greenText) {
                     greenText.innerHTML = '<strong>Apenas para orçamento</strong> - Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.';
@@ -258,11 +274,28 @@
                 const addonPanel = document.getElementById('addon-panel');
                 if(addonPanel) addonPanel.classList.remove('hidden');
                 resetAddonUI();
+            } else if (service.id === 'institucional') {
+                stepModels.classList.add('hidden');
+                stepPlans.classList.remove('hidden');
+                plansStandard.classList.add('hidden');
+                plansSetup.classList.add('hidden');
+                if (plansInstitucional) plansInstitucional.classList.remove('hidden');
+                document.getElementById('numero-passo').textContent = '1';
+                if (greenText) {
+                    greenText.innerHTML = '<strong>Apenas para orçamento</strong> - Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.';
+                }
+                if (warningText) {
+                    warningText.innerHTML = '<strong>Sobre os valores</strong> - Os valores abaixo são referentes ao plano de hospedagem e entrega. O serviço de desenvolvimento é orçado separadamente conforme a complexidade do projeto.';
+                }
+                if (biolinkComparison) biolinkComparison.classList.add('hidden');
+                const addonPanel4 = document.getElementById('addon-panel');
+                if (addonPanel4) addonPanel4.classList.add('hidden');
             } else {
                 stepModels.classList.add('hidden');
                 stepPlans.classList.remove('hidden');
                 plansStandard.classList.remove('hidden');
                 plansSetup.classList.add('hidden');
+                if (plansInstitucional) plansInstitucional.classList.add('hidden');
                 document.getElementById('numero-passo').textContent = '1';
                 if(greenText) {
                     greenText.innerHTML = '<strong>Apenas para orçamento</strong> - Você não está assumindo nenhum compromisso. Vamos conversar primeiro para entender sua necessidade.';
@@ -338,19 +371,10 @@
                 if (isSelected) {
                     card.classList.remove('border-gray-200', 'border-gray-300', 'hover:border-brand-300', 'hover:border-brand-400', 'hover:shadow-xl', 'z-0');
                     card.classList.add('border-brand-500', 'shadow-[0_12px_40px_-12px_rgba(0,119,230,0.4)]', 'scale-[1.03]', 'z-10');
-                    if (id === 'personalizado') {
-                        card.classList.remove('border-dashed', 'bg-gray-50', 'hover:bg-white');
-                        card.classList.add('border-solid', 'bg-brand-50');
-                    }
                 } else {
                     card.classList.remove('border-brand-500', 'shadow-[0_12px_40px_-12px_rgba(0,119,230,0.4)]', 'scale-[1.03]', 'z-10');
                     card.classList.add('hover:shadow-xl', 'z-0');
-                    if (id === 'personalizado') {
-                        card.classList.remove('border-solid', 'bg-brand-50');
-                        card.classList.add('border-gray-300', 'hover:border-brand-400', 'border-dashed', 'bg-gray-50', 'hover:bg-white');
-                    } else {
-                        card.classList.add('border-gray-200', 'hover:border-brand-300');
-                    }
+                    card.classList.add('border-gray-200', 'hover:border-brand-300');
                 }
             });
 
@@ -376,7 +400,7 @@
         document.querySelectorAll('.model-card').forEach(card => {
             card.addEventListener('click', function() {
                 const id = this.dataset.id;
-                currentState.model = (currentState.model === id) ? null : id; // Toggle fluido
+                currentState.model = (currentState.model === id) ? null : id;
                 updateSelectionUI();
                 updateBtnWa();
             });
@@ -659,22 +683,26 @@
                 textBio: 'text-gray-400 font-light',
                 screenStyle: 'background: #0a0a0a;'
             },
-            personalizado: {
-                screen: 'bg-white',
-                textName: 'text-gray-900',
-                textBio: 'text-gray-600'
-            }
         };
 
+        const PREMIUM_THEMES = ['neon', 'aurora', 'obsidian'];
+        const PM_ICONS = ['link','mail','phone','instagram','whatsapp','message-square','star','heart','store','shopping-bag','camera','music','youtube','twitch','github','twitter','linkedin','globe','map-pin','calendar','video','image','zap','coffee','book','briefcase','terminal','cpu','gamepad-2','database','headphones','compass','backpack','scale','file-text'];
+
         function openTester(themeId) {
+            if (PREMIUM_THEMES.includes(themeId)) {
+                openTesterPremium(themeId);
+                return;
+            }
             builderData.theme = themeId;
-            const themeSelect = document.getElementById('builder-theme');
-            if (themeSelect) themeSelect.value = themeId;
+            const themeInput = document.getElementById('builder-theme');
+            if (themeInput) themeInput.value = themeId;
+            const themeDisplay = document.getElementById('builder-theme-display');
+            const nomeDisplay = { clean: 'Clean', gradient: 'Gradient', glass: 'Glass Premium', sunset: 'Sunset' };
+            if (themeDisplay) themeDisplay.textContent = nomeDisplay[themeId] || themeId;
             
-            builderUpdateState(); // Prepara os dados
-            renderBuilderLinks(); // Renderiza os inputs da esquerda
+            builderUpdateState();
+            renderBuilderLinks();
             
-            // Retorna o scroll ao topo e exibe a seta se for mobile
             const scrollArea = document.getElementById('tester-scroll-area');
             if (scrollArea) scrollArea.scrollTop = 0;
             const indicator = document.getElementById('mobile-scroll-indicator');
@@ -683,7 +711,6 @@
                 indicator.classList.add('opacity-100');
             }
 
-            // Animação de entrada
             if (testerModal) {
                 testerModal.classList.remove('hidden');
                 setTimeout(() => {
@@ -692,6 +719,115 @@
                 }, 10);
             }
             document.body.style.overflow = 'hidden';
+        }
+
+        // ── Tester Premium ──────────────────────────────────────────
+        let pmCurrentTheme = null;
+
+        const PM_DEFAULTS = {
+            neon:    { links: ['Acessar Terminal','Projetos de Hardware','Twitch Stream','Ping / Contato'], linkIcons: ['terminal','cpu','gamepad-2','mail'], minis: ['Arquivos','Boost','Audio'], miniIcons: ['database','zap','headphones'] },
+            aurora:  { links: ['Portfólio Fine Art','Presets Lightroom Night','Workshops na Islândia','YouTube: Vlogs de Neve'], linkIcons: ['image','camera','map-pin','video'], minis: ['Guia','Gear','Apoiar'], miniIcons: ['compass','backpack','coffee'] },
+            obsidian:{ links: ['Áreas de Atuação','Agendar Consultoria','Artigos Jurídicos','Contato WhatsApp'], linkIcons: ['scale','calendar','file-text','message-square'], minis: ['Local','Casos','Site'], miniIcons: ['map-pin','briefcase','globe'] }
+        };
+
+        function openTesterPremium(themeId) {
+            pmCurrentTheme = themeId;
+            const modal = document.getElementById('tester-premium-modal');
+            const container = document.getElementById('tester-premium-container');
+            const iframe = document.getElementById('pm-iframe');
+            const label = document.getElementById('pm-modelo-label');
+            const nomes = { neon: 'Neon', aurora: 'Aurora', obsidian: 'Obsidian' };
+
+            if (label) label.textContent = 'Modelo ' + (nomes[themeId] || themeId);
+            const src = `assets/biolink/${themeId.charAt(0).toUpperCase() + themeId.slice(1)}.html`;
+            if (iframe) iframe.src = src;
+
+            pmRenderPainel(themeId);
+
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    if (container) container.classList.remove('scale-95');
+                }, 10);
+            }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function pmRenderPainel(themeId) {
+            const def = PM_DEFAULTS[themeId] || PM_DEFAULTS.neon;
+
+            // Reset campos de perfil
+            const inputNome = document.getElementById('pm-input-nome');
+            const inputSub = document.getElementById('pm-input-subtitulo');
+            const inputBio = document.getElementById('pm-input-bio');
+            if (inputNome) inputNome.value = '';
+            if (inputSub) inputSub.value = '';
+            if (inputBio) inputBio.value = '';
+
+            // Render links
+            const linksEl = document.getElementById('pm-links-container');
+            if (linksEl) {
+                linksEl.innerHTML = def.links.map((texto, i) => `
+                    <div class="flex gap-1.5 items-center">
+                        <select onchange="pmSend('link-icon', this.value, ${i})" class="text-xs border border-gray-200 rounded-lg px-1.5 py-2 outline-none focus:border-brand-400 bg-white shrink-0 w-[90px]">
+                            ${PM_ICONS.map(ic => `<option value="${ic}"${ic === def.linkIcons[i] ? ' selected' : ''}>${ic}</option>`).join('')}
+                        </select>
+                        <input type="text" value="${texto}" oninput="pmSend('link-texto', this.value, ${i})" placeholder="Texto do link" class="flex-1 text-xs border border-gray-200 rounded-lg px-2 py-2 outline-none focus:border-brand-400 min-w-0">
+                        <input type="url" placeholder="URL" oninput="pmSend('link-href', this.value, ${i})" class="w-[80px] text-xs border border-gray-200 rounded-lg px-2 py-2 outline-none focus:border-brand-400 shrink-0">
+                    </div>`).join('');
+            }
+
+            // Render minis
+            const minisEl = document.getElementById('pm-minis-container');
+            if (minisEl) {
+                minisEl.innerHTML = def.minis.map((texto, i) => `
+                    <div class="flex gap-1.5 items-center">
+                        <select onchange="pmSend('mini-icon', this.value, ${i})" class="text-xs border border-gray-200 rounded-lg px-1.5 py-2 outline-none focus:border-brand-400 bg-white shrink-0 w-[90px]">
+                            ${PM_ICONS.map(ic => `<option value="${ic}"${ic === def.miniIcons[i] ? ' selected' : ''}>${ic}</option>`).join('')}
+                        </select>
+                        <input type="text" value="${texto}" oninput="pmSend('mini-texto', this.value, ${i})" placeholder="Texto" class="flex-1 text-xs border border-gray-200 rounded-lg px-2 py-2 outline-none focus:border-brand-400 min-w-0">
+                        <input type="url" placeholder="URL" oninput="pmSend('mini-href', this.value, ${i})" class="w-[80px] text-xs border border-gray-200 rounded-lg px-2 py-2 outline-none focus:border-brand-400 shrink-0">
+                    </div>`).join('');
+            }
+        }
+
+        function pmSend(campo, valor, index) {
+            const iframe = document.getElementById('pm-iframe');
+            if (!iframe || !iframe.contentWindow) return;
+            iframe.contentWindow.postMessage({ type: 'pm-update', campo, valor, index }, '*');
+        }
+
+        function pmUpdateAvatar(input) {
+            const file = input.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const src = e.target.result;
+                const preview = document.getElementById('pm-preview-avatar');
+                if (preview) preview.src = src;
+                pmSend('avatar', src);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function closeTesterPremium(selectModel = false) {
+            const modal = document.getElementById('tester-premium-modal');
+            const container = document.getElementById('tester-premium-container');
+            const iframe = document.getElementById('pm-iframe');
+            if (modal) modal.classList.add('opacity-0');
+            if (container) container.classList.add('scale-95');
+            if (selectModel && pmCurrentTheme) {
+                currentState.model = pmCurrentTheme;
+                updateSelectionUI();
+                updateBtnWa();
+            }
+            setTimeout(() => {
+                if (modal) { modal.classList.add('hidden'); modal.classList.remove('flex'); }
+                if (iframe) iframe.src = '';
+                document.body.style.overflow = '';
+            }, 300);
         }
 
         function closeTester(selectModel = false) {
@@ -737,7 +873,7 @@
             const nameEl = document.getElementById('builder-name');
             const bioEl = document.getElementById('builder-bio');
 
-            if (themeEl) builderData.theme = themeEl.value;
+            if (themeEl) builderData.theme = themeEl.value || builderData.theme;
             if (layoutEl) builderData.layout = layoutEl.value;
             if (nameEl) builderData.name = nameEl.value || '@seunome';
             if (bioEl) builderData.bio = bioEl.value || 'Sua bio aparece aqui';
@@ -840,7 +976,7 @@
 
             // Aplicar estilo de tema aos botões de link
             let linkClass = linkBaseClass;
-            if (builderData.theme === 'clean' || builderData.theme === 'personalizado') {
+            if (builderData.theme === 'clean') {
                 linkClass += ' bg-white border border-gray-200 text-gray-800 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-md';
             } else if (builderData.theme === 'gradient' || builderData.theme === 'sunset') {
                 linkClass += ' bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30';
@@ -926,39 +1062,97 @@
             if (project.type === 'biolink-models') {
                 imgContainer.className = 'w-full space-y-4';
                 imgContainer.innerHTML = `
-                    <div class="grid grid-cols-3 gap-3" id="biolink-model-selector">
+                    <div class="grid grid-cols-4 gap-2" id="biolink-model-selector">
                         <button class="biolink-btn cursor-pointer rounded-xl overflow-hidden border-2 border-brand-500 shadow-lg transition-all group" onclick="selectBiolinkModel('clean', this)">
-                            <div class="aspect-[9/16] bg-white flex flex-col items-center justify-center p-3">
-                                <div class="w-10 h-10 rounded-full bg-gray-800 mb-2"></div>
-                                <div class="w-14 h-1.5 rounded bg-gray-800 mb-1"></div>
-                                <div class="w-10 h-1.5 rounded bg-gray-800 mb-3"></div>
-                                <div class="w-full space-y-1.5"><div class="h-6 bg-gray-50 border border-gray-200 rounded-lg"></div><div class="h-6 bg-gray-50 border border-gray-200 rounded-lg"></div></div>
+                            <div class="aspect-[9/16] bg-white flex flex-col items-center justify-center p-2">
+                                <div class="w-8 h-8 rounded-full bg-gray-800 mb-1.5"></div>
+                                <div class="w-12 h-1 rounded bg-gray-800 mb-0.5"></div>
+                                <div class="w-8 h-1 rounded bg-gray-800 mb-2"></div>
+                                <div class="w-full space-y-1"><div class="h-4 bg-gray-50 border border-gray-200 rounded-md"></div><div class="h-4 bg-gray-50 border border-gray-200 rounded-md"></div><div class="h-4 bg-gray-50 border border-gray-200 rounded-md"></div></div>
                             </div>
-                            <div class="bg-white p-2 text-center border-t border-gray-100">
-                                <span class="text-xs font-bold text-gray-900">Clean</span>
+                            <div class="bg-white p-1.5 text-center border-t border-gray-100">
+                                <span class="text-[10px] font-bold text-gray-900">Clean</span>
                             </div>
                         </button>
                         <button class="biolink-btn cursor-pointer rounded-xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all group" onclick="selectBiolinkModel('gradient', this)">
-                            <div class="aspect-[9/16] bg-gradient-to-br from-indigo-500 to-purple-600 flex flex-col items-center justify-center p-3">
-                                <div class="w-10 h-10 rounded-full bg-white/30 mb-2"></div>
-                                <div class="w-14 h-1.5 rounded bg-white/40 mb-1"></div>
-                                <div class="w-10 h-1.5 rounded bg-white/40 mb-3"></div>
-                                <div class="w-full space-y-1.5"><div class="h-6 bg-white/15 border border-white/30 rounded-lg"></div><div class="h-6 bg-white/15 border border-white/30 rounded-lg"></div></div>
+                            <div class="aspect-[9/16] bg-gradient-to-br from-indigo-500 to-purple-600 flex flex-col items-center justify-center p-2">
+                                <div class="w-8 h-8 rounded-full bg-white/30 mb-1.5"></div>
+                                <div class="w-12 h-1 rounded bg-white/40 mb-0.5"></div>
+                                <div class="w-8 h-1 rounded bg-white/40 mb-2"></div>
+                                <div class="w-full space-y-1"><div class="h-4 bg-white/15 border border-white/30 rounded-md"></div><div class="h-4 bg-white/15 border border-white/30 rounded-md"></div><div class="h-4 bg-white/15 border border-white/30 rounded-md"></div></div>
                             </div>
-                            <div class="bg-white p-2 text-center border-t border-gray-100">
-                                <span class="text-xs font-bold text-gray-900">Gradient</span>
+                            <div class="bg-white p-1.5 text-center border-t border-gray-100">
+                                <span class="text-[10px] font-bold text-gray-900">Gradient</span>
                             </div>
                         </button>
                         <button class="biolink-btn cursor-pointer rounded-xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all group" onclick="selectBiolinkModel('glass', this)">
-                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-900 via-[#0a0a0a] to-gray-900 flex flex-col items-center justify-center p-3 relative">
-                                <div class="absolute top-0 right-0 w-16 h-16 bg-white/[0.03] blur-xl rounded-full"></div>
-                                <div class="w-10 h-10 rounded-full bg-white/10 border border-white/10 mb-2"></div>
-                                <div class="w-14 h-1.5 rounded bg-white/10 mb-1"></div>
-                                <div class="w-10 h-1.5 rounded bg-white/10 mb-3"></div>
-                                <div class="w-full space-y-1.5"><div class="h-6 bg-white/[0.06] border border-white/10 rounded-lg"></div><div class="h-6 bg-white/[0.06] border border-white/10 rounded-lg"></div></div>
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-900 via-[#0a0a0a] to-gray-900 flex flex-col items-center justify-center p-2 relative">
+                                <div class="w-8 h-8 rounded-full bg-white/10 border border-white/10 mb-1.5"></div>
+                                <div class="w-12 h-1 rounded bg-white/10 mb-0.5"></div>
+                                <div class="w-8 h-1 rounded bg-white/10 mb-2"></div>
+                                <div class="w-full space-y-1"><div class="h-4 bg-white/[0.06] border border-white/10 rounded-md"></div><div class="h-4 bg-white/[0.06] border border-white/10 rounded-md"></div><div class="h-4 bg-white/[0.06] border border-white/10 rounded-md"></div></div>
                             </div>
-                            <div class="bg-white p-2 text-center border-t border-gray-100">
-                                <span class="text-xs font-bold text-gray-900">Glass Premium</span>
+                            <div class="bg-white p-1.5 text-center border-t border-gray-100">
+                                <span class="text-[10px] font-bold text-gray-900">Glass Premium</span>
+                            </div>
+                        </button>
+                        <button class="biolink-btn cursor-pointer rounded-xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all group" onclick="selectBiolinkModel('sunset', this)">
+                            <div class="aspect-[9/16] flex flex-col items-center justify-center p-2" style="background: linear-gradient(135deg, #ff6b35, #f7931e, #ff6b9d)">
+                                <div class="w-8 h-8 rounded-full mb-1.5" style="background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.5)"></div>
+                                <div class="w-12 h-1 rounded mb-0.5" style="background: rgba(255,255,255,0.5)"></div>
+                                <div class="w-8 h-1 rounded mb-2" style="background: rgba(255,255,255,0.35)"></div>
+                                <div class="w-full space-y-1"><div class="h-4 rounded-md" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3)"></div><div class="h-4 rounded-md" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3)"></div><div class="h-4 rounded-md" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3)"></div></div>
+                            </div>
+                            <div class="bg-white p-1.5 text-center border-t border-gray-100">
+                                <span class="text-[10px] font-bold text-gray-900">Sunset</span>
+                            </div>
+                        </button>
+                        <button class="biolink-btn cursor-pointer rounded-xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all group" onclick="selectBiolinkModel('neon', this)">
+                            <div class="aspect-[9/16] flex flex-col items-center justify-center p-2 relative" style="background: linear-gradient(180deg, #06060c, #0a0a18)">
+                                <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 80%, rgba(0,229,255,0.15) 0%, transparent 70%)"></div>
+                                <div class="w-8 h-8 rounded-full mb-1.5 relative" style="border: 1px solid rgba(255,0,85,0.6); background: #111; box-shadow: 0 0 10px rgba(255,0,85,0.3)"></div>
+                                <div class="w-12 h-1 rounded mb-0.5" style="background: rgba(0,229,255,0.5); box-shadow: 0 0 4px rgba(0,229,255,0.5)"></div>
+                                <div class="w-8 h-1 rounded mb-2" style="background: rgba(0,229,255,0.3)"></div>
+                                <div class="w-full space-y-1">
+                                    <div class="h-4 rounded flex items-center px-1 gap-1" style="background: rgba(0,229,255,0.04); border: 1px solid rgba(0,229,255,0.15)"><div class="w-2 h-2 rounded-sm" style="background: rgba(0,229,255,0.3)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.15)"></div></div>
+                                    <div class="h-4 rounded flex items-center px-1 gap-1" style="background: rgba(0,229,255,0.04); border: 1px solid rgba(0,229,255,0.15)"><div class="w-2 h-2 rounded-sm" style="background: rgba(0,229,255,0.3)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.15)"></div></div>
+                                    <div class="h-4 rounded flex items-center px-1 gap-1" style="background: rgba(0,229,255,0.04); border: 1px solid rgba(0,229,255,0.15)"><div class="w-2 h-2 rounded-sm" style="background: rgba(0,229,255,0.3)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.15)"></div></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-1.5 text-center border-t border-gray-100">
+                                <span class="text-[10px] font-bold text-gray-900">Neon</span>
+                            </div>
+                        </button>
+                        <button class="biolink-btn cursor-pointer rounded-xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all group" onclick="selectBiolinkModel('aurora', this)">
+                            <div class="aspect-[9/16] flex flex-col items-center justify-center p-2 relative overflow-hidden" style="background: #030712">
+                                <div class="absolute pointer-events-none" style="top:0; left:-20%; width:140%; height:30%; background: linear-gradient(90deg, transparent, rgba(16,185,129,0.3), rgba(0,245,212,0.25), transparent); filter: blur(6px); transform: rotate(-15deg)"></div>
+                                <div class="w-8 h-8 rounded-full mb-1.5 relative" style="background: #1a1a2e; box-shadow: 0 0 0 2px rgba(0,245,212,0.5), 0 0 8px rgba(0,245,212,0.2)"></div>
+                                <div class="w-12 h-1 rounded mb-0.5" style="background: rgba(255,255,255,0.6)"></div>
+                                <div class="w-8 h-1 rounded mb-2" style="background: rgba(0,245,212,0.4)"></div>
+                                <div class="w-full space-y-1">
+                                    <div class="h-4 rounded-lg flex items-center px-1 gap-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08)"><div class="w-2 h-2 rounded-full" style="background: rgba(0,245,212,0.4)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.2)"></div></div>
+                                    <div class="h-4 rounded-lg flex items-center px-1 gap-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08)"><div class="w-2 h-2 rounded-full" style="background: rgba(0,245,212,0.4)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.2)"></div></div>
+                                    <div class="h-4 rounded-lg flex items-center px-1 gap-1" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08)"><div class="w-2 h-2 rounded-full" style="background: rgba(0,245,212,0.4)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.2)"></div></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-1.5 text-center border-t border-gray-100">
+                                <span class="text-[10px] font-bold text-gray-900">Aurora</span>
+                            </div>
+                        </button>
+                        <button class="biolink-btn cursor-pointer rounded-xl overflow-hidden border-2 border-gray-200 hover:border-brand-300 transition-all group" onclick="selectBiolinkModel('obsidian', this)">
+                            <div class="aspect-[9/16] flex flex-col items-center justify-center p-2 relative" style="background: #0a0a0a">
+                                <div class="absolute top-0 left-0 right-0 h-px" style="background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent)"></div>
+                                <div class="w-8 h-8 rounded-full mb-1.5" style="background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border: 1px solid rgba(255,215,0,0.3); box-shadow: 0 0 10px rgba(255,215,0,0.1)"></div>
+                                <div class="w-12 h-1 rounded mb-0.5" style="background: rgba(255,255,255,0.45)"></div>
+                                <div class="w-8 h-1 rounded mb-2" style="background: rgba(255,215,0,0.2)"></div>
+                                <div class="w-full space-y-1">
+                                    <div class="h-4 rounded-lg flex items-center px-1 gap-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)"><div class="w-2 h-2 rounded" style="background: rgba(255,215,0,0.2)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.15)"></div></div>
+                                    <div class="h-4 rounded-lg flex items-center px-1 gap-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)"><div class="w-2 h-2 rounded" style="background: rgba(255,215,0,0.2)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.15)"></div></div>
+                                    <div class="h-4 rounded-lg flex items-center px-1 gap-1" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07)"><div class="w-2 h-2 rounded" style="background: rgba(255,215,0,0.2)"></div><div class="flex-1 h-0.5 rounded" style="background: rgba(255,255,255,0.15)"></div></div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-1.5 text-center border-t border-gray-100">
+                                <span class="text-[10px] font-bold text-gray-900">Obsidian</span>
                             </div>
                         </button>
                     </div>
@@ -1053,7 +1247,11 @@
         const biolinkFiles = {
             clean: 'assets/biolink/Bio_Link_Instagram_-_Clean.html',
             gradient: 'assets/biolink/Bio_Link_Instagram_-_Gradient.html',
-            glass: 'assets/biolink/Bio_Link_Instagram_-_Glass_Premium.html'
+            glass: 'assets/biolink/Bio_Link_Instagram_-_Glass_Premium.html',
+            sunset: 'assets/biolink/Sunset.html',
+            neon: 'assets/biolink/Neon.html',
+            aurora: 'assets/biolink/Aurora.html',
+            obsidian: 'assets/biolink/Obsidian.html'
         };
 
         function selectBiolinkModel(model, el) {
@@ -1378,7 +1576,7 @@
                 if (precoEl) precoEl.textContent = isMensal ? 'R$ ' + PRECOS.mensais.essencial : 'R$ ' + PRECOS.planos.essencial;
                 if (labelEl) labelEl.textContent = isMensal ? '/ mês' : '/ 6 meses';
                 if (badgeEl) { badgeEl.textContent = isMensal ? 'Renovação mensal (Pix)' : 'Pgto único (Pix/Cartão)'; badgeEl.className = isMensal ? 'text-[9px] mt-1 font-semibold px-2 py-0.5 rounded text-brand-600 bg-brand-50' : 'text-[9px] mt-1 font-semibold px-2 py-0.5 rounded text-gray-500 bg-gray-100'; }
-                if (descEl) descEl.textContent = isMensal ? 'Hospedagem mês a mês. Renove quando quiser. O valor do desenvolvimento é orçado à parte.' : 'Hospedagem por 6 meses com pagamento único. O valor do desenvolvimento é orçado à parte.';
+                if (descEl) descEl.textContent = isMensal ? 'Hospedagem mês a mês com suporte contínuo e atendimento via WhatsApp. Renove quando quiser. O valor do desenvolvimento é orçado à parte.' : 'Hospedagem por 6 meses com pagamento único, suporte contínuo e atendimento via WhatsApp. O valor do desenvolvimento é orçado à parte.';
                 if (duracaoEl) duracaoEl.textContent = isMensal ? 'Site no ar por 1 mês (renovável)' : 'Site no ar por 6 meses';
                 card.setAttribute('data-duration', isMensal ? '1 mês (Renovável)' : '6 meses (Pgto Único)');
                 var hintEl = card.querySelector('.plan-hint');
@@ -1409,7 +1607,6 @@
                 else if (k === 'neon') v = 'R$ ' + PRECOS.modelos.neon;
                 else if (k === 'aurora') v = 'R$ ' + PRECOS.modelos.aurora;
                 else if (k === 'obsidian') v = 'R$ ' + PRECOS.modelos.obsidian;
-                else if (k === 'personalizado') v = 'A partir de R$ ' + PRECOS.modelos.personalizado;
                 else if (k === 'essencial') v = 'R$ ' + PRECOS.planos.essencial;
                 else if (k === 'profissional') v = 'R$ ' + PRECOS.planos.profissional;
                 else if (k === 'permanente') v = 'R$ ' + PRECOS.planos.permanente;
@@ -1425,7 +1622,6 @@
             document.querySelectorAll('.model-card[data-id="gradient"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.gradient); });
             document.querySelectorAll('.model-card[data-id="glass"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.glass); });
             document.querySelectorAll('.model-card[data-id="sunset"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.sunset); });
-            document.querySelectorAll('.model-card[data-id="personalizado"]').forEach(function(el) { el.setAttribute('data-price', 'A partir de R$ ' + PRECOS.modelos.personalizado); });
             document.querySelectorAll('.model-card[data-id="neon"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.neon); });
             document.querySelectorAll('.model-card[data-id="aurora"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.aurora); });
             document.querySelectorAll('.model-card[data-id="obsidian"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.obsidian); });
