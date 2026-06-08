@@ -90,18 +90,7 @@
                 iconBg: 'from-orange-100 to-amber-100',
                 iconColor: 'text-orange-600'
             },
-            {
-                id: 'gmn',
-                category: 'setup',
-                title: 'Google Meu Negócio',
-                badge: '🔥 Alta demanda',
-                icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>',
-                shortDesc: 'Configuração profissional para ser encontrado na sua região.',
-                fullDesc: 'Otimização completa do seu perfil no Google Maps. Aumente as visitas físicas e contatos locais sem investir em anúncios.',
-                hasModels: false,
-                iconBg: 'from-red-100 to-rose-100',
-                iconColor: 'text-red-600'
-            },
+
             {
                 id: 'planilhas',
                 category: 'setup',
