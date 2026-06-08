@@ -636,6 +636,33 @@
                 screen: 'bg-gradient-to-br from-gray-900 via-[#0a0a0a] to-gray-900 relative',
                 textName: 'text-transparent bg-clip-text bg-gradient-to-r from-gray-100 to-gray-400 drop-shadow-sm',
                 textBio: 'text-gray-400 font-light'
+            },
+            sunset: {
+                screen: 'bg-gradient-to-br from-orange-400 via-rose-400 to-pink-500',
+                textName: 'text-white drop-shadow-sm',
+                textBio: 'text-white/90 drop-shadow-sm'
+            },
+            neon: {
+                screen: 'bg-gradient-to-b from-gray-950 to-gray-900 relative',
+                textName: 'text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.6)]',
+                textBio: 'text-emerald-300/70'
+            },
+            aurora: {
+                screen: 'relative',
+                textName: 'text-white drop-shadow-sm',
+                textBio: 'text-white/80',
+                screenStyle: 'background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);'
+            },
+            obsidian: {
+                screen: 'relative',
+                textName: 'text-yellow-400/90 drop-shadow-[0_0_8px_rgba(250,204,21,0.3)]',
+                textBio: 'text-gray-400 font-light',
+                screenStyle: 'background: #0a0a0a;'
+            },
+            personalizado: {
+                screen: 'bg-white',
+                textName: 'text-gray-900',
+                textBio: 'text-gray-600'
             }
         };
 
@@ -785,6 +812,7 @@
 
             // Resetar e aplicar classes de tema base
             screen.className = `relative w-[300px] h-[600px] border-[14px] border-gray-900 rounded-[3rem] shadow-2xl overflow-hidden transition-all duration-500 z-0 ${style.screen}`;
+            if (style.screenStyle) { screen.style.cssText = style.screenStyle; } else { screen.style.cssText = ''; }
             nameDisplay.className = `font-bold text-xl text-center mb-1 tracking-tight transition-all duration-500 z-10 ${style.textName}`;
             bioDisplay.className = `text-[13px] text-center mb-8 opacity-90 leading-relaxed whitespace-pre-line transition-all duration-500 z-10 ${style.textBio}`;
 
@@ -812,12 +840,16 @@
 
             // Aplicar estilo de tema aos botões de link
             let linkClass = linkBaseClass;
-            if (builderData.theme === 'clean') {
+            if (builderData.theme === 'clean' || builderData.theme === 'personalizado') {
                 linkClass += ' bg-white border border-gray-200 text-gray-800 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-md';
-            } else if (builderData.theme === 'gradient') {
+            } else if (builderData.theme === 'gradient' || builderData.theme === 'sunset') {
                 linkClass += ' bg-white/20 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-white/30';
-            } else if (builderData.theme === 'glass') {
+            } else if (builderData.theme === 'glass' || builderData.theme === 'obsidian') {
                 linkClass += ' bg-gradient-to-b from-white/[0.08] to-white/[0.02] backdrop-blur-xl border border-white/10 text-gray-200 shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:from-white/[0.12] hover:to-white/[0.05] hover:border-white/20 hover:text-white';
+            } else if (builderData.theme === 'neon') {
+                linkClass += ' bg-emerald-400/10 border border-emerald-400/30 text-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.15)] hover:bg-emerald-400/20';
+            } else if (builderData.theme === 'aurora') {
+                linkClass += ' bg-white/10 backdrop-blur-md border border-purple-400/30 text-white shadow-lg hover:bg-white/20';
             }
 
             // Renderizar botões no celular
