@@ -20,7 +20,7 @@
         // === 2. DADOS DOS SERVIÇOS ===
         // ═══ CONFIGURAÇÃO DE PREÇOS (mude aqui e reflete em todo o site) ═══
         const PRECOS = {
-            modelos: { clean: 50, gradient: 70, glass: 120, personalizado: 120 },
+            modelos: { clean: 30, gradient: 30, glass: 30, sunset: 30, neon: 50, aurora: 70, obsidian: 120, personalizado: 120 },
             planos: { essencial: 75, profissional: 230, permanente: 400 },
             mensais: { essencial: 15, profissional: 45 },
             extras: { painelAdmin: 300 },
@@ -1373,6 +1373,10 @@
                 if (k === 'clean') v = 'R$ ' + PRECOS.modelos.clean;
                 else if (k === 'gradient') v = 'R$ ' + PRECOS.modelos.gradient;
                 else if (k === 'glass') v = 'R$ ' + PRECOS.modelos.glass;
+                else if (k === 'sunset') v = 'R$ ' + PRECOS.modelos.sunset;
+                else if (k === 'neon') v = 'R$ ' + PRECOS.modelos.neon;
+                else if (k === 'aurora') v = 'R$ ' + PRECOS.modelos.aurora;
+                else if (k === 'obsidian') v = 'R$ ' + PRECOS.modelos.obsidian;
                 else if (k === 'personalizado') v = 'A partir de R$ ' + PRECOS.modelos.personalizado;
                 else if (k === 'essencial') v = 'R$ ' + PRECOS.planos.essencial;
                 else if (k === 'profissional') v = 'R$ ' + PRECOS.planos.profissional;
@@ -1388,7 +1392,11 @@
             document.querySelectorAll('.model-card[data-id="clean"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.clean); });
             document.querySelectorAll('.model-card[data-id="gradient"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.gradient); });
             document.querySelectorAll('.model-card[data-id="glass"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.glass); });
+            document.querySelectorAll('.model-card[data-id="sunset"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.sunset); });
             document.querySelectorAll('.model-card[data-id="personalizado"]').forEach(function(el) { el.setAttribute('data-price', 'A partir de R$ ' + PRECOS.modelos.personalizado); });
+            document.querySelectorAll('.model-card[data-id="neon"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.neon); });
+            document.querySelectorAll('.model-card[data-id="aurora"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.aurora); });
+            document.querySelectorAll('.model-card[data-id="obsidian"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.obsidian); });
         }
         popularPrecos();
 
