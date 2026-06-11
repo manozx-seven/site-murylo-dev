@@ -20,7 +20,7 @@
         // === 2. DADOS DOS SERVIÇOS ===
         // ═══ CONFIGURAÇÃO DE PREÇOS (mude aqui e reflete em todo o site) ═══
         const PRECOS = {
-            modelos: { clean: 30, gradient: 30, glass: 30, sunset: 30, neon: 50, aurora: 70, obsidian: 120 },
+            modelos: { clean: 30, gradient: 30, glass: 30, sunset: 30, neon: 50, aurora: 70, obsidian: 120, personalizado: 120 },
             planos: { essencial: 75, profissional: 230, permanente: 400 },
             mensais: { essencial: 15, profissional: 45 },
             extras: { painelAdmin: 300 },
@@ -346,6 +346,33 @@
                     closePortfolioModal();
                 } else if (modal && !modal.classList.contains('hidden')) {
                     closeModal();
+                }
+            }
+        });
+
+        // Zoom global: continua rastreando o mouse mesmo fora da área da imagem
+        document.addEventListener('mousemove', (e) => {
+            if (!_activeZoomContainer) return;
+            const level = getZoomLevel(_activeZoomContainer);
+            if (level === 0) { _activeZoomContainer = null; return; }
+            const img = _activeZoomContainer.querySelector('img.zoom-ready');
+            const cursor = _activeZoomContainer.querySelector('.zoom-cursor');
+            if (!img) return;
+            const rect = _activeZoomContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            // Clamp: o zoom não passa das bordas da imagem
+            const pctX = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            const pctY = Math.max(0, Math.min(100, (y / rect.height) * 100));
+            img.style.transformOrigin = `${pctX}% ${pctY}%`;
+            if (cursor) {
+                const inside = x >= 0 && x <= rect.width && y >= 0 && y <= rect.height;
+                if (inside) {
+                    cursor.style.left = `${x}px`;
+                    cursor.style.top = `${y}px`;
+                    cursor.style.opacity = '1';
+                } else {
+                    cursor.style.opacity = '0';
                 }
             }
         });
@@ -688,7 +715,17 @@
             const themeDisplay = document.getElementById('builder-theme-display');
             const nomeDisplay = { clean: 'Clean', gradient: 'Gradient', glass: 'Glass Premium', sunset: 'Sunset' };
             if (themeDisplay) themeDisplay.textContent = nomeDisplay[themeId] || themeId;
-            
+            const testerPrecoEl = document.getElementById('tester-modelo-preco');
+            if (testerPrecoEl) {
+                const preco = PRECOS.modelos[themeId];
+                if (preco) {
+                    testerPrecoEl.textContent = 'R$ ' + preco;
+                    testerPrecoEl.classList.remove('hidden');
+                } else {
+                    testerPrecoEl.classList.add('hidden');
+                }
+            }
+
             builderUpdateState();
             renderBuilderLinks();
             
@@ -728,8 +765,26 @@
             const nomes = { neon: 'Neon', aurora: 'Aurora', obsidian: 'Obsidian' };
 
             if (label) label.textContent = 'Modelo ' + (nomes[themeId] || themeId);
+            const precoEl = document.getElementById('pm-modelo-preco');
+            if (precoEl) {
+                const preco = PRECOS.modelos[themeId];
+                if (preco) {
+                    precoEl.textContent = 'R$ ' + preco;
+                    precoEl.classList.remove('hidden');
+                } else {
+                    precoEl.classList.add('hidden');
+                }
+            }
             const src = `assets/biolink/${themeId.charAt(0).toUpperCase() + themeId.slice(1)}.html`;
             if (iframe) iframe.src = src;
+
+            const scrollArea = document.getElementById('tester-premium-scroll-area');
+            if (scrollArea) scrollArea.scrollTop = 0;
+            const indicator = document.getElementById('mobile-scroll-indicator-premium');
+            if (indicator) {
+                indicator.classList.remove('opacity-0', 'pointer-events-none');
+                indicator.classList.add('opacity-100');
+            }
 
             pmRenderPainel(themeId);
 
@@ -807,6 +862,12 @@
             const iframe = document.getElementById('pm-iframe');
             if (modal) modal.classList.add('opacity-0');
             if (container) container.classList.add('scale-95');
+            const inputNome = document.getElementById('pm-input-nome');
+            const inputSub = document.getElementById('pm-input-subtitulo');
+            const inputBio = document.getElementById('pm-input-bio');
+            if (inputNome) inputNome.value = '';
+            if (inputSub) inputSub.value = '';
+            if (inputBio) inputBio.value = '';
             if (selectModel && pmCurrentTheme) {
                 currentState.model = pmCurrentTheme;
                 updateSelectionUI();
@@ -837,6 +898,20 @@
                     document.body.style.overflow = 'auto';
                 }
             }, 300);
+        }
+
+        // Lógica para esconder a seta flutuante no scroll (modelos premium)
+        function handlePremiumTesterScroll() {
+            const scrollArea = document.getElementById('tester-premium-scroll-area');
+            const indicator = document.getElementById('mobile-scroll-indicator-premium');
+            if (!indicator || !scrollArea) return;
+            if (scrollArea.scrollTop > 50) {
+                indicator.classList.remove('opacity-100');
+                indicator.classList.add('opacity-0', 'pointer-events-none');
+            } else {
+                indicator.classList.remove('opacity-0', 'pointer-events-none');
+                indicator.classList.add('opacity-100');
+            }
         }
 
         // Lógica para esconder a seta flutuante no scroll
@@ -1024,7 +1099,7 @@
                 title: 'Bio Link Instagram',
                 badge: 'Bio Link',
                 type: 'biolink-models',
-                desc: 'Serviço de Bio Link com 3 modelos prontos para escolher: Clean (minimalista), Gradient (vibrante com glassmorphism) e Glass Premium (escuro e sofisticado). Cada modelo é totalmente responsivo, com animações suaves e personalização de links, nome, bio e redes sociais.',
+                desc: 'Serviço de Bio Link com 7 modelos prontos para escolher: Clean (minimalista), Gradient (vibrante com glassmorphism), Glass Premium (escuro e sofisticado), Sunset (gradiente quente), Neon (cyberpunk com partículas animadas), Aurora (luzes polares com efeito glassmorphism) e Obsidian (dark premium minimalista). Cada modelo é totalmente responsivo, com animações exclusivas e personalização de links, nome, bio e redes sociais.',
                 techs: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'Design UI/UX'],
                 gradient: 'from-purple-100 to-[#6c5ce7]/20',
                 images: []
@@ -1157,27 +1232,31 @@
                 if (project.images.length === 1) {
                     const safeCaption0 = (caption0 || '').replace(/'/g, "\\'");
                     imgContainer.innerHTML = `
-                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onmousemove="handleImgZoom(event)" onmouseleave="resetImgZoom(this)" onclick="handleImgClick(event, '${project.images[0]}', '${safeCaption0}')" oncontextmenu="handleImgRightClick(event)" ontouchstart="handleImgTouchStart(event)" ontouchmove="handleImgTouchMove(event)" ontouchend="handleImgTouchEnd(event)">
+                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onclick="handleImgClick(event)" oncontextmenu="handleImgRightClick(event)" ontouchstart="handleImgTouchStart(event)" ontouchmove="handleImgTouchMove(event)" ontouchend="handleImgTouchEnd(event)">
                             <img src="${project.images[0]}" alt="Screenshot de ${project.title}" class="zoom-ready w-full h-auto max-h-[60vh] object-contain mx-auto">
                             <div class="zoom-cursor"></div>
-                            <button onclick="event.stopPropagation(); openZoom('${project.images[0]}', '${safeCaption0}')" class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-500 hover:text-brand-600 hover:bg-white transition-all shadow-sm z-10 cursor-pointer">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                            <button onclick="event.stopPropagation(); openZoom('${project.images[0]}', '${safeCaption0}')" title="Abrir imagem em tela cheia" class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-500 hover:text-brand-600 hover:bg-white transition-all shadow-sm z-10 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
                             </button>
                         </div>
                         ${caption0 ? `<div class="flex items-center gap-2 px-1"><div class="w-1 h-1 rounded-full bg-brand-500 shrink-0"></div><span class="text-xs text-gray-500 italic">${caption0}</span></div>` : ''}
+                        <div class="flex items-center gap-1.5 px-1 mt-0.5">
+                            <span class="text-[10px] text-gray-400 select-none hidden sm:inline">Clique: zoom &nbsp;·&nbsp; 2º clique: mais zoom &nbsp;·&nbsp; Botão direito: sair</span>
+                            <span class="text-[10px] text-gray-400 select-none sm:hidden">Toque: zoom · 2º toque: mais zoom · 3º toque: sair</span>
+                        </div>
                     `;
                 } else {
                     imgContainer.innerHTML = `
-                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onmousemove="handleImgZoom(event)" onmouseleave="resetImgZoom(this)" onclick="handleImgClick(event, document.getElementById('pf-slide-img').src, document.getElementById('pf-caption')?.querySelector('span')?.textContent || '')" oncontextmenu="handleImgRightClick(event)" ontouchstart="handleImgTouchStart(event)" ontouchmove="handleImgTouchMove(event)" ontouchend="handleImgTouchEnd(event)">
+                        <div class="img-zoom-container w-full rounded-2xl border border-gray-100 shadow-sm bg-gray-50 relative" onclick="handleImgClick(event)" oncontextmenu="handleImgRightClick(event)" ontouchstart="handleImgTouchStart(event)" ontouchmove="handleImgTouchMove(event)" ontouchend="handleImgTouchEnd(event)">
                             <img id="pf-slide-img" src="${project.images[0]}" alt="Screenshot de ${project.title}" class="zoom-ready w-full h-auto max-h-[60vh] object-contain mx-auto transition-opacity duration-300">
                             <div class="zoom-cursor"></div>
-                            <button onclick="event.stopPropagation(); openZoom(document.getElementById('pf-slide-img').src, document.getElementById('pf-caption')?.querySelector('span')?.textContent || '')" class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-500 hover:text-brand-600 hover:bg-white transition-all shadow-sm z-10 cursor-pointer">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
+                            <button onclick="event.stopPropagation(); openZoom(document.getElementById('pf-slide-img').src, document.getElementById('pf-caption')?.querySelector('span')?.textContent || '')" title="Abrir imagem em tela cheia" class="absolute top-3 right-3 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-500 hover:text-brand-600 hover:bg-white transition-all shadow-sm z-10 cursor-pointer">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
                             </button>
-                            <button onclick="event.stopPropagation(); pfSlide(-1)" onmouseenter="resetImgZoom(this.parentElement)" class="pf-nav-btn absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-md hover:shadow-lg flex items-center justify-center text-gray-500 hover:text-brand-600 transition-all z-10 cursor-pointer">
+                            <button onclick="event.stopPropagation(); pfSlide(-1)" class="pf-nav-btn absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-md hover:shadow-lg flex items-center justify-center text-gray-500 hover:text-brand-600 transition-all z-10 cursor-pointer">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
                             </button>
-                            <button onclick="event.stopPropagation(); pfSlide(1)" onmouseenter="resetImgZoom(this.parentElement)" class="pf-nav-btn absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-md hover:shadow-lg flex items-center justify-center text-gray-500 hover:text-brand-600 transition-all z-10 cursor-pointer">
+                            <button onclick="event.stopPropagation(); pfSlide(1)" class="pf-nav-btn absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 hover:bg-white rounded-full shadow-md hover:shadow-lg flex items-center justify-center text-gray-500 hover:text-brand-600 transition-all z-10 cursor-pointer">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                             </button>
                         </div>
@@ -1186,6 +1265,10 @@
                             <div class="flex items-center gap-1.5">
                                 ${project.images.map((_, i) => `<div class="pf-dot w-2 h-2 rounded-full ${i === 0 ? 'bg-brand-500' : 'bg-gray-300'} transition-colors cursor-pointer" onclick="pfSlide(${i - 0}, true)"></div>`).join('')}
                             </div>
+                        </div>
+                        <div class="flex items-center gap-1.5 px-1 mt-0.5">
+                            <span class="text-[10px] text-gray-400 select-none hidden sm:inline">Clique: zoom &nbsp;·&nbsp; 2º clique: mais zoom &nbsp;·&nbsp; Botão direito: sair</span>
+                            <span class="text-[10px] text-gray-400 select-none sm:hidden">Toque: zoom · 2º toque: mais zoom · 3º toque: sair</span>
                         </div>
                     `;
                 }
@@ -1216,6 +1299,8 @@
             }
             const img = document.getElementById('pf-slide-img');
             if (img) {
+                const container = img.closest('.img-zoom-container');
+                if (container) applyZoomLevel(container, 0);
                 img.style.opacity = '0';
                 setTimeout(() => {
                     img.src = project.images[pfCurrentSlide];
@@ -1254,176 +1339,215 @@
             el.classList.add('border-brand-500', 'shadow-lg');
         }
 
-        // === ZOOM DE IMAGEM ===
+        // === ZOOM HELPERS ===
+        let _activeZoomContainer = null;
+
+        function getZoomLevel(container) {
+            return parseInt(container.dataset.zoomLevel || '0');
+        }
+
+        function applyZoomLevel(container, level, e) {
+            const img = container.querySelector('img.zoom-ready');
+            const cursor = container.querySelector('.zoom-cursor');
+            container.dataset.zoomLevel = level;
+            container.classList.remove('zoom-active', 'zoom-l1', 'zoom-l2');
+            if (level === 0) {
+                if (_activeZoomContainer === container) _activeZoomContainer = null;
+                if (img) img.style.transformOrigin = 'center center';
+                if (cursor) cursor.style.opacity = '0';
+            } else {
+                _activeZoomContainer = container;
+                container.classList.add('zoom-active', `zoom-l${level}`);
+                if (e && img) {
+                    const rect = container.getBoundingClientRect();
+                    const cx = e.clientX !== undefined ? e.clientX : rect.left + rect.width / 2;
+                    const cy = e.clientY !== undefined ? e.clientY : rect.top + rect.height / 2;
+                    const x = cx - rect.left;
+                    const y = cy - rect.top;
+                    img.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
+                    if (cursor) {
+                        cursor.style.left = `${x}px`;
+                        cursor.style.top = `${y}px`;
+                        cursor.style.opacity = '1';
+                    }
+                }
+            }
+        }
+
+        // === ZOOM DE IMAGEM (MODAL FULLSCREEN) ===
         function openZoom(src, caption) {
             const zoomModal = document.getElementById('zoom-modal');
             const zoomImg = document.getElementById('zoom-img');
             const zoomCaption = document.getElementById('zoom-caption');
+            const zoomWrapper = document.getElementById('zoom-img-wrapper');
             if (!zoomModal || !zoomImg) return;
+            if (zoomWrapper) applyZoomLevel(zoomWrapper, 0);
             zoomImg.src = src;
             if (zoomCaption) zoomCaption.textContent = caption || '';
             zoomModal.classList.remove('hidden');
             setTimeout(() => {
                 zoomModal.classList.remove('opacity-0');
-                zoomImg.classList.remove('scale-95');
-                zoomImg.classList.add('scale-100');
+                if (zoomWrapper) {
+                    zoomWrapper.classList.remove('scale-95');
+                    zoomWrapper.classList.add('scale-100');
+                }
             }, 10);
         }
 
         function closeZoom() {
             const zoomModal = document.getElementById('zoom-modal');
-            const zoomImg = document.getElementById('zoom-img');
+            const zoomWrapper = document.getElementById('zoom-img-wrapper');
             if (!zoomModal) return;
             zoomModal.classList.add('opacity-0');
-            if (zoomImg) {
-                zoomImg.classList.remove('scale-100');
-                zoomImg.classList.add('scale-95');
+            if (zoomWrapper) {
+                applyZoomLevel(zoomWrapper, 0);
+                zoomWrapper.classList.remove('scale-100');
+                zoomWrapper.classList.add('scale-95');
             }
             setTimeout(() => zoomModal.classList.add('hidden'), 200);
         }
 
-        // === ZOOM HOVER (ESTILO LOJA) ===
+        // === HANDLERS DO MODAL FULLSCREEN ===
+        function handleModalZoom(e) {
+            const wrapper = e.currentTarget;
+            const img = wrapper.querySelector('img.zoom-ready');
+            const cursor = wrapper.querySelector('.zoom-cursor');
+            if (!img || !cursor) return;
+            if (getZoomLevel(wrapper) === 0) { cursor.style.opacity = '0'; return; }
+            const rect = wrapper.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            img.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
+            cursor.style.left = `${x}px`;
+            cursor.style.top = `${y}px`;
+            cursor.style.opacity = '1';
+        }
+
+        function resetModalZoom() {
+            const wrapper = document.getElementById('zoom-img-wrapper');
+            if (wrapper) applyZoomLevel(wrapper, 0);
+        }
+
+        function handleModalZoomClick(e) {
+            e.stopPropagation();
+            const wrapper = e.currentTarget;
+            const level = getZoomLevel(wrapper);
+            applyZoomLevel(wrapper, level >= 2 ? 0 : level + 1, e);
+        }
+
+        function handleModalZoomRightClick(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const wrapper = e.currentTarget;
+            if (getZoomLevel(wrapper) > 0) applyZoomLevel(wrapper, 0);
+        }
+
+        let _modalTouchStart = null;
+        function handleModalTouchStart(e) {
+            if (e.touches.length !== 1) return;
+            _modalTouchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+            e.stopPropagation();
+        }
+        function handleModalTouchMove(e) {
+            const wrapper = e.currentTarget;
+            if (getZoomLevel(wrapper) === 0 || e.touches.length !== 1) return;
+            e.preventDefault();
+            e.stopPropagation();
+            const img = wrapper.querySelector('img.zoom-ready');
+            if (!img) return;
+            const rect = wrapper.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const y = e.touches[0].clientY - rect.top;
+            img.style.transformOrigin = `${Math.max(0, Math.min(100, (x / rect.width) * 100))}% ${Math.max(0, Math.min(100, (y / rect.height) * 100))}%`;
+        }
+        function handleModalTouchEnd(e) {
+            const wrapper = e.currentTarget;
+            if (!_modalTouchStart || e.touches.length !== 0) return;
+            const dx = Math.abs(e.changedTouches[0].clientX - _modalTouchStart.x);
+            const dy = Math.abs(e.changedTouches[0].clientY - _modalTouchStart.y);
+            const dt = Date.now() - _modalTouchStart.t;
+            _modalTouchStart = null;
+            if (dx < 10 && dy < 10 && dt < 350) {
+                const level = getZoomLevel(wrapper);
+                applyZoomLevel(wrapper, level >= 2 ? 0 : level + 1, { clientX: e.changedTouches[0].clientX, clientY: e.changedTouches[0].clientY });
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        }
+
+        // === ZOOM DO CONTAINER (PORTFOLIO) ===
         function handleImgZoom(e) {
             const container = e.currentTarget;
             const img = container.querySelector('img.zoom-ready');
             const cursor = container.querySelector('.zoom-cursor');
             if (!img || !cursor) return;
-
-            // Se não está em modo zoom ou mouse está nas setas, esconder cursor
-            if (!container.classList.contains('zoom-active') || e.target.closest('.pf-nav-btn')) {
-                img.style.transformOrigin = 'center center';
-                cursor.style.opacity = '0';
-                return;
-            }
-
+            if (getZoomLevel(container) === 0) { cursor.style.opacity = '0'; return; }
+            // Sobre setas de navegação: esconde cursor mas mantém zoom ativo
+            if (e.target.closest('.pf-nav-btn')) { cursor.style.opacity = '0'; return; }
             const rect = container.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            const percentX = (x / rect.width) * 100;
-            const percentY = (y / rect.height) * 100;
-
-            img.style.transformOrigin = `${percentX}% ${percentY}%`;
+            img.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
             cursor.style.left = `${x}px`;
             cursor.style.top = `${y}px`;
             cursor.style.opacity = '1';
         }
 
         function resetImgZoom(container) {
-            const img = container.querySelector('img.zoom-ready');
-            const cursor = container.querySelector('.zoom-cursor');
-            if (img) img.style.transformOrigin = 'center center';
-            if (cursor) cursor.style.opacity = '0';
-            container.classList.remove('zoom-active');
+            applyZoomLevel(container, 0);
         }
 
-        function handleImgClick(e, src, caption) {
+        function hideZoomCursor(container) {
+            const cursor = container.querySelector('.zoom-cursor');
+            if (cursor) cursor.style.opacity = '0';
+        }
+
+        function handleImgClick(e) {
             const container = e.currentTarget;
             if (e.target.closest('.pf-nav-btn') || e.target.closest('button')) return;
-
-            if (container.classList.contains('zoom-active')) {
-                container.classList.remove('zoom-active');
-                const img = container.querySelector('img.zoom-ready');
-                const cursor = container.querySelector('.zoom-cursor');
-                if (img) img.style.transformOrigin = 'center center';
-                if (cursor) cursor.style.opacity = '0';
-                openZoom(src, caption);
-            } else {
-                container.classList.add('zoom-active');
-                const cursor = container.querySelector('.zoom-cursor');
-                const img = container.querySelector('img.zoom-ready');
-                if (cursor && img) {
-                    const rect = container.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    cursor.style.left = `${x}px`;
-                    cursor.style.top = `${y}px`;
-                    cursor.style.opacity = '1';
-                    img.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
-                }
-            }
+            const level = getZoomLevel(container);
+            applyZoomLevel(container, level >= 2 ? 0 : level + 1, e);
         }
 
         function handleImgRightClick(e) {
             const container = e.currentTarget;
-            if (container.classList.contains('zoom-active')) {
+            if (getZoomLevel(container) > 0) {
                 e.preventDefault();
-                container.classList.remove('zoom-active');
-                const img = container.querySelector('img.zoom-ready');
-                if (img) img.style.transformOrigin = 'center center';
+                applyZoomLevel(container, 0);
             }
         }
 
-        // === ZOOM TOUCH (MOBILE) ===
-        let touchZoomActive = false;
+        // === ZOOM TOUCH (MOBILE — PORTFOLIO) ===
+        let _touchStart = null;
 
         function handleImgTouchStart(e) {
-            const container = e.currentTarget;
             if (e.touches.length !== 1) return;
-
-            if (!touchZoomActive) {
-                // Primeiro toque: ativa zoom no ponto
-                touchZoomActive = true;
-                container.classList.add('zoom-active');
-                const cursor = container.querySelector('.zoom-cursor');
-                const img = container.querySelector('img.zoom-ready');
-                if (cursor) cursor.style.opacity = '0'; // Esconder cursor no mobile
-                if (img) {
-                    const rect = container.getBoundingClientRect();
-                    const x = e.touches[0].clientX - rect.left;
-                    const y = e.touches[0].clientY - rect.top;
-                    img.style.transformOrigin = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
-                }
-                e.preventDefault();
-            }
+            _touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
         }
 
         function handleImgTouchMove(e) {
             const container = e.currentTarget;
-            if (!touchZoomActive || e.touches.length !== 1) return;
+            if (getZoomLevel(container) === 0 || e.touches.length !== 1) return;
             e.preventDefault();
-
             const img = container.querySelector('img.zoom-ready');
             if (!img) return;
-
             const rect = container.getBoundingClientRect();
             const x = e.touches[0].clientX - rect.left;
             const y = e.touches[0].clientY - rect.top;
-            const percentX = Math.max(0, Math.min(100, (x / rect.width) * 100));
-            const percentY = Math.max(0, Math.min(100, (y / rect.height) * 100));
-
-            img.style.transformOrigin = `${percentX}% ${percentY}%`;
+            img.style.transformOrigin = `${Math.max(0, Math.min(100, (x / rect.width) * 100))}% ${Math.max(0, Math.min(100, (y / rect.height) * 100))}%`;
         }
 
         function handleImgTouchEnd(e) {
             const container = e.currentTarget;
-            if (!touchZoomActive) return;
-
-            // Se o dedo soltou, desativa zoom
-            if (e.touches.length === 0) {
-                // Segundo toque rápido abre fullscreen (double tap)
-                const now = Date.now();
-                if (container._lastTouchEnd && (now - container._lastTouchEnd) < 300) {
-                    touchZoomActive = false;
-                    container.classList.remove('zoom-active');
-                    const img = container.querySelector('img.zoom-ready');
-                    if (img) img.style.transformOrigin = 'center center';
-                    const src = img ? img.src : '';
-                    const caption = document.getElementById('pf-caption')?.querySelector('span')?.textContent || '';
-                    openZoom(src, caption);
-                    container._lastTouchEnd = 0;
-                    return;
-                }
-                container._lastTouchEnd = now;
-
-                // Soltar dedo: desativa zoom
-                setTimeout(() => {
-                    if (touchZoomActive) {
-                        touchZoomActive = false;
-                        container.classList.remove('zoom-active');
-                        const img = container.querySelector('img.zoom-ready');
-                        if (img) img.style.transformOrigin = 'center center';
-                    }
-                }, 300);
+            if (!_touchStart || e.touches.length !== 0) return;
+            const dx = Math.abs(e.changedTouches[0].clientX - _touchStart.x);
+            const dy = Math.abs(e.changedTouches[0].clientY - _touchStart.y);
+            const dt = Date.now() - _touchStart.t;
+            _touchStart = null;
+            if (dx < 10 && dy < 10 && dt < 350) {
+                const level = getZoomLevel(container);
+                applyZoomLevel(container, level >= 2 ? 0 : level + 1, { clientX: e.changedTouches[0].clientX, clientY: e.changedTouches[0].clientY });
+                e.preventDefault();
             }
         }
 
@@ -1600,8 +1724,8 @@
                 else if (k === 'profissional') v = 'R$ ' + PRECOS.planos.profissional;
                 else if (k === 'permanente') v = 'R$ ' + PRECOS.planos.permanente;
                 else if (k === 'painelAdmin') v = 'a partir de R$ ' + PRECOS.extras.painelAdmin + ' (único)';
-                else if (k === 'essencialMes') v = 'R$ ' + PRECOS.mensais.essencial + '/mês';
-                else if (k === 'profissionalMes') v = 'R$ ' + PRECOS.mensais.profissional + '/mês';
+                else if (k === 'essencialMes') v = el.classList.contains('plan-hint') ? 'ou R$ ' + PRECOS.mensais.essencial + '/mês (sem desconto)' : 'R$ ' + PRECOS.mensais.essencial + '/mês';
+                else if (k === 'profissionalMes') v = el.classList.contains('plan-hint') ? 'ou R$ ' + PRECOS.mensais.profissional + '/mês (sem desconto)' : 'R$ ' + PRECOS.mensais.profissional + '/mês';
                 else if (k === 'linktreeMes') v = 'R$ ' + PRECOS.linktreePro;
                 else if (k === 'linktreeSem') v = '= R$ ' + (PRECOS.linktreePro * 6) + ' por semestre';
                 else if (k === 'muryloMin') v = 'A partir de R$ ' + (PRECOS.modelos.clean + PRECOS.planos.essencial);
@@ -1614,6 +1738,7 @@
             document.querySelectorAll('.model-card[data-id="neon"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.neon); });
             document.querySelectorAll('.model-card[data-id="aurora"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.aurora); });
             document.querySelectorAll('.model-card[data-id="obsidian"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.obsidian); });
+            document.querySelectorAll('.model-card[data-id="personalizado"]').forEach(function(el) { el.setAttribute('data-price', PRECOS.modelos.personalizado); });
         }
         popularPrecos();
 

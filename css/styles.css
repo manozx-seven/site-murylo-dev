@@ -50,7 +50,7 @@
             scroll-margin-top: 6rem;
         }
 
-        /* Zoom controlado por clique */
+        /* Zoom controlado por clique — 2 níveis */
 .img-zoom-container {
     overflow: hidden;
     cursor: zoom-in;
@@ -62,8 +62,11 @@
     transition: transform 0.15s ease-out;
     transform-origin: center center;
 }
-.img-zoom-container.zoom-active img.zoom-ready {
-    transform: scale(2.5);
+.img-zoom-container.zoom-l1 img.zoom-ready {
+    transform: scale(2.2);
+}
+.img-zoom-container.zoom-l2 img.zoom-ready {
+    transform: scale(4);
 }
 /* Cursor customizado: anel com crosshair */
 .img-zoom-container .zoom-cursor {
@@ -103,6 +106,18 @@
 }
 .img-zoom-container.zoom-active .zoom-cursor {
     opacity: 1;
+}
+/* Nível 2: cursor vermelho + traço horizontal = "próximo clique sai do zoom" */
+.img-zoom-container.zoom-l2 .zoom-cursor {
+    border-color: rgba(239, 68, 68, 0.6);
+    background: rgba(239, 68, 68, 0.04);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.6), inset 0 0 0 1px rgba(255,255,255,0.3);
+}
+.img-zoom-container.zoom-l2 .zoom-cursor::before {
+    display: none;
+}
+.img-zoom-container.zoom-l2 .zoom-cursor::after {
+    background: rgba(239, 68, 68, 0.6);
 }
 
         /* Flash azul para chamar atenção ao addon */
